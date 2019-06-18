@@ -9,4 +9,71 @@
   top: 100px;
   width: 100vw;
 }
+
+.soc-buttons {
+  position: fixed;
+  bottom: 15vh;
+  left: -130px;
+}
+
+.soc-buttons a {
+  color: unset;
+  text-decoration: none;
+}
+
+.soc-button {
+  border-radius: 0px 25px 25px 0;
+  height: 45px;
+  width: 175px;
+  margin-bottom: 10px;
+  position: relative;
+  -webkit-transition: -webkit-transform .2s;
+  transition: -webkit-transform .2s;
+  -o-transition: transform .2s;
+  transition: transform .2s;
+  transition: transform .2s, -webkit-transform .2s;
+}
+
+.soc-button p {
+  margin-left: 10px;
+  line-height: 3em;
+  font-weight: bold;
+  color: white;
+  width: 120px;
+  text-align: center;
+}
+
+.soc-button:hover {
+  -webkit-transform: translateX(130px);
+      -ms-transform: translateX(130px);
+          transform: translateX(130px);
+}
+
+.soc-circle {
+  background-color: white;
+  padding: 5px;
+  border-radius: 50%;
+  height: 2em;
+  width: 2em;
+  text-align: center;
+  position: absolute;
+  right: 7px;
+  top: 6px;
+}
+
+.tweet {
+  background-color: #0EA4FC;
+}
+
+.face {
+  background-color: #3E5F94;
+}
+
+.dribl {
+  background-color: #F04888;
+}
+
+.gplus {
+  background-color: #DD4831;
+}
 /*# sourceMappingURL=style.css.map */

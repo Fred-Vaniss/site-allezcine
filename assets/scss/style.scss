@@ -1,4 +1,8 @@
-// Positionnement du jumbotron à l'intérieur du carousel
+/////////////////////////////////////////////////////////
+//
+//  Positionnement du Jumbotron à l'intérieur du carousel
+//
+/////////////////////////////////////////////////////////
 .carousel-inner{
     position: relative;
     height: 500px;
@@ -8,4 +12,74 @@
     position: absolute;
     top: 100px;
     width: 100vw;
+}
+
+/////////////////////////////////////////////////////////
+//
+//  Bouttons réseaux sociaux
+//
+/////////////////////////////////////////////////////////
+
+.soc-buttons{
+    position: fixed;
+    bottom: 15vh;
+    left: -130px;
+    a{
+        color: unset;
+        text-decoration: none;
+    }
+}
+.soc-button{
+    border-radius: 0px 25px 25px 0;
+    height: 45px;
+    width: 175px;
+    margin-bottom: 10px;
+
+    position: relative;
+
+    // display: flex;
+
+    transition: transform .2s;
+
+    p{
+        margin-left: 10px;
+        line-height: 3em;
+        font-weight: bold;
+        color: white;
+        width: 120px;
+        text-align: center;
+    }
+
+    &:hover{
+        transform: translateX(130px);
+    }
+}
+
+.soc-circle{
+    background-color: white;
+    padding: 5px;
+    border-radius: 50%;
+    height: 2em;
+    width: 2em;
+    text-align: center;
+
+    position: absolute;
+    right: 7px;
+    top: 6px;
+}
+
+.tweet{
+    background-color: #0EA4FC;
+}
+
+.face{
+    background-color: #3E5F94;
+}
+
+.dribl{
+    background-color: #F04888;
+}
+
+.gplus{
+    background-color: #DD4831;
 }

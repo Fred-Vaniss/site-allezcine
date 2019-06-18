@@ -11,9 +11,12 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
 <body>
+    <!-- Header -->
     <header>
         <!-- Barre de navigation -->
         <nav class="navbar navbar-expand-xl navbar-light bg-light">
@@ -24,7 +27,7 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-    
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
@@ -75,6 +78,7 @@
             </div>
         </nav>
 
+        <!-- Carousel -->
         <div id="carouselMovies" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselMovies" data-slide-to="0" class="active"></li>
@@ -91,6 +95,7 @@
                 <div class="carousel-item">
                     <img class="d-block w-100" src="https://via.placeholder.com/1110x450.png?text=Film+3" alt="Third slide">
                 </div>
+                <!-- Jumbotron par dessus le carousel -->
                 <div class="jumbotron">
                     <div class="container">
                         <h1 class="display-4">Latest online movies</h1>
@@ -102,6 +107,42 @@
         </div>
         
     </header>
+
+    <!-- Bouttons réseaux socieaux (suit le scroll de l'écran) -->
+    <aside class="soc-buttons">
+        <a href="">
+            <div class="soc-button tweet">
+                <p>Twitter</p>
+                <div class="soc-circle">
+                    <i class="fab fa-twitter"></i>
+                </div>
+            </div>
+        </a>
+        <a href="">
+            <div class="soc-button face">
+                <p>Facebook</p>
+                <div class="soc-circle">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+            </div>
+        </a>
+        <a href="">
+            <div class="soc-button dribl">
+                <p>Dribble</p>
+                <div class="soc-circle">
+                    <i class="fab fa-dribbble"></i>
+                </div>
+            </div>
+        </a>
+        <a href="">
+            <div class="soc-button gplus">
+                <p>Google+</p>
+                <div class="soc-circle">
+                    <i class="fab fa-google-plus-g"></i>
+                </div>
+            </div>
+        </a>
+    </aside>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
