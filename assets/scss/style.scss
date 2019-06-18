@@ -1,0 +1,11 @@
+// Positionnement du jumbotron à l'intérieur du carousel
+.carousel-inner{
+    position: relative;
+    height: 500px;
+}
+.jumbotron{
+    background-color: transparent;
+    position: absolute;
+    top: 100px;
+    width: 100vw;
+}
