@@ -22,7 +22,14 @@ validate.addEventListener('click', () => {
             age--;
         }
     }
-    if (age < 18) {
-        window.location.replace("https://www.imdb.com/");
+    if (dateField != "") {
+        if (age >= 18) {
+                $('#myModal').modal('toggle');
+        } else if (age < 18) {
+            window.location.replace("https://www.imdb.com/");
+        } else {
+            console.log('erreur');
+        }
     }
+
 })
