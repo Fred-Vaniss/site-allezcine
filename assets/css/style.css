@@ -113,6 +113,7 @@ footer span {
   position: relative;
   -webkit-transition: -webkit-transform .2s;
   transition: -webkit-transform .2s;
+  -o-transition: transform .2s;
   transition: transform .2s;
   transition: transform .2s, -webkit-transform .2s;
 }
@@ -128,6 +129,7 @@ footer span {
 
 .soc-button:hover {
   -webkit-transform: translateX(130px);
+      -ms-transform: translateX(130px);
           transform: translateX(130px);
 }
 
@@ -188,7 +190,8 @@ footer span {
   margin-top: 5px;
   font-size: 16px;
   text-align: center;
-  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
   white-space: nowrap;
 }
 

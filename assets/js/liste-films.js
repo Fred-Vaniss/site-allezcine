@@ -68,6 +68,8 @@ function listMovies (movies, genres) {
         let entry = document.createElement("div");
         entry.className = "movie-entry"
         entry.title = movies.results[i].original_title
+        entry.setAttribute("data-toggle","modal")
+        entry.setAttribute("data-target", ".modal-info-movie")
 
         let img = document.createElement("img");
         let title = document.createElement("h3");
