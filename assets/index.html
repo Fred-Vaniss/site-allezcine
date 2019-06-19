@@ -9,6 +9,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -98,11 +100,11 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="InputPassword2" placeholder="Password">
+                            <input type="password" class="form-control" id="Password1" placeholder="Password">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Comfirmer Password</label>
-                            <input type="password" class="form-control" id="InputPassword2" placeholder="Password">
+                            <input type="password" class="form-control" id="Password2" placeholder="Password">
                         </div>
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="Check1">
@@ -111,7 +113,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">S'enregistrer</button>
+                    <button type="button" class="butt-enregistrer">S'enregistrer</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -119,28 +121,110 @@
     </div>
     <!--Contact-->
     <form>
-            <div class="form-group row">
-                    <div class="col-md-4 offset-2">
-                        <input type="text" class="form-control"placeholder="Nom">
-                    </div>
-                    <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Prénom">
-                    </div>
+        <div class="form-group row">
+            <div class="col-md-4 offset-2">
+                <input id="cname" type="text" class="form-control" placeholder="Nom">
             </div>
-    
-                    <div class="form-group row">
-                    <div class="col-md-4 offset-2">
-                            <input type="text" class="form-control" placeholder="Email">
-                    </div>
-                    <div class="col-md-4">
-                            <input type="text" class="form-control"placeholder="Objet">
+            <div class="col-md-4">
+                <input id="cfirstname" type="text" class="form-control" placeholder="Prénom">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 offset-2">
+                <input id="cmail" type="text" class="form-control" placeholder="Email">
+            </div>
+            <div class="col-md-4">
+                <input id="cobject" type="text" class="form-control" placeholder="Objet">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-8 offset-2">
+                <input id="cmessage" type="text" class="form-control" placeholder="Votre message">
+                <button id="envoie" type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#confirmation">
+                    Envoyer
+                </button>
+            </div>
+
+            <!--Popup-->
+            <div class="modal" tabindex="-1" id="confirmation" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Confirmation</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label for="confirm">Name</label>
+                                    <input id="confirm-name" type="text" class="form-control" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="confirm">Firstname</label>
+                                    <input id="confirm-firstname" type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label for="confirm">Email</label>
+                                    <input id="confirm-mail" type="text" class="form-control" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="confirm">Object</label>
+                                    <input id="confirm-object" type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="confirm">Message</label>
+                                    <input id="confirm-mess" type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="envoie" type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#send" data-dismiss="modal">
+                                Confirm and send
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-md-8 offset-2">
-                    <input type="text" class="form-control" placeholder="Votre message">
-                    <button type="button" class="Envoyer">Envoyer</button>
+
+            </div>
+
+        </div>
+        <!--Confirmation-->
+        <div class="modal" tabindex="-1" id="send" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Message envoyé</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            <div class="form-group row">
+                             <div class="col-md-4">
+                        <p><i class="fas fa-check"></i></p>
+                        </div>
+                        <div class="col-md-7">
+                        <p>Nous vous remercions pour votre message. Nous mettons tout en oeuvre pour vous répondre dans
+                            les plus brefs délais.
+                            En attendant notre réponse, nous vous proposons de faire un tour du côté de nos actualités.
+                        </p>
+                        </div>
+                    </div>
                 </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 <script src="main.js"></script>
+
 </html>
