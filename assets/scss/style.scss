@@ -1,0 +1,115 @@
+/*font-size responsive */
+html {
+    font-size: 0.9rem;
+ }
+ h1 {
+   font-size: 1.3rem;
+ }
+ h2 {
+   font-size: 1.2rem;
+ }
+ h6 {
+    font-size: 0.8rem;
+ }
+ p{
+     font-size: 0.9rem;
+ }
+ a{
+    font-size: 0.7rem;
+}
+span{
+    font-size: 0.7rem;
+    
+}
+ @media (max-width: 468px) {
+    html {
+      font-size: 0.6rem;
+    }
+    h1 {
+        font-size: 1.2rem;
+    }
+    h2 {
+        font-size: 1rem;
+    }
+    p{
+        font-size: 0.6rem;
+    }
+    a{
+        font-size: 0.6rem;
+    }
+  }
+ @media (min-width: 991px) {
+     html {
+     font-size: 0.9rem;
+   }
+   h1 {
+       font-size: 1.5rem;
+   }
+   h2 {
+       font-size: 1.4rem;
+   }
+   p{
+    font-size: 0.9rem;
+}
+a{
+    font-size: 0.7rem;
+}
+ }
+ @media (min-width: 1200px) {
+   html {
+     font-size: 1rem;
+   }
+   h1 {
+       font-size: 1.7rem;
+   }
+   h2 {
+       font-size: 1.6rem;
+   }
+   p{
+    font-size: 1rem;
+}
+
+ }
+footer {
+    background-color: black;
+    color: gray;
+}
+.master{
+    font-size: 0.9rem;
+    border: 1px solid white;
+}
+.test a{
+    text-decoration: none;
+    color: gray;
+}
+h6{
+    color: whitesmoke;
+}
+h5{
+    color: red;
+}
+
+.else{
+    background-color: grey;
+    color: whitesmoke;
+}
+#btnscroll {
+    border: 0.1em solid red;
+    text-align: center;
+    height: 6%;
+    width: 7%;
+    border-radius: 100%;
+    background-color: black;
+    padding-bottom: 6%;
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 0.2em;
+    position: fixed;
+    bottom: 0;
+    display: none;
+    margin-left: 90%;
+    text-decoration: none !important;
+  }
+  .footer-copyright{
+      font-size: 1.3rem;
+  }
