@@ -11,11 +11,194 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
 <body>
+    <!-- Header -->
+    <header>
+        <!-- Barre de navigation -->
+        <nav class="navbar navbar-expand-xl navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">AllezCiné</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Featured movies
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">All</a>
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Comedy</a>
+                                <a class="dropdown-item" href="#">Fiction</a>
+                                <a class="dropdown-item" href="#">Romance</a>
+                                <a class="dropdown-item" href="#">Horror</a>
+                                <a class="dropdown-item" href="#">Thriller</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Featured series TV
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">All</a>
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Comedy</a>
+                                <a class="dropdown-item" href="#">Fiction</a>
+                                <a class="dropdown-item" href="#">Romance</a>
+                                <a class="dropdown-item" href="#">Horror</a>
+                                <a class="dropdown-item" href="#">Thriller</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Shop movies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact us</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Carousel -->
+        <div id="carouselMovies" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselMovies" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselMovies" data-slide-to="1"></li>
+                <li data-target="#carouselMovies" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="https://via.placeholder.com/1110x450.png?text=Film+1"
+                        alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="https://via.placeholder.com/1110x450.png?text=Film+2"
+                        alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="https://via.placeholder.com/1110x450.png?text=Film+3"
+                        alt="Third slide">
+                </div>
+                <!-- Jumbotron par dessus le carousel -->
+                <div class="jumbotron">
+                    <div class="container">
+                        <h1 class="display-4">Latest online movies</h1>
+                        <p class="lead">In space no one can hear you scream.</p>
+                        <a class="btn btn-primary btn-lg" href="#" role="button">Watch trailer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bande rouge -->
+    <section class="red-band">
+        <div class="container">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Login">
+                Login
+            </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enregistre">
+                S'enregistrer
+            </button>
+        </div>
+    </section>
+
+    <!-- Liste des films -->
+    <section id="movies">
+        <div class="container">
+            <div id="movies-target"></div>
+        </div>
+    </section>
+
+    <!-- Bouttons réseaux socieaux (suit le scroll de l'écran) -->
+    <aside class="soc-buttons">
+        <a href="#">
+            <div class="soc-button tweet">
+                <p>Twitter</p>
+                <div class="soc-circle">
+                    <i class="fab fa-twitter"></i>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="soc-button face">
+                <p>Facebook</p>
+                <div class="soc-circle">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="soc-button dribl">
+                <p>Dribble</p>
+                <div class="soc-circle">
+                    <i class="fab fa-dribbble"></i>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="soc-button gplus">
+                <p>Google+</p>
+                <div class="soc-circle">
+                    <i class="fab fa-google-plus-g"></i>
+                </div>
+            </div>
+        </a>
+    </aside>
+    <!--Formulaire contact-->
+    <section id="contact">
+        <div class="container">
+            <form>
+                <div class="form-group row">
+                    <div class="col-md-4 offset-2">
+                        <input id="cname" type="text" class="form-control" placeholder="Nom" required>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="cfirstname" type="text" class="form-control" placeholder="Prénom" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4 offset-2">
+                        <input id="cmail" type="text" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="cobject" type="text" class="form-control" placeholder="Objet" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-8 offset-2">
+                        <input id="cmessage" type="text" class="form-control" placeholder="Votre message" required>
+                        <button id="envoie" type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#confirmation">
+                            Envoyer
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="page-footer font-small indigo" id="up">
 
@@ -219,20 +402,262 @@
         </div>
     </footer>
 
-    <!-- Footer -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="assets/js/app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <!-- Bandeau GPDR -->
+    <div class="container-fluid fixed-bottom bg-warning collapse hide" id="bandeauGPDR">
+        <div class="m-0 p-0 d-flex justify-content-center align-items-center">
+            <span class="mr-4">We use cookies on our website to give you a better experience, improve performance and
+                for analytics. By using this website you agree to the use of cookies.</span>
+            <div>
+                <button class="btn btn-primary my-3" id="collapseGPDR" data-toggle="collapse"
+                    data-target="#bandeauGPDR"><i class="fas fa-check"></i>
+                    Accept cookies</button>
+                <button class="btn btn-secondary my-3" data-toggle="modal" data-target="#GPDRmodal">Learn more</button>
+            </div>
+        </div>
+    </div>
 
+    <!-- ================================================== -->
+    <!-- ================== Boites modal ================== -->
+    <!-- ================================================== -->
+    <!-- Popup check age -->
+    <div class="modal fade " data-keyboard="false" data-backdrop="static" id="ageModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5>Veuillez indiquer votre âge:</h5>
+                    <form>
+                        <div class="form-group">
+                            <label>Date de naissance</label>
+                            <input id="inputDate" type="date">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="validate">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal GPDR-->
+    <div class="modal fade bd-example-modal-lg" id="GPDRmodal" tabindex="-1" role="dialog" aria-labelledby="GPDRmodal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Why we use cookies</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Where will your personal information be stored?</h5>
+                    <p>The information we collect about you is stored within the European Economic Area (“EEA”) but can
+                        also be transferred to and processed in a country outside the EEA. All transfers of personal
+                        data carried out in accordance with applicable law.</p>
+                    <h5>What types of personal information we collect?</h5>
+                    <p>We collect the personal information you provide, for example, when contacting customer service or
+                        participate in competitions. The personal information you provide may for example include
+                        contact information, birth date and billing information.</p>
+                    <h5>What do we use your personal information to?</h5>
+                    <p>We may use your personal information for the following purposes:
+                        <ul>
+                            <li>To be able to answer questions and inform you about new or changed services</li>
+                            <li>To send promotional offers such as newsletters and catalogs</li>
+                            <li>To inform winners of online contests</li>
+                            <li>To analyze the information so we can send you relevant marketing offers and information
+                            </li>
+                            <li>To send you surveys that give you the ability to influence supply and services</li>
+                            <li>To test and improve the systems we use to provide services</li>
+                            <li>To prevent the abuse or misuse of our services</li>
+                        </ul>
+                        We will only keep your information for as long as is necessary to perform the above services, or
+                        as long as the law requires us to keep them. After this, the data will be deleted.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Got it!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- boite modal connexion -->
+    <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="connexion">Se connecter</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="user">Identifiant</label>
+                            <input type="user" class="form-control" id="user" aria-describedby="emailHelp"
+                                placeholder="Entrer identifiant">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                placeholder="Password">
+                            <small id="PasswordHelp" class="form-text text-muted"><a href="">Mot de passe
+                                    oublié?</a></small>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Check1">
+                            <label class="form-check-label" for="Check1">Rester connecter</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Connexion</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="register" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#enregistre">
+                        Créer un compte
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- boite modal s'enregistrer -->
+    <div class="modal fade" id="enregistre" tabindex="-1" role="dialog" aria-labelledby="enregistrer"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="connexion">S'enregistrer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="user">Nom</label>
+                            <input type="user" class="form-control" id="user2" aria-describedby="emailHelp"
+                                placeholder="Entrer votre nom">
+                        </div>
+                        <div class="form-group">
+                            <label for="mail">Adresse email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="Password1" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Comfirmer Password</label>
+                            <input type="password" class="form-control" id="Password2" placeholder="Password">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Check2">
+                            <label class="form-check-label" for="Check2">Conditions générales d'utilisation</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">S'enregistrer</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal confirmation formulaire -->
+    <div class="modal" tabindex="-1" id="confirmation" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Confirmation</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="confirm">Name</label>
+                            <input id="confirm-name" type="text" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="confirm">Firstname</label>
+                            <input id="confirm-firstname" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="confirm">Email</label>
+                            <input id="confirm-mail" type="text" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="confirm">Object</label>
+                            <input id="confirm-object" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label for="confirm">Message</label>
+                            <input id="confirm-mess" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="envoie" type="button" class="btn btn-primary" data-toggle="modal" data-target="#send"
+                        data-dismiss="modal">
+                        Confirm and send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal message envoyée -->
+    <div class="modal" tabindex="-1" id="send" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Message envoyé</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <p><i class="fas fa-check"></i></p>
+                        </div>
+                        <div class="col-md-7">
+                            <p>Nous vous remercions pour votre message. Nous mettons tout en oeuvre pour vous
+                                répondre dans
+                                les plus brefs délais.
+                                En attendant notre réponse, nous vous proposons de faire un tour du côté de nos
+                                actualités.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- ==================== Scripts ===================== -->
+    <!-- ================================================== -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/liste-films.js"></script>
 </body>
 
 </html>
