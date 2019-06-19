@@ -46,11 +46,38 @@ let genreListRequest = new Promise((resolve, reject) => {
 Promise.all([movieListRequest,genreListRequest]).then(values => {
     listMovies(values[0],values[1])
 }, reason => {
-    console.error("Une des promesses n'a pas été tenue")
+    console.error(`Une des promesses n'a pas été tenue (${reason})`)
 })
 
 
 function listMovies (movies, genres) {
     console.log(movies)
     console.log(genres)
+    let target = document.getElementById("movies-target")
+
+    for (let i = 0; i <= 5 ; i++) {
+        let entry = document.createElement("div");
+        entry.class = "movie-entry"
+
+        let img = document.createElement("img");
+        let title = document.createElement("h3");
+        let genre = document.createElement("p");
+        let year = document.createElement("p");
+
+        img.src = `https://image.tmdb.org/t/p/w500/${movies.results[i].poster_path}`;
+        img.className = "movie-poster"
+
+        title.textContent = movies.results[i].original_title;
+        year.textContent = movies.results[i].release_date;
+
+        entry.appendChild(img);
+        entry.appendChild(title);
+        entry.appendChild(year);
+
+        target.appendChild(entry)
+
+        console.log(movies.results[i].original_title);
+
+        
+    }
 }

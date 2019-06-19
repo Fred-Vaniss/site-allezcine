@@ -76,4 +76,14 @@
 .gplus {
   background-color: #DD4831;
 }
+
+#movies-target {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.movie-poster {
+  width: 140px;
+}
 /*# sourceMappingURL=style.css.map */
