@@ -193,13 +193,13 @@
     </section>
 
     <!-- Bandeau GPDR -->
-    <div class="container-fluid fixed-bottom bg-warning collapse show" id="bandeauGPDR">
+    <div class="container-fluid fixed-bottom bg-warning collapse hide" id="bandeauGPDR">
         <div class="m-0 p-0 d-flex justify-content-center align-items-center">
             <span class="mr-4">We use cookies on our website to give you a better experience, improve performance and
                 for analytics. By using this website you agree to the use of cookies.</span>
             <div>
-                <button class="btn btn-primary my-3" data-toggle="collapse" data-target="#bandeauGPDR"><i
-                        class="fas fa-check"></i>
+                <button class="btn btn-primary my-3" id="collapseGPDR" data-toggle="collapse"
+                    data-target="#bandeauGPDR"><i class="fas fa-check"></i>
                     Accept cookies</button>
                 <button class="btn btn-secondary my-3" data-toggle="modal" data-target="#GPDRmodal">Learn more</button>
             </div>
@@ -210,11 +210,11 @@
     <!-- ================== Boites modal ================== -->
     <!-- ================================================== -->
     <!-- Popup check age -->
-    <div class="modal fade" id="myModal">
+    <div class="modal fade " data-keyboard="false" data-backdrop="static" id="ageModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    Veuillez indiquer votre âge:
+                    <h5>Veuillez indiquer votre âge:</h5>
                     <form>
                         <div class="form-group">
                             <label>Date de naissance</label>
@@ -326,7 +326,7 @@
                     <form>
                         <div class="form-group">
                             <label for="user">Nom</label>
-                            <input type="user" class="form-control" id="user" aria-describedby="emailHelp"
+                            <input type="user" class="form-control" id="user2" aria-describedby="emailHelp"
                                 placeholder="Entrer votre nom">
                         </div>
                         <div class="form-group">
@@ -342,8 +342,8 @@
                             <input type="password" class="form-control" id="Password2" placeholder="Password">
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="Check1">
-                            <label class="form-check-label" for="Check1">Conditions générales d'utilisation</label>
+                            <input type="checkbox" class="form-check-input" id="Check2">
+                            <label class="form-check-label" for="Check2">Conditions générales d'utilisation</label>
                         </div>
                     </form>
                 </div>
