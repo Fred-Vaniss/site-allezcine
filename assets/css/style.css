@@ -80,4 +80,51 @@
 .gplus {
   background-color: #DD4831;
 }
+
+#movies {
+  margin-top: 1em;
+}
+
+#movies-target {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border: 2px solid #f5f5f5;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.movie-entry {
+  max-width: 140px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.movie-poster {
+  width: 140px;
+}
+
+.movie-title {
+  margin-top: 5px;
+  font-size: 16px;
+  text-align: center;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.movie-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.movie-year-genre {
+  font-size: 14px;
+}
 /*# sourceMappingURL=style.css.map */
