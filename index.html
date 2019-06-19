@@ -109,6 +109,18 @@
             </div>
         </div>
     </header>
+    <!-- Bande rouge -->
+    <section class="red-band">
+        <div class="container">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Login">
+                Login
+            </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enregistre">
+                S'enregistrer
+            </button>
+        </div>
+    </section>
 
     <!-- Bouttons réseaux socieaux (suit le scroll de l'écran) -->
     <aside class="soc-buttons">
@@ -177,6 +189,10 @@
             </div>
         </div>
     </div>
+
+    <!-- ================================================== -->
+    <!-- ================== Boites modal ================== -->
+    <!-- ================================================== -->
     <!-- Modal GPDR-->
     <div class="modal fade bd-example-modal-lg" id="GPDRmodal" tabindex="-1" role="dialog" aria-labelledby="GPDRmodal"
         aria-hidden="true">
@@ -218,7 +234,94 @@
             </div>
         </div>
     </div>
-    <!-- Optional JavaScript -->
+
+    <!-- boite modal connexion -->
+    <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="connexion">Se connecter</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="user">Identifiant</label>
+                            <input type="user" class="form-control" id="user" aria-describedby="emailHelp"
+                                placeholder="Entrer identifiant">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                placeholder="Password">
+                            <small id="PasswordHelp" class="form-text text-muted"><a href="">Mot de passe
+                                    oublié?</a></small>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Check1">
+                            <label class="form-check-label" for="Check1">Rester connecter</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Connexion</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enregistre">
+                        Créer un compte
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- boite modal s'enregistrer -->
+    <div class="modal fade" id="enregistre" tabindex="-1" role="dialog" aria-labelledby="enregistrer"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="connexion">S'enregistrer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="user">Nom</label>
+                            <input type="user" class="form-control" id="user" aria-describedby="emailHelp"
+                                placeholder="Entrer votre nom">
+                        </div>
+                        <div class="form-group">
+                            <label for="mail">Adresse email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="Password1" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Comfirmer Password</label>
+                            <input type="password" class="form-control" id="Password2" placeholder="Password">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Check1">
+                            <label class="form-check-label" for="Check1">Conditions générales d'utilisation</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="butt-enregistrer">S'enregistrer</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- ==================== Scripts ===================== -->
+    <!-- ================================================== -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
