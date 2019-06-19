@@ -17,13 +17,32 @@
 </head>
 
 <body>
+    <!-- Popup check age -->
+    <div class="modal fade " data-keyboard="false" data-backdrop="static" id="ageModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5>Veuillez indiquer votre âge:</h5>
+                    <form>
+                        <div class="form-group">
+                            <label>Date de naissance</label>
+                            <input id="inputDate" type="date">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="validate">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Bandeau GPDR -->
-    <div class="container-fluid fixed-bottom bg-warning collapse show" id="bandeauGPDR">
+    <div class="container-fluid fixed-bottom bg-warning collapse hide" id="bandeauGPDR">
         <div class="m-0 p-0 d-flex justify-content-center align-items-center">
             <span class="mr-4">We use cookies on our website to give you a better experience, improve performance and
                 for analytics. By using this website you agree to the use of cookies.</span>
             <div>
-                <button class="btn btn-primary my-3" data-toggle="collapse" data-target="#bandeauGPDR"><i
+                <button class="btn btn-primary my-3" id="collapseGPDR" data-toggle="collapse" data-target="#bandeauGPDR"><i
                         class="fas fa-check"></i>
                     Accept cookies</button>
                 <button class="btn btn-secondary my-3" data-toggle="modal" data-target="#GPDRmodal">Learn more</button>
@@ -31,7 +50,8 @@
         </div>
     </div>
     <!-- Modal GPDR-->
-    <div class="modal fade bd-example-modal-lg" id="GPDRmodal" tabindex="-1" role="dialog" aria-labelledby="GPDRmodal" aria-hidden="true">
+    <div class="modal fade bd-example-modal-lg" id="GPDRmodal" tabindex="-1" role="dialog" aria-labelledby="GPDRmodal"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
