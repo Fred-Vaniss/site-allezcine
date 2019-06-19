@@ -145,7 +145,6 @@
             </div>
         </a>
     </aside>
-
     <!-- Popup check age -->
     <div class="modal fade" id="myModal">
         <div class="modal-dialog">
@@ -161,6 +160,60 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="validate">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bandeau GPDR -->
+    <div class="container-fluid fixed-bottom bg-warning collapse show" id="bandeauGPDR">
+        <div class="m-0 p-0 d-flex justify-content-center align-items-center">
+            <span class="mr-4">We use cookies on our website to give you a better experience, improve performance and
+                for analytics. By using this website you agree to the use of cookies.</span>
+            <div>
+                <button class="btn btn-primary my-3" data-toggle="collapse" data-target="#bandeauGPDR"><i
+                        class="fas fa-check"></i>
+                    Accept cookies</button>
+                <button class="btn btn-secondary my-3" data-toggle="modal" data-target="#GPDRmodal">Learn more</button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal GPDR-->
+    <div class="modal fade bd-example-modal-lg" id="GPDRmodal" tabindex="-1" role="dialog" aria-labelledby="GPDRmodal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Why we use cookies</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Where will your personal information be stored?</h5>
+                    <p>The information we collect about you is stored within the European Economic Area (“EEA”) but can
+                        also be transferred to and processed in a country outside the EEA. All transfers of personal
+                        data carried out in accordance with applicable law.</p>
+                    <h5>What types of personal information we collect?</h5>
+                    <p>We collect the personal information you provide, for example, when contacting customer service or
+                        participate in competitions. The personal information you provide may for example include
+                        contact information, birth date and billing information.</p>
+                    <h5>What do we use your personal information to?</h5>
+                    <p>We may use your personal information for the following purposes:
+                        <ul>
+                            <li>To be able to answer questions and inform you about new or changed services</li>
+                            <li>To send promotional offers such as newsletters and catalogs</li>
+                            <li>To inform winners of online contests</li>
+                            <li>To analyze the information so we can send you relevant marketing offers and information
+                            </li>
+                            <li>To send you surveys that give you the ability to influence supply and services</li>
+                            <li>To test and improve the systems we use to provide services</li>
+                            <li>To prevent the abuse or misuse of our services</li>
+                        </ul>
+                        We will only keep your information for as long as is necessary to perform the above services, or
+                        as long as the law requires us to keep them. After this, the data will be deleted.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Got it!</button>
                 </div>
             </div>
         </div>
