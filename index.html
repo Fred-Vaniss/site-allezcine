@@ -109,6 +109,7 @@
             </div>
         </div>
     </header>
+
     <!-- Bande rouge -->
     <section class="red-band">
         <div class="container">
@@ -157,6 +158,57 @@
             </div>
         </a>
     </aside>
+
+    <section id="contact">
+        <div class="container">
+            <form>
+                <div class="form-group row">
+                    <div class="col-md-4 offset-2">
+                        <input id="cname" type="text" class="form-control" placeholder="Nom" required>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="cfirstname" type="text" class="form-control" placeholder="Prénom" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4 offset-2">
+                        <input id="cmail" type="text" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="cobject" type="text" class="form-control" placeholder="Objet" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-8 offset-2">
+                        <input id="cmessage" type="text" class="form-control" placeholder="Votre message" required>
+                        <button id="envoie" type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#confirmation">
+                            Envoyer
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Bandeau GPDR -->
+    <div class="container-fluid fixed-bottom bg-warning collapse show" id="bandeauGPDR">
+        <div class="m-0 p-0 d-flex justify-content-center align-items-center">
+            <span class="mr-4">We use cookies on our website to give you a better experience, improve performance and
+                for analytics. By using this website you agree to the use of cookies.</span>
+            <div>
+                <button class="btn btn-primary my-3" data-toggle="collapse" data-target="#bandeauGPDR"><i
+                        class="fas fa-check"></i>
+                    Accept cookies</button>
+                <button class="btn btn-secondary my-3" data-toggle="modal" data-target="#GPDRmodal">Learn more</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- ================== Boites modal ================== -->
+    <!-- ================================================== -->
     <!-- Popup check age -->
     <div class="modal fade" id="myModal">
         <div class="modal-dialog">
@@ -176,23 +228,7 @@
             </div>
         </div>
     </div>
-    <!-- Bandeau GPDR -->
-    <div class="container-fluid fixed-bottom bg-warning collapse show" id="bandeauGPDR">
-        <div class="m-0 p-0 d-flex justify-content-center align-items-center">
-            <span class="mr-4">We use cookies on our website to give you a better experience, improve performance and
-                for analytics. By using this website you agree to the use of cookies.</span>
-            <div>
-                <button class="btn btn-primary my-3" data-toggle="collapse" data-target="#bandeauGPDR"><i
-                        class="fas fa-check"></i>
-                    Accept cookies</button>
-                <button class="btn btn-secondary my-3" data-toggle="modal" data-target="#GPDRmodal">Learn more</button>
-            </div>
-        </div>
-    </div>
 
-    <!-- ================================================== -->
-    <!-- ================== Boites modal ================== -->
-    <!-- ================================================== -->
     <!-- Modal GPDR-->
     <div class="modal fade bd-example-modal-lg" id="GPDRmodal" tabindex="-1" role="dialog" aria-labelledby="GPDRmodal"
         aria-hidden="true">
@@ -313,6 +349,84 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="butt-enregistrer">S'enregistrer</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal confirmation formulaire -->
+    <div class="modal" tabindex="-1" id="confirmation" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Confirmation</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="confirm">Name</label>
+                            <input id="confirm-name" type="text" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="confirm">Firstname</label>
+                            <input id="confirm-firstname" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="confirm">Email</label>
+                            <input id="confirm-mail" type="text" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="confirm">Object</label>
+                            <input id="confirm-object" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label for="confirm">Message</label>
+                            <input id="confirm-mess" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="envoie" type="button" class="btn btn-primary" data-toggle="modal" data-target="#send"
+                        data-dismiss="modal">
+                        Confirm and send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal message envoyée -->
+    <div class="modal" tabindex="-1" id="send" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Message envoyé</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <p><i class="fas fa-check"></i></p>
+                        </div>
+                        <div class="col-md-7">
+                            <p>Nous vous remercions pour votre message. Nous mettons tout en oeuvre pour vous
+                                répondre dans
+                                les plus brefs délais.
+                                En attendant notre réponse, nous vous proposons de faire un tour du côté de nos
+                                actualités.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
