@@ -15,7 +15,7 @@ let confirmfirstname = document.querySelector("#confirm-firstname")
 let confirmmail = document.querySelector("#confirm-mail")
 let confirmobject = document.querySelector("#confirm-object")
 let confirmmess = document.querySelector("#confirm-mess")
-
+let missName=document.querySelector("#missName")
 
 let confirm = document.querySelector('#envoie').addEventListener('click', () => {
     let name = document.querySelector('#cname').value
@@ -28,5 +28,6 @@ let confirm = document.querySelector('#envoie').addEventListener('click', () => 
     confirmmail.value = mail
     confirmobject.value = object
     confirmmess.value = message
-    console.log(name)
-})
+    if(name==""||firstname==""||mail==""||object==""||message==""){
+        $("#confirmation").modal('toggle');
+ } })
