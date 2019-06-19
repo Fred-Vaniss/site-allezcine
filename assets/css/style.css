@@ -1,79 +1,79 @@
 /*font-size responsive */
-html {
+footer html {
   font-size: 0.9rem;
 }
 
-h1 {
+footer h1 {
   font-size: 1.3rem;
 }
 
-h2 {
+footer h2 {
   font-size: 1.2rem;
 }
 
-h6 {
+footer h6 {
   font-size: 0.8rem;
 }
 
-p {
+footer p {
   font-size: 0.9rem;
 }
 
-a {
+footer a {
   font-size: 0.7rem;
 }
 
-span {
+footer span {
   font-size: 0.7rem;
 }
 
 @media (max-width: 468px) {
-  html {
+  footer html {
     font-size: 0.6rem;
   }
-  h1 {
+  footer h1 {
     font-size: 1.2rem;
   }
-  h2 {
+  footer h2 {
     font-size: 1rem;
   }
-  p {
+  footer p {
     font-size: 0.6rem;
   }
-  a {
+  footer a {
     font-size: 0.6rem;
   }
 }
 
 @media (min-width: 991px) {
-  html {
+  footer html {
     font-size: 0.9rem;
   }
-  h1 {
+  footer h1 {
     font-size: 1.5rem;
   }
-  h2 {
+  footer h2 {
     font-size: 1.4rem;
   }
-  p {
+  footer p {
     font-size: 0.9rem;
   }
-  a {
+  footer a {
     font-size: 0.7rem;
   }
 }
 
 @media (min-width: 1200px) {
-  html {
+  footer html {
     font-size: 1rem;
   }
-  h1 {
+  footer h1 {
     font-size: 1.7rem;
   }
-  h2 {
+  footer h2 {
     font-size: 1.6rem;
   }
-  p {
+  footer p {
     font-size: 1rem;
   }
 }
