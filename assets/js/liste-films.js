@@ -126,8 +126,6 @@ function listMovies (movies, genres) {
 /////////////////////////////////////////////////////////
 
 function gatherMovieDetails (movieID, movieTitle){
-    console.log(movieID)
-
     document.getElementById("info-movie-title").innerHTML = ""
     infoMovieTarget.innerHTML = "<h1>Chargement...</h1>"
 
@@ -209,9 +207,6 @@ function gatherMovieDetails (movieID, movieTitle){
 
 function displayMovieDetails (details, trailers, credits) {
     try{
-        console.log(details)
-        console.log(trailers.results)
-        
         document.getElementById("info-movie-title").innerHTML = details.original_title
     
         let desc = document.createElement("p")
@@ -244,7 +239,6 @@ function displayMovieDetails (details, trailers, credits) {
         let trailerFind
         while (v < trailers.results.length && trailerFind == undefined)  {
             trailerFind = trailers.results.find(trailer => trailer.type == "Trailer")
-            console.log(trailerFind)
             if (trailerFind.site){
                 if (trailerFind.site != "YouTube"){
                     trailerFind = undefined
