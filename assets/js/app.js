@@ -10,7 +10,7 @@ let btnscroll = document.getElementById("btnscroll");
 //Fonction qui fait apparaitre et disparaitre le bouton en fonction du scroll
 document.addEventListener('DOMContentLoaded', function () {
     window.onscroll = (function (event) {
-        if (window.pageYOffset >= 220) {
+        if (window.pageYOffset >= 550) {
             btnscroll.style.display = "inline";
         } else {
             btnscroll.style.display = "none";
