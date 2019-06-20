@@ -32,12 +32,16 @@ span{
     h2 {
         font-size: 1rem;
     }
+    h6{
+        font-size: 0.4rem;
+     }
     p{
         font-size: 0.6rem;
     }
     a{
         font-size: 0.6rem;
     }
+    
   }
  @media (min-width: 991px) {
      html {
@@ -49,12 +53,16 @@ span{
    h2 {
        font-size: 1.4rem;
    }
+   h6{
+    font-size: 0.6rem;
+    }
    p{
     font-size: 0.9rem;
-}
-a{
+    }
+   a{
     font-size: 0.7rem;
-}
+    }
+   
  }
  @media (min-width: 1200px) {
    html {
@@ -66,11 +74,13 @@ a{
    h2 {
        font-size: 1.6rem;
    }
+   h6 {
+    font-size: 0.8rem;
+ }
    p{
     font-size: 1rem;
-}
-
- } 
+    }
+  } 
 }
 
 
@@ -228,10 +238,6 @@ footer {
     background-color: black;
     color: gray;
 }
-.master{
-    font-size: 0.9rem;
-    border: 1px solid white;
-}
 .test a{
     text-decoration: none;
     color: gray;
@@ -259,6 +265,6 @@ footer {
     margin-left: 90%;
     text-decoration: none !important;
   }
-  .footer-copyright{
-      font-size: 1.3rem;
+  .cine{
+      font-size: 0.8rem;
   }
