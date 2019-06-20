@@ -78,6 +78,86 @@ footer span {
   }
 }
 
+.text-maincolor {
+  color: #FF0036;
+}
+
+.bg-maincolor {
+  background-color: #FF0036;
+}
+
+nav {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+nav .navbar-brand {
+  font-weight: 700;
+  font-size: 4rem;
+}
+
+nav li {
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  margin: auto;
+  white-space: nowrap;
+}
+
+nav li:hover {
+  background-color: #FF0036;
+}
+
+nav li a {
+  color: #FF0036 !important;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+nav li a:hover {
+  color: white !important;
+}
+
+nav form {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+nav input {
+  border: none !important;
+  background-color: transparent !important;
+}
+
+nav input:focus {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+nav input::-webkit-input-placeholder {
+  color: white !important;
+}
+
+nav input:-ms-input-placeholder {
+  color: white !important;
+}
+
+nav input::-ms-input-placeholder {
+  color: white !important;
+}
+
+nav input::placeholder {
+  color: white !important;
+}
+
+nav button {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+nav button:focus {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
 .carousel-inner {
   position: relative;
   height: 500px;
@@ -91,7 +171,7 @@ footer span {
 }
 
 .red-band {
-  background-color: red;
+  background-color: #FF0036;
 }
 
 .soc-buttons {
