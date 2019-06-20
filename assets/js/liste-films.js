@@ -3,7 +3,7 @@
 //
 
 let moviesTarget = document.getElementById("movies-target")
-let movies, genres;
+let movieTrailers, genres;
 
 //
 //  Requête de la liste des films
@@ -15,8 +15,8 @@ let movieListRequest = new Promise((resolve, reject) => {
     req.onreadystatechange = () => {
         if (req.readyState === XMLHttpRequest.DONE) {
             if (req.status == 200) {
-                movies = JSON.parse(req.responseText);
-                resolve(movies)
+                movieTrailers = JSON.parse(req.responseText);
+                resolve(movieTrailers)
             } else {
                 console.error(`Erreur ${req.status} lors le la requête des films`)
                 reject(req.status)
@@ -53,7 +53,7 @@ let genreListRequest = new Promise((resolve, reject) => {
 Promise.all([movieListRequest,genreListRequest]).then(values => {
     listMovies(values[0],values[1])
 }, reason => {
-    console.error(`Une des promesses n'a pas été tenue (${reason})`)
+    console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
     let errorMsg = document.createElement("p")
     moviesTarget.innerHTML = `Erreur ${reason}`
     moviesTarget.style.fontSize = '3em'
@@ -70,6 +70,7 @@ function listMovies (movies, genres) {
         entry.title = movies.results[i].original_title
         entry.setAttribute("data-toggle","modal")
         entry.setAttribute("data-target", ".modal-info-movie")
+        entry.id = movies.results[i].id
 
         let img = document.createElement("img");
         let title = document.createElement("h3");
@@ -101,5 +102,68 @@ function listMovies (movies, genres) {
 
         moviesTarget.appendChild(entry)
 
+        entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id))
     }
+}
+
+
+/////////////////////////////////////////
+//
+// Ouverture des détails d'un film
+//
+/////////////////////////////////////////
+
+function gatherMovieDetails (movieID){
+    console.log(movieID)
+
+    //
+    //  Requête des détails du film
+    ///////////////////////////////////////////////////
+    let detailsRequest = new Promise((resolve, reject) => {
+        let req = new XMLHttpRequest();
+        req.open("GET", `https://api.themoviedb.org/3/movie/${movieID}?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US`, true)
+        req.send();
+        req.onreadystatechange = () => {
+            if (req.readyState === XMLHttpRequest.DONE) {
+                if (req.status == 200) {
+                    let movieDetails = JSON.parse(req.responseText);
+                    resolve(movieDetails)
+                } else {
+                    console.error(`Erreur ${req.status} lors le la requête des détails du film`)
+                    reject(req.status)
+                }
+            };
+        };
+    })
+
+    //
+    //  Requête de la liste des bandes d'annonces
+    ///////////////////////////////////////////////////
+    let trailerRequest = new Promise((resolve, reject) => {
+        let req = new XMLHttpRequest();
+        req.open("GET", `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US`, true)
+        req.send();
+        req.onreadystatechange = () => {
+            if (req.readyState === XMLHttpRequest.DONE) {
+                if (req.status == 200) {
+                    let movieTrailers = JSON.parse(req.responseText);
+                    resolve(movieTrailers)
+                } else {
+                    console.error(`Erreur ${req.status} lors le la requête des détails du film`)
+                    reject(req.status)
+                }
+            };
+        };
+    })
+
+    Promise.all([detailsRequest, trailerRequest]).then(values => {
+        displayMovieDetails(values[0],values[1])
+    }), reason => {
+        console.error(`Une des promesses n'a pas été tenue lors de la récupération des détails du film.`)
+    }
+}
+
+function displayMovieDetails (details, trailers) {
+    console.log(details)
+    console.log(trailers.results)
 }
