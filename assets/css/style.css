@@ -37,6 +37,9 @@ footer span {
   footer h2 {
     font-size: 1rem;
   }
+  footer h6 {
+    font-size: 0.4rem;
+  }
   footer p {
     font-size: 0.6rem;
   }
@@ -55,6 +58,9 @@ footer span {
   footer h2 {
     font-size: 1.4rem;
   }
+  footer h6 {
+    font-size: 0.6rem;
+  }
   footer p {
     font-size: 0.9rem;
   }
@@ -72,6 +78,9 @@ footer span {
   }
   footer h2 {
     font-size: 1.6rem;
+  }
+  footer h6 {
+    font-size: 0.8rem;
   }
   footer p {
     font-size: 1rem;
@@ -319,11 +328,6 @@ footer {
   color: gray;
 }
 
-.master {
-  font-size: 0.9rem;
-  border: 1px solid white;
-}
-
 .test a {
   text-decoration: none;
   color: gray;
@@ -337,11 +341,11 @@ footer {
 #btnscroll {
   border: 0.1em solid red;
   text-align: center;
-  height: 6%;
-  width: 7%;
+  height: 50px;
+  width: 50px;
   border-radius: 100%;
   background-color: black;
-  padding-bottom: 6%;
+  /* padding-bottom: 6%; */
   color: white;
   font-size: 2.5em;
   margin-bottom: 0.2em;
@@ -350,9 +354,10 @@ footer {
   display: none;
   margin-left: 90%;
   text-decoration: none !important;
+  line-height: 1;
 }
 
-.footer-copyright {
-  font-size: 1.3rem;
+.cine {
+  font-size: 0.8rem;
 }
 /*# sourceMappingURL=style.css.map */

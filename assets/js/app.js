@@ -1,9 +1,8 @@
 // Création du bouton
 let createbtn = document.createElement("A");
-let txt = document.createTextNode("↑");
+createbtn.innerHTML = "<i class='fas fa-xs fa-arrow-up'></i>"
 createbtn.setAttribute('id', 'btnscroll');
 createbtn.setAttribute('href', '#up');
-createbtn.appendChild(txt);
 document.body.appendChild(createbtn);
 let btnscroll = document.getElementById("btnscroll");
 
