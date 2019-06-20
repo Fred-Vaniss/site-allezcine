@@ -4,21 +4,24 @@
 
 let moviesTarget = document.getElementById("movies-target")
 let infoMovieTarget = document.getElementById("info-movie-target")
-let movieTrailers, genres;
+let moviesList, genres;
 
+let date = new Date()
+let formatedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
 
 //
 //  Requête de la liste des films
 /////////////////////////////////////////////////
 let movieListRequest = new Promise((resolve, reject) => {
     let req = new XMLHttpRequest();
-    req.open("GET", "https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=2018-09-15&primary_release_date.lte=2018-10-22&api_key=3b4cac2f6fd40d51e8ffc2881ade3885", true)
+    let url = `https://api.themoviedb.org/3/movie/now_playing?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&page=1&region=fr`
+    req.open("GET", url, true)
     req.send();
     req.onreadystatechange = () => {
         if (req.readyState === XMLHttpRequest.DONE) {
             if (req.status == 200) {
-                movieTrailers = JSON.parse(req.responseText);
-                resolve(movieTrailers)
+                moviesList = JSON.parse(req.responseText);
+                resolve(moviesList)
             } else {
                 console.error(`Erreur ${req.status} lors le la requête des films`)
                 reject(req.status)
@@ -32,7 +35,8 @@ let movieListRequest = new Promise((resolve, reject) => {
 /////////////////////////////////////////////////
 let genreListRequest = new Promise((resolve, reject) => {
     let req = new XMLHttpRequest();
-    req.open("GET", "https://api.themoviedb.org/3/genre/movie/list?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-EN", true)
+    let url = "https://api.themoviedb.org/3/genre/movie/list?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-EN"
+    req.open("GET", url, true)
     req.send();
     req.onreadystatechange = () => {
         if (req.readyState === XMLHttpRequest.DONE) {
@@ -66,7 +70,7 @@ Promise.all([movieListRequest,genreListRequest]).then(values => {
 //  Liste des cinq films
 ///////////////////////////////////
 function listMovies (movies, genres) {
-    for (let i = 0; i <= 5 ; i++) {
+    for (let i = 0; i < 5 ; i++) {
         let entry = document.createElement("div");
         entry.className = "movie-entry"
         entry.title = movies.results[i].original_title
@@ -90,8 +94,10 @@ function listMovies (movies, genres) {
         year.className = "movie-year-genre"
 
         // Affichage du genre (on cherche la première ID sur la deuxième API demandé pour avoir le nom du genre)
-        let genreFind = genres.genres.find(genre => genre.id == movies.results[i].genre_ids[0])
-        genre.innerText += genreFind.name
+        if (movies.results[i].genre_ids.length > 0){
+            let genreFind = genres.genres.find(genre => genre.id == movies.results[i].genre_ids[0])
+            genre.innerText += genreFind.name
+        }
         genre.className = "movie-year-genre"
 
 
@@ -130,7 +136,8 @@ function gatherMovieDetails (movieID, movieTitle){
     ///////////////////////////////////////////////////
     let detailsRequest = new Promise((resolve, reject) => {
         let req = new XMLHttpRequest();
-        req.open("GET", `https://api.themoviedb.org/3/movie/${movieID}?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US`, true)
+        let url = `https://api.themoviedb.org/3/movie/${movieID}?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US`
+        req.open("GET", url, true)
         req.send();
         req.onreadystatechange = () => {
             if (req.readyState === XMLHttpRequest.DONE) {
@@ -150,7 +157,8 @@ function gatherMovieDetails (movieID, movieTitle){
     ///////////////////////////////////////////////////
     let trailerRequest = new Promise((resolve, reject) => {
         let req = new XMLHttpRequest();
-        req.open("GET", `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US`, true)
+        let url = `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US`
+        req.open("GET", url, true)
         req.send();
         req.onreadystatechange = () => {
             if (req.readyState === XMLHttpRequest.DONE) {
@@ -170,7 +178,8 @@ function gatherMovieDetails (movieID, movieTitle){
     ///////////////////////////////////////////////////
     let castRequest = new Promise((resolve, reject) => {
         let req = new XMLHttpRequest();
-        req.open("GET", `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=3b4cac2f6fd40d51e8ffc2881ade3885`, true)
+        let url = `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=3b4cac2f6fd40d51e8ffc2881ade3885`
+        req.open("GET", url, true)
         req.send();
         req.onreadystatechange = () => {
             if (req.readyState === XMLHttpRequest.DONE) {
@@ -233,15 +242,16 @@ function displayMovieDetails (details, trailers, credits) {
         
         let v = 0
         let trailerFind
-        do  {
+        while (v < trailers.results.length && trailerFind == undefined)  {
             trailerFind = trailers.results.find(trailer => trailer.type == "Trailer")
-            if (trailerFind.site != "YouTube"){
-                trailerFind = undefined
-            }
             console.log(trailerFind)
+            if (trailerFind.site){
+                if (trailerFind.site != "YouTube"){
+                    trailerFind = undefined
+                }
+            }
             v++
-        } while (v < trailers.results.length && trailerFind == undefined)
-        video.innerHTML = `<iframe class="detail-video" width="560" height="315" src="https://www.youtube.com/embed/${trailerFind.key}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+        } 
     
         ul.appendChild(status)
         ul.appendChild(date)
@@ -252,7 +262,11 @@ function displayMovieDetails (details, trailers, credits) {
         infoMovieTarget.appendChild(img)
         infoMovieTarget.appendChild(desc)
         infoMovieTarget.appendChild(ul)
-        infoMovieTarget.appendChild(video)
+
+        if(trailerFind){
+            video.innerHTML = `<iframe class="detail-video" width="560" height="315" src="https://www.youtube.com/embed/${trailerFind.key}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+            infoMovieTarget.appendChild(video)
+        }
     } catch (err) {
         console.error(err)
         infoMovieTarget.innerHTML = `Un erreur est survenue lors de la récupération des détails du film <br> ${err}`
