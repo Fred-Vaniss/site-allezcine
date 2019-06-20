@@ -190,6 +190,7 @@ function gatherMovieDetails (movieID, movieTitle){
         displayMovieDetails(values[0],values[1],values[2])
     }), reason => {
         console.error(`Une des promesses n'a pas été tenue lors de la récupération des détails du film.`)
+        infoMovieTarget.innerHTML = `Un erreur est survenue lors de la récupération des détails du film <br> ${reason}`
     }
 }
 
@@ -198,42 +199,63 @@ function gatherMovieDetails (movieID, movieTitle){
 ///////////////////////////////////////////////////
 
 function displayMovieDetails (details, trailers, credits) {
-    console.log(details)
-    console.log(trailers.results)
+    try{
+        console.log(details)
+        console.log(trailers.results)
+        
+        document.getElementById("info-movie-title").innerHTML = details.original_title
     
-    document.getElementById("info-movie-title").innerHTML = details.original_title
-
-    let desc = document.createElement("p")
-    desc.innerText = details.overview
-
-    let img = document.createElement("img")
-    img.src = `https://image.tmdb.org/t/p/w780/${details.backdrop_path}`
-    img.className = "detail-img"
-
-    let ul = document.createElement("ul")
-    let status = document.createElement("li")
-    let date = document.createElement("li")
-    let director = document.createElement("li")
-    let cast = document.createElement("li")
-
-    status.innerText = details.status
-    date.innerText = details.release_date
-    director.innerText = `Directed by: ${credits.crew[0].name}`
-
-    let topCast = ""
-    for(let i = 0; i < 3; i++) {
-        topCast += `${credits.cast[i].name}, `
+        let desc = document.createElement("p")
+        desc.innerText = details.overview
+    
+        let img = document.createElement("img")
+        img.src = `https://image.tmdb.org/t/p/w780/${details.backdrop_path}`
+        img.className = "detail-img"
+    
+        let ul = document.createElement("ul")
+        let status = document.createElement("li")
+        let date = document.createElement("li")
+        let director = document.createElement("li")
+        let cast = document.createElement("li")
+        let video = document.createElement("div")
+        video.className = "detail-video-container"
+    
+    
+        status.innerText = details.status
+        date.innerText = details.release_date
+        director.innerText = `Directed by: ${credits.crew[0].name}`
+    
+        let topCast = ""
+        for(let i = 0; i < 3; i++) {
+            topCast += `${credits.cast[i].name}, `
+        }
+        cast.innerText = `Featured cast: ${topCast}`
+        
+        let v = 0
+        let trailerFind
+        do  {
+            trailerFind = trailers.results.find(trailer => trailer.type == "Trailer")
+            if (trailerFind.site != "YouTube"){
+                trailerFind = undefined
+            }
+            console.log(trailerFind)
+            v++
+        } while (v < trailers.results.length && trailerFind == undefined)
+        video.innerHTML = `<iframe class="detail-video" width="560" height="315" src="https://www.youtube.com/embed/${trailerFind.key}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    
+        ul.appendChild(status)
+        ul.appendChild(date)
+        ul.appendChild(director)
+        ul.appendChild(cast)
+    
+        infoMovieTarget.innerHTML = ""
+        infoMovieTarget.appendChild(img)
+        infoMovieTarget.appendChild(desc)
+        infoMovieTarget.appendChild(ul)
+        infoMovieTarget.appendChild(video)
+    } catch (err) {
+        console.error(err)
+        infoMovieTarget.innerHTML = `Un erreur est survenue lors de la récupération des détails du film <br> ${err}`
     }
-    cast.innerText = `Featured cast: ${topCast}`
-
-    ul.appendChild(status)
-    ul.appendChild(date)
-    ul.appendChild(director)
-    ul.appendChild(cast)
-
-    infoMovieTarget.innerHTML = ""
-    infoMovieTarget.appendChild(img)
-    infoMovieTarget.appendChild(desc)
-    infoMovieTarget.appendChild(ul)
-
+    
 }
