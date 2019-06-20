@@ -3,7 +3,9 @@
 //
 
 let moviesTarget = document.getElementById("movies-target")
+let infoMovieTarget = document.getElementById("info-movie-target")
 let movieTrailers, genres;
+
 
 //
 //  Requête de la liste des films
@@ -102,7 +104,7 @@ function listMovies (movies, genres) {
 
         moviesTarget.appendChild(entry)
 
-        entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id))
+        entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id, movies.results[i].original_title))
     }
 }
 
@@ -113,8 +115,15 @@ function listMovies (movies, genres) {
 //
 /////////////////////////////////////////
 
-function gatherMovieDetails (movieID){
+//
+//  Requête des détails et des bandes d'annonce du film
+/////////////////////////////////////////////////////////
+
+function gatherMovieDetails (movieID, movieTitle){
     console.log(movieID)
+
+    document.getElementById("info-movie-title").innerHTML = ""
+    infoMovieTarget.innerHTML = "<h1>Chargement...</h1>"
 
     //
     //  Requête des détails du film
@@ -156,14 +165,75 @@ function gatherMovieDetails (movieID){
         };
     })
 
-    Promise.all([detailsRequest, trailerRequest]).then(values => {
-        displayMovieDetails(values[0],values[1])
+    //
+    //  Requête de la liste des acteurs
+    ///////////////////////////////////////////////////
+    let castRequest = new Promise((resolve, reject) => {
+        let req = new XMLHttpRequest();
+        req.open("GET", `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=3b4cac2f6fd40d51e8ffc2881ade3885`, true)
+        req.send();
+        req.onreadystatechange = () => {
+            if (req.readyState === XMLHttpRequest.DONE) {
+                if (req.status == 200) {
+                    let movieCast = JSON.parse(req.responseText);
+                    resolve(movieCast)
+                } else {
+                    console.error(`Erreur ${req.status} lors le la requête des détails du film`)
+                    reject(req.status)
+                }
+            };
+        };
+    })
+
+
+    Promise.all([detailsRequest, trailerRequest, castRequest]).then(values => {
+        displayMovieDetails(values[0],values[1],values[2])
     }), reason => {
         console.error(`Une des promesses n'a pas été tenue lors de la récupération des détails du film.`)
     }
 }
 
-function displayMovieDetails (details, trailers) {
+//
+//  Affichage des détails du film
+///////////////////////////////////////////////////
+
+function displayMovieDetails (details, trailers, credits) {
     console.log(details)
     console.log(trailers.results)
+    
+    document.getElementById("info-movie-title").innerHTML = details.original_title
+
+    let desc = document.createElement("p")
+    desc.innerText = details.overview
+
+    let img = document.createElement("img")
+    img.src = `https://image.tmdb.org/t/p/w780/${details.backdrop_path}`
+    img.className = "detail-img"
+
+    let ul = document.createElement("ul")
+    let status = document.createElement("li")
+    let date = document.createElement("li")
+    let director = document.createElement("li")
+    let cast = document.createElement("li")
+
+    status.innerText = details.status
+    date.innerText = details.release_date
+    director.innerText = `Directed by: ${credits.crew[0].name}`
+
+    let topCast = ""
+    for(let i = 0; i < 3; i++) {
+        topCast += `${credits.cast[i].name}, `
+    }
+    cast.innerText = `Featured cast: ${topCast}`
+
+    ul.appendChild(status)
+    ul.appendChild(date)
+    ul.appendChild(director)
+    ul.appendChild(cast)
+
+    infoMovieTarget.innerHTML = ""
+    infoMovieTarget.appendChild(img)
+    infoMovieTarget.appendChild(desc)
+    infoMovieTarget.appendChild(ul)
+
 }

@@ -208,6 +208,11 @@ footer span {
   font-size: 14px;
 }
 
+.detail-img {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
 footer {
   background-color: black;
   color: gray;
