@@ -274,21 +274,28 @@ nav {
     padding: 1em;
 }
 
-.movie-entry {
-    max-width: 140px;
+.movie-entry{
+    max-width: 200px;
     overflow: hidden;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color .2s;
+    &:hover{
+        background-color: rgba(0, 0, 0, 0.253);
+    }
 }
 
-.movie-poster {
-    width: 140px;
+.movie-poster{
+    width: 100%;
 }
 
 .movie-title {
     margin-top: 5px;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     text-overflow: ellipsis;
+    overflow: hidden;
     white-space: nowrap;
 }
 
@@ -297,8 +304,34 @@ nav {
     justify-content: space-between;
 }
 
-.movie-year-genre {
-    font-size: 14px;
+.movie-year-genre{
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+/////////////////////////////////////////////////////////
+//
+//  Détails du film sélectionné
+//
+/////////////////////////////////////////////////////////
+
+.detail-img{
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.detail-video-container{
+    position: relative;
+    padding-top: 56.25%;
+    width: 100%;
+}
+
+.detail-video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /////////////////////////////////////////////////////////
@@ -322,13 +355,6 @@ footer {
     color: gray;
 }
 
-h6 {
-    color: whitesmoke;
-}
-
-h5 {
-    color: red;
-}
 
 .else {
     background-color: grey;
