@@ -115,13 +115,13 @@ function listMovies (movies, genres, target, index, amount, clean) {
 //
 /////////////////////////////////////////
 let featMoviesFullList = {"results":[]}
-let genre = "null"
+let movieGenre = "null"
 let displayedMovies = 0
 let moviePage = 1
 
 function requestFeatMovies(){
-    let genreRequest = `&with_genres=${genre}`
-    if (genre == "null"){
+    let genreRequest = `&with_genres=${movieGenre}`
+    if (movieGenre == "null"){
         genreRequest = ""
     }
     let featMoviesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/movie?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviePage}${genreRequest}`)
@@ -149,8 +149,8 @@ requestFeatMovies()
 document.getElementById("more-movie-btn").addEventListener("click", () => {
     moviePage++
 
-    let genreRequest = `&with_genres=${genre}`
-    if (genre == "null"){
+    let genreRequest = `&with_genres=${movieGenre}`
+    if (movieGenre == "null"){
         genreRequest = ""
     }
     let featMoviesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/movie?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviePage}${genreRequest}`)
@@ -172,24 +172,30 @@ document.getElementById("more-movie-btn").addEventListener("click", () => {
 })
 
 //
-//  Filtre des genres
-////////////////////////
+//  Filtre des genres des films
+////////////////////////////////////
 let moviesGenreBtns = document.getElementsByClassName("filter-movie")
 for (const btn of moviesGenreBtns) {
     btn.addEventListener("click", () => {
-        document.getElementsByClassName(`movie-${genre}`)[0].classList.remove("btn-primary")
-        document.getElementsByClassName(`movie-${genre}`)[0].classList.add("btn-outline-primary")
+        document.getElementsByClassName(`movie-${movieGenre}`)[0].classList.remove("btn-primary")
+        document.getElementsByClassName(`movie-${movieGenre}`)[0].classList.add("btn-outline-primary")
 
-        genre = btn.getAttribute("data-genre")
+        movieGenre = btn.getAttribute("data-genre")
         moviePage = 1
         displayedMovies = 0
+        featMoviesFullList = {"results":[]}
         requestFeatMovies()
 
-        document.getElementsByClassName(`movie-${genre}`)[0].classList.remove("btn-outline-primary")
-        document.getElementsByClassName(`movie-${genre}`)[0].classList.add("btn-primary")
-
+        document.getElementsByClassName(`movie-${movieGenre}`)[0].classList.remove("btn-outline-primary")
+        document.getElementsByClassName(`movie-${movieGenre}`)[0].classList.add("btn-primary")
     })
 }
+
+/////////////////////////////////////////
+//
+// Liste des séries en vedette
+//
+/////////////////////////////////////////
 
 
 /////////////////////////////////////////
