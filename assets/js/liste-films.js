@@ -5,70 +5,60 @@
 let moviesTarget = document.getElementById("movies-target")
 let infoMovieTarget = document.getElementById("info-movie-target")
 let moviesList, genres;
+let apiKey = `3b4cac2f6fd40d51e8ffc2881ade3885`;
 
 let date = new Date()
 let formatedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
 
 //
+//  Fonction de la requête de l'API
+//////////////////////////////////////////
+function ajaxRequest (url){
+    return new Promise((resolve,reject) => {
+        let req = new XMLHttpRequest();
+        req.open("GET", url, true)
+        req.send();
+        req.onreadystatechange = () => {
+            if (req.readyState === XMLHttpRequest.DONE) {
+                if (req.status == 200) {
+                    moviesList = JSON.parse(req.responseText);
+                    resolve(moviesList)
+                } else {
+                    console.error(`Erreur ${req.status} lors le la requête des films`)
+                    reject(req.status)
+                }
+            };
+        };
+    })
+}
+
+//
 //  Requête de la liste des films
 /////////////////////////////////////////////////
-let movieListRequest = new Promise((resolve, reject) => {
-    let req = new XMLHttpRequest();
-    let url = `https://api.themoviedb.org/3/movie/now_playing?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&page=1&region=fr`
-    req.open("GET", url, true)
-    req.send();
-    req.onreadystatechange = () => {
-        if (req.readyState === XMLHttpRequest.DONE) {
-            if (req.status == 200) {
-                moviesList = JSON.parse(req.responseText);
-                resolve(moviesList)
-            } else {
-                console.error(`Erreur ${req.status} lors le la requête des films`)
-                reject(req.status)
-            }
-        };
-    };
-})
+
+
+function requestMoviesInTheater(){
+    let moviesRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=fr`)
+    let genresRequest = ajaxRequest(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-EN`)
+
+
+    //  Vérification si ces deux requêtes ont bien étés abouties avant de lister les films
+    Promise.all([moviesRequest, genresRequest]).then(values => {
+        listMovies(values[0],values[1])
+    }, reason => {
+        console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
+        let errorMsg = document.createElement("p")
+        moviesTarget.innerHTML = `Erreur ${reason}`
+        moviesTarget.style.fontSize = '3em'
+        moviesTarget.style.justifyContent = 'center'
+    })
+}
+
+requestMoviesInTheater();
 
 //
-//  Requête de la liste des genres
-/////////////////////////////////////////////////
-let genreListRequest = new Promise((resolve, reject) => {
-    let req = new XMLHttpRequest();
-    let url = "https://api.themoviedb.org/3/genre/movie/list?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-EN"
-    req.open("GET", url, true)
-    req.send();
-    req.onreadystatechange = () => {
-        if (req.readyState === XMLHttpRequest.DONE) {
-            if (req.status == 200) {
-                genres = JSON.parse(req.responseText);
-                resolve(genres)
-            } else {
-                console.error(`Erreur ${req.status} lors de la requête des genres`)
-                reject(req.status)
-            }
-        }
-    }
-})
-
-
-
-//
-//  Vérification si ces deux requêtes ont bien étés abouties avant de lister les films
-///////////////////////////////////////////////////////////////////////////////////////
-Promise.all([movieListRequest,genreListRequest]).then(values => {
-    listMovies(values[0],values[1])
-}, reason => {
-    console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
-    let errorMsg = document.createElement("p")
-    moviesTarget.innerHTML = `Erreur ${reason}`
-    moviesTarget.style.fontSize = '3em'
-    moviesTarget.style.justifyContent = 'center'
-})
-
-//
-//  Liste des cinq films
-///////////////////////////////////
+//  Liste des cinq films dans les salles
+/////////////////////////////////////////
 function listMovies (movies, genres) {
     for (let i = 0; i < 5 ; i++) {
         let entry = document.createElement("div");
@@ -114,7 +104,6 @@ function listMovies (movies, genres) {
     }
 }
 
-
 /////////////////////////////////////////
 //
 // Ouverture des détails d'un film
@@ -124,91 +113,30 @@ function listMovies (movies, genres) {
 //
 //  Requête des détails et des bandes d'annonce du film
 /////////////////////////////////////////////////////////
-
 function gatherMovieDetails (movieID, movieTitle){
-    document.getElementById("info-movie-title").innerHTML = ""
+    document.getElementById("info-movie-title").innerHTML = movieTitle
     infoMovieTarget.innerHTML = "<h1>Chargement...</h1>"
 
-    //
-    //  Requête des détails du film
-    ///////////////////////////////////////////////////
-    let detailsRequest = new Promise((resolve, reject) => {
-        let req = new XMLHttpRequest();
-        let url = `https://api.themoviedb.org/3/movie/${movieID}?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US`
-        req.open("GET", url, true)
-        req.send();
-        req.onreadystatechange = () => {
-            if (req.readyState === XMLHttpRequest.DONE) {
-                if (req.status == 200) {
-                    let movieDetails = JSON.parse(req.responseText);
-                    resolve(movieDetails)
-                } else {
-                    console.error(`Erreur ${req.status} lors le la requête des détails du film`)
-                    reject(req.status)
-                }
-            };
-        };
-    })
 
-    //
-    //  Requête de la liste des bandes d'annonces
-    ///////////////////////////////////////////////////
-    let trailerRequest = new Promise((resolve, reject) => {
-        let req = new XMLHttpRequest();
-        let url = `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US`
-        req.open("GET", url, true)
-        req.send();
-        req.onreadystatechange = () => {
-            if (req.readyState === XMLHttpRequest.DONE) {
-                if (req.status == 200) {
-                    let movieTrailers = JSON.parse(req.responseText);
-                    resolve(movieTrailers)
-                } else {
-                    console.error(`Erreur ${req.status} lors le la requête des détails du film`)
-                    reject(req.status)
-                }
-            };
-        };
-    })
+    //  Appel des trois requêtes
+    let detailsRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}&language=en-US`)
+    let trailerRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${apiKey}&language=en-US`)
+    let castRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${apiKey}`)
 
-    //
-    //  Requête de la liste des acteurs
-    ///////////////////////////////////////////////////
-    let castRequest = new Promise((resolve, reject) => {
-        let req = new XMLHttpRequest();
-        let url = `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=3b4cac2f6fd40d51e8ffc2881ade3885`
-        req.open("GET", url, true)
-        req.send();
-        req.onreadystatechange = () => {
-            if (req.readyState === XMLHttpRequest.DONE) {
-                if (req.status == 200) {
-                    let movieCast = JSON.parse(req.responseText);
-                    resolve(movieCast)
-                } else {
-                    console.error(`Erreur ${req.status} lors le la requête des détails du film`)
-                    reject(req.status)
-                }
-            };
-        };
-    })
-
-
+    //  Vérification si tous les requêtes ont étés abouties
     Promise.all([detailsRequest, trailerRequest, castRequest]).then(values => {
         displayMovieDetails(values[0],values[1],values[2])
-    }), reason => {
+    }, reason => {
         console.error(`Une des promesses n'a pas été tenue lors de la récupération des détails du film.`)
         infoMovieTarget.innerHTML = `Un erreur est survenue lors de la récupération des détails du film <br> ${reason}`
-    }
+    })
 }
 
 //
 //  Affichage des détails du film
 ///////////////////////////////////////////////////
-
 function displayMovieDetails (details, trailers, credits) {
     try{
-        document.getElementById("info-movie-title").innerHTML = details.original_title
-    
         let desc = document.createElement("p")
         desc.innerText = details.overview
     
@@ -223,7 +151,6 @@ function displayMovieDetails (details, trailers, credits) {
         let cast = document.createElement("li")
         let video = document.createElement("div")
         video.className = "detail-video-container"
-    
     
         status.innerText = details.status
         date.innerText = details.release_date
