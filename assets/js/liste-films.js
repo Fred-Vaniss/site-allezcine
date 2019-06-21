@@ -34,14 +34,46 @@ function ajaxRequest (url){
 }
 
 //
-//  Requête de la liste des films en salle
+//  Requête de la liste des genres
 /////////////////////////////////////////////////
 
 let movieGenresRequest
+let serieGenresRequest
+
+function requestGenresList(){
+    movieGenresRequest = ajaxRequest(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-EN`);
+    serieGenresRequest = ajaxRequest(`https://api.themoviedb.org/3/genre/tv/list?api_key=${apiKey}&language=en-US`);
+
+    Promise.all([movieGenresRequest,serieGenresRequest]).then(values => {
+        return genresListPush(values[0],values[1])
+    }, reason => {
+        console.error(`Une des promesses n'ont pas été tenue lors de la requête des genres`)
+    })
+}
+
+let genresList = {"genres":[]}
+
+function genresListPush(movie,serie){
+    
+    for (const genre of movie.genres) {
+        genresList.genres.push(genre)
+    }
+    for (const genre of serie.genres) {
+        genresList.genres.push(genre)
+    }
+}
+
+
+requestGenresList()
+
+//
+//  Requête de la liste des films en salle
+/////////////////////////////////////////////////
+
+
 
 function requestMoviesInTheater(){
     let moviesRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=fr`);
-    movieGenresRequest = ajaxRequest(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-EN`);
     
     //  Vérification si ces deux requêtes ont bien étés abouties avant de lister les films
     Promise.all([moviesRequest, movieGenresRequest]).then(values => {
@@ -56,6 +88,7 @@ function requestMoviesInTheater(){
 }
 
 requestMoviesInTheater();
+
 
 //
 //  Liste des cinq films dans les salles
@@ -151,7 +184,7 @@ function requestFeatMovies(){
     })
 }
 
-requestFeatMovies()
+// requestFeatMovies()
 
 //
 // Afficher plus de films
@@ -212,15 +245,12 @@ let serieGenre = "null"
 let displayedSeries = 0
 let seriePage = 1
 
-let serieGenresRequest
-
 function requestFeatSeries(){
     let genreRequest = `&with_genres=${serieGenre}`
     if (serieGenre == "null"){
         genreRequest = ""
     }
     let featSeriesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&page=${seriePage}&timezone=America%2FNew_York&include_null_first_air_dates=false${genreRequest}`)
-    serieGenresRequest = ajaxRequest(`https://api.themoviedb.org/3/genre/tv/list?api_key=${apiKey}&language=en-US`)
 
     Promise.all([featSeriesRequest, serieGenresRequest]).then(values => {
         for (const item of values[0].results) {
@@ -237,7 +267,7 @@ function requestFeatSeries(){
     })
 }
 
-requestFeatSeries()
+// requestFeatSeries()
 
 //
 // Afficher plus de séries
