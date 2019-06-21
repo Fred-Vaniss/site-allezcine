@@ -3,7 +3,6 @@
 //
 
 let moviesTarget = document.getElementById("movies-target")
-let featMoviesTarget = document.getElementById("feat-movies-target")
 let infoMovieTarget = document.getElementById("info-movie-target")
 let moviesList, genres;
 let apiKey = `3b4cac2f6fd40d51e8ffc2881ade3885`;
@@ -46,7 +45,7 @@ function requestMoviesInTheater(){
     
     //  Vérification si ces deux requêtes ont bien étés abouties avant de lister les films
     Promise.all([moviesRequest, genresRequest]).then(values => {
-        listMovies(values[0],values[1],moviesTarget,0,5,true)
+        listMovies("movie",values[0],values[1],moviesTarget,0,5,true)
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
         let errorMsg = document.createElement("p")
@@ -61,14 +60,13 @@ requestMoviesInTheater();
 //
 //  Liste des cinq films dans les salles
 /////////////////////////////////////////
-function listMovies (movies, genres, target, index, amount, clean) {
+function listMovies (type,movies, genres, target, index, amount, clean) {
     if (clean){
         target.innerHTML = ""
     }
     for (let i = index; i < index+amount ; i++) {
         let entry = document.createElement("div");
         entry.className = "movie-entry"
-        entry.title = movies.results[i].original_title
         entry.setAttribute("data-toggle","modal")
         entry.setAttribute("data-target", ".modal-info-movie")
         entry.id = movies.results[i].id
@@ -82,10 +80,16 @@ function listMovies (movies, genres, target, index, amount, clean) {
         img.src = `https://image.tmdb.org/t/p/w500/${movies.results[i].poster_path}`;
         img.className = "movie-poster"
 
-        title.textContent = movies.results[i].original_title;
+        if (type == "movie"){
+            entry.title = movies.results[i].original_title;
+            title.textContent = movies.results[i].original_title;
+            year.textContent = movies.results[i].release_date.substr(0,4);
+        } else{
+            entry.title = movies.results[i].original_name;
+            title.textContent = movies.results[i].original_name;
+            year.textContent = movies.results[i].first_air_date.substr(0,4);
+        }
         title.className = "movie-title"
-
-        year.textContent = movies.results[i].release_date.substr(0,4);
         year.className = "movie-year-genre"
 
         // Affichage du genre (on cherche la première ID sur la deuxième API demandé pour avoir le nom du genre)
@@ -105,7 +109,11 @@ function listMovies (movies, genres, target, index, amount, clean) {
 
         target.appendChild(entry)
 
-        entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id, movies.results[i].original_title))
+        if(type == "movie"){
+            entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id, movies.results[i].original_title))
+        } else {
+            entry.addEventListener("click", () => gatherSerieDetails(movies.results[i].id, movies.results[i].original_title))
+        }
     }
 }
 
@@ -114,6 +122,8 @@ function listMovies (movies, genres, target, index, amount, clean) {
 // Liste des films en vedette
 //
 /////////////////////////////////////////
+let featMoviesTarget = document.getElementById("feat-movies-target")
+
 let featMoviesFullList = {"results":[]}
 let movieGenre = "null"
 let displayedMovies = 0
@@ -130,7 +140,7 @@ function requestFeatMovies(){
         for (const item of values[0].results) {
             featMoviesFullList.results.push(item)
         }
-        listMovies(values[0],values[1],featMoviesTarget,displayedMovies,12,true)
+        listMovies("movie",values[0],values[1],featMoviesTarget,displayedMovies,12,true)
         displayedMovies += 12
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
@@ -154,12 +164,11 @@ document.getElementById("more-movie-btn").addEventListener("click", () => {
         genreRequest = ""
     }
     let featMoviesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/movie?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviePage}${genreRequest}`)
-    console.log(featMoviesRequest)
     Promise.all([featMoviesRequest, genresRequest]).then(values => {
         for (const item of values[0].results) {
             featMoviesFullList.results.push(item)
         }
-        listMovies(featMoviesFullList,values[1],featMoviesTarget,displayedMovies,12,false)
+        listMovies("movie",featMoviesFullList,values[1],featMoviesTarget,displayedMovies,12,false)
         displayedMovies += 12
         console.log("displayed")
     }, reason => {
@@ -196,7 +205,63 @@ for (const btn of moviesGenreBtns) {
 // Liste des séries en vedette
 //
 /////////////////////////////////////////
+let featSeriesTarget = document.getElementById("feat-series-target")
 
+let featSeriesFullList = {"results":[]}
+let serieGenre = "null"
+let displayedSeries = 0
+let seriePage = 1
+
+function requestFeatSeries(){
+    let genreRequest = `&with_genres=${serieGenre}`
+    if (serieGenre == "null"){
+        genreRequest = ""
+    }
+    let featSeriesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/tv?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&page=${seriePage}&timezone=America%2FNew_York&include_null_first_air_dates=false${genreRequest}`)
+
+    Promise.all([featSeriesRequest, genresRequest]).then(values => {
+        for (const item of values[0].results) {
+            featSeriesFullList.results.push(item)
+        }
+        listMovies("serie",values[0],values[1],featSeriesTarget,displayedSeries,12,true)
+        displayedSeries += 12
+    }, reason => {
+        console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
+        let errorMsg = document.createElement("p")
+        featSeriesTarget.innerHTML = `Erreur ${reason}`
+        featSeriesTarget.style.fontSize = '3em'
+        featSeriesTarget.style.justifyContent = 'center'
+    })
+}
+
+requestFeatSeries()
+
+//
+// Afficher plus de séries
+/////////////////////////////
+document.getElementById("more-serie-btn").addEventListener("click", () => {
+    seriePage++
+
+    let genreRequest = `&with_genres=${serieGenre}`
+    if (serieGenre == "null"){
+        genreRequest = ""
+    }
+    let featSeriesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/tv?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&page=${seriePage}&timezone=America%2FNew_York&include_null_first_air_dates=false${genreRequest}`)
+    Promise.all([featSeriesRequest, genresRequest]).then(values => {
+        console.log(values[0])
+        for (const item of values[0].results) {
+            featSeriesFullList.results.push(item)
+        }
+        listMovies("serie",featSeriesFullList,values[1],featSeriesTarget,displayedSeries,12,false)
+        displayedSeries += 12
+    }, reason => {
+        console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
+        let errorMsg = document.createElement("p")
+        featSeriesTarget.innerHTML = `Erreur ${reason}`
+        featSeriesTarget.style.fontSize = '3em'
+        featSeriesTarget.style.justifyContent = 'center'
+    })
+})
 
 /////////////////////////////////////////
 //
@@ -288,3 +353,4 @@ function displayMovieDetails (details, trailers, credits) {
     }
     
 }
+

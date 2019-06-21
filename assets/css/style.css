@@ -251,7 +251,7 @@ nav button:focus {
   margin-top: 1em;
 }
 
-#movies-target, #feat-movies-target {
+#movies-target, #feat-movies-target, #feat-series-target {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
