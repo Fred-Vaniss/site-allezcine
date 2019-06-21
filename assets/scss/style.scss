@@ -18,10 +18,12 @@ footer {
     h6 {
         font-size: 0.8rem;
     }
-    h6{
+
+    h6 {
         font-size: 0.4rem;
-     }
-    p{
+    }
+
+    p {
         font-size: 0.6rem;
     }
 
@@ -109,16 +111,19 @@ footer {
 //top-navbar
 nav {
     font-family: 'Roboto', sans-serif !important;
+
     .navbar-brand {
         font-weight: 700;
         font-size: 4rem;
     }
+
     li {
         font-weight: 500;
         background-color: rgba($color: #000000, $alpha: 0.3);
         transition: background-color 0.3s;
         margin: auto;
         white-space: nowrap;
+
         &:hover {
             background-color: $main-color;
         }
@@ -132,19 +137,24 @@ nav {
             }
         }
     }
+
     form {
         background-color: rgba($color: #000000, $alpha: 0.3) !important;
     }
+
     input {
         border: none !important;
         background-color: transparent !important;
+
         &:focus {
             box-shadow: none !important;
         }
+
         &::placeholder {
             color: white !important;
         }
     }
+
     button {
         background-color: transparent !important;
         color: white !important;
@@ -153,6 +163,7 @@ nav {
             box-shadow: none !important;
         }
     }
+}
 
 
 
@@ -276,19 +287,20 @@ nav {
     padding: 1em;
 }
 
-.movie-entry{
+.movie-entry {
     max-width: 200px;
     overflow: hidden;
     cursor: pointer;
     padding: 10px;
     border-radius: 5px;
     transition: background-color .2s;
-    &:hover{
+
+    &:hover {
         background-color: rgba(0, 0, 0, 0.253);
     }
 }
 
-.movie-poster{
+.movie-poster {
     width: 100%;
 }
 
@@ -306,7 +318,7 @@ nav {
     justify-content: space-between;
 }
 
-.movie-year-genre{
+.movie-year-genre {
     font-size: 12px;
     margin-bottom: 0;
 }
@@ -317,18 +329,18 @@ nav {
 //
 /////////////////////////////////////////////////////////
 
-.detail-img{
+.detail-img {
     width: 100%;
     margin-bottom: 1em;
 }
 
-.detail-video-container{
+.detail-video-container {
     position: relative;
     padding-top: 56.25%;
     width: 100%;
 }
 
-.detail-video{
+.detail-video {
     position: absolute;
     top: 0;
     left: 0;
@@ -346,7 +358,8 @@ footer {
     background-color: black;
     color: gray;
 }
-.test a{
+
+.test a {
     text-decoration: none;
     color: gray;
 }

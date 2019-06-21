@@ -15,8 +15,12 @@ footer h6 {
   font-size: 0.8rem;
 }
 
+footer h6 {
+  font-size: 0.4rem;
+}
+
 footer p {
-  font-size: 0.9rem;
+  font-size: 0.6rem;
 }
 
 footer a {
@@ -37,9 +41,6 @@ footer span {
   footer h2 {
     font-size: 1rem;
   }
-  footer h6 {
-    font-size: 0.4rem;
-  }
   footer p {
     font-size: 0.6rem;
   }
@@ -58,9 +59,6 @@ footer span {
   footer h2 {
     font-size: 1.4rem;
   }
-  footer h6 {
-    font-size: 0.6rem;
-  }
   footer p {
     font-size: 0.9rem;
   }
@@ -78,9 +76,6 @@ footer span {
   }
   footer h2 {
     font-size: 1.6rem;
-  }
-  footer h6 {
-    font-size: 0.8rem;
   }
   footer p {
     font-size: 1rem;
