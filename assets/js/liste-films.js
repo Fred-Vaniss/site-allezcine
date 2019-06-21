@@ -3,6 +3,7 @@
 //
 
 let moviesTarget = document.getElementById("movies-target")
+let featMoviesTarget = document.getElementById("feat-movies-target")
 let infoMovieTarget = document.getElementById("info-movie-target")
 let moviesList, genres;
 let apiKey = `3b4cac2f6fd40d51e8ffc2881ade3885`;
@@ -36,12 +37,12 @@ function ajaxRequest (url){
 //  Requête de la liste des films
 /////////////////////////////////////////////////
 
+let genresRequest
 
 function requestMoviesInTheater(){
-    let moviesRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=fr`)
-    let genresRequest = ajaxRequest(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-EN`)
-
-
+    let moviesRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=fr`);
+    genresRequest = ajaxRequest(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-EN`);
+    
     //  Vérification si ces deux requêtes ont bien étés abouties avant de lister les films
     Promise.all([moviesRequest, genresRequest]).then(values => {
         listMovies(values[0],values[1])
@@ -103,6 +104,33 @@ function listMovies (movies, genres) {
         entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id, movies.results[i].original_title))
     }
 }
+
+/////////////////////////////////////////
+//
+// Liste des films en vedette
+//
+/////////////////////////////////////////
+let moviePage = 1
+
+function requestFeatMovies(genre = "null"){
+    let genreRequest = `&with_genres=${genre}`
+    if (genre = "null"){
+        genreRequest = ``
+    }
+    let featMoviesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/movie?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviePage}${genre}`)
+
+    Promise.all([featMoviesRequest, genresRequest]).then(values => {
+        listFeatMovies(values[0],values[1])
+    }, reason => {
+        console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
+        let errorMsg = document.createElement("p")
+        featMoviesTarget.innerHTML = `Erreur ${reason}`
+        featMoviesTarget.style.fontSize = '3em'
+        featMoviesTarget.style.justifyContent = 'center'
+    })
+}
+
+requestFeatMovies()
 
 /////////////////////////////////////////
 //
