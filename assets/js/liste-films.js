@@ -45,7 +45,7 @@ function requestMoviesInTheater(){
     
     //  Vérification si ces deux requêtes ont bien étés abouties avant de lister les films
     Promise.all([moviesRequest, genresRequest]).then(values => {
-        listMovies(values[0],values[1])
+        listMovies(values[0],values[1],moviesTarget,5,true)
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
         let errorMsg = document.createElement("p")
@@ -60,8 +60,11 @@ requestMoviesInTheater();
 //
 //  Liste des cinq films dans les salles
 /////////////////////////////////////////
-function listMovies (movies, genres) {
-    for (let i = 0; i < 5 ; i++) {
+function listMovies (movies, genres, target, amount, clean) {
+    if (clean){
+        target.innerHTML = ""
+    }
+    for (let i = 0; i < amount ; i++) {
         let entry = document.createElement("div");
         entry.className = "movie-entry"
         entry.title = movies.results[i].original_title
@@ -99,7 +102,7 @@ function listMovies (movies, genres) {
         details.className = "movie-details"
         entry.appendChild(details)
 
-        moviesTarget.appendChild(entry)
+        target.appendChild(entry)
 
         entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id, movies.results[i].original_title))
     }
@@ -120,7 +123,7 @@ function requestFeatMovies(genre = "null"){
     let featMoviesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/movie?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviePage}${genre}`)
 
     Promise.all([featMoviesRequest, genresRequest]).then(values => {
-        listFeatMovies(values[0],values[1])
+        listMovies(values[0],values[1],featMoviesTarget,12,true)
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
         let errorMsg = document.createElement("p")
