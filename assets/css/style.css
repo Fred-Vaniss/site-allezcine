@@ -95,8 +95,8 @@ nav {
 }
 
 nav .navbar-brand {
-  font-weight: 700;
   font-size: 4rem;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 nav li {
@@ -162,20 +162,21 @@ nav button:focus {
           box-shadow: none !important;
 }
 
-.carousel-inner {
-  position: relative;
-  height: 500px;
-}
+/* .carousel-inner {
 
+}
+.carousel-item {
+}
+ */
 .jumbotron {
+  position: relative;
+  z-index: 1;
   background-color: transparent;
-  position: absolute;
-  top: 100px;
-  width: 100vw;
 }
 
 .red-band {
   background-color: #FF0036;
+  height: 3rem;
 }
 
 .soc-buttons {

@@ -113,8 +113,8 @@ nav {
     font-family: 'Roboto', sans-serif !important;
 
     .navbar-brand {
-        font-weight: 700;
         font-size: 4rem;
+        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
     }
 
     li {
@@ -165,26 +165,21 @@ nav {
     }
 }
 
-
-
-
-
-
 /////////////////////////////////////////////////////////
 //
 //  Positionnement du Jumbotron à l'intérieur du carousel
 //
 /////////////////////////////////////////////////////////
-.carousel-inner {
-    position: relative;
-    height: 500px;
-}
+/* .carousel-inner {
 
+}
+.carousel-item {
+}
+ */
 .jumbotron {
-    background-color: transparent;
-    position: absolute;
-    top: 100px;
-    width: 100vw;
+position: relative;
+z-index: 1;
+background-color: transparent;
 }
 
 /////////////////////////////////////////////////////////
@@ -195,6 +190,7 @@ nav {
 
 .red-band {
     background-color: $main-color;
+    height: 3rem;
 }
 
 /////////////////////////////////////////////////////////
