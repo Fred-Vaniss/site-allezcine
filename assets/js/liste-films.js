@@ -5,6 +5,7 @@
 let moviesTarget = document.getElementById("movies-target")
 let infoMovieTarget = document.getElementById("info-movie-target")
 let moviesList, genres;
+let apiKey = `3b4cac2f6fd40d51e8ffc2881ade3885`;
 
 let date = new Date()
 let formatedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
@@ -34,17 +35,16 @@ function ajaxRequest (url){
 //
 //  Requête de la liste des films
 /////////////////////////////////////////////////
-let moviesRequest
-let genresRequest
 
-async function requestMoviesInTheater(){
-    moviesRequest = await ajaxRequest(`https://api.themoviedb.org/3/movie/now_playing?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&page=1&region=fr`)
-    genresRequest = await ajaxRequest(`https://api.themoviedb.org/3/genre/movie/list?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-EN`)
+
+function requestMoviesInTheater(){
+    let moviesRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=fr`)
+    let genresRequest = ajaxRequest(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-EN`)
 
 
     //  Vérification si ces deux requêtes ont bien étés abouties avant de lister les films
     Promise.all([moviesRequest, genresRequest]).then(values => {
-        listMovies(moviesRequest, genresRequest)
+        listMovies(values[0],values[1])
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
         let errorMsg = document.createElement("p")
@@ -114,14 +114,14 @@ function listMovies (movies, genres) {
 //  Requête des détails et des bandes d'annonce du film
 /////////////////////////////////////////////////////////
 function gatherMovieDetails (movieID, movieTitle){
-    document.getElementById("info-movie-title").innerHTML = ""
+    document.getElementById("info-movie-title").innerHTML = movieTitle
     infoMovieTarget.innerHTML = "<h1>Chargement...</h1>"
 
 
     //  Appel des trois requêtes
-    detailsRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US`)
-    trailerRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US`)
-    castRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=3b4cac2f6fd40d51e8ffc2881ade38885`)
+    let detailsRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}&language=en-US`)
+    let trailerRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${apiKey}&language=en-US`)
+    let castRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${apiKey}`)
 
     //  Vérification si tous les requêtes ont étés abouties
     Promise.all([detailsRequest, trailerRequest, castRequest]).then(values => {
@@ -137,8 +137,6 @@ function gatherMovieDetails (movieID, movieTitle){
 ///////////////////////////////////////////////////
 function displayMovieDetails (details, trailers, credits) {
     try{
-        document.getElementById("info-movie-title").innerHTML = details.original_title
-    
         let desc = document.createElement("p")
         desc.innerText = details.overview
     
