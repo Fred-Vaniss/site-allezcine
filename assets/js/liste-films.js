@@ -77,7 +77,7 @@ function requestMoviesInTheater(){
     
     //  Vérification si ces deux requêtes ont bien étés abouties avant de lister les films
     Promise.all([moviesRequest, movieGenresRequest]).then(values => {
-        listMovies("movie",values[0],values[1],moviesTarget,0,5,true)
+        listMovies("movie",values[0],moviesTarget,0,5,true)
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
         let errorMsg = document.createElement("p")
