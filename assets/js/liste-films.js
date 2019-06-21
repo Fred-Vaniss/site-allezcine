@@ -15,6 +15,7 @@ let formatedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}
 //  Fonction de la requête de l'API
 //////////////////////////////////////////
 function ajaxRequest (url){
+    console.log(`Requested ${url}`)
     return new Promise((resolve,reject) => {
         let req = new XMLHttpRequest();
         req.open("GET", url, true)
@@ -45,7 +46,7 @@ function requestMoviesInTheater(){
     
     //  Vérification si ces deux requêtes ont bien étés abouties avant de lister les films
     Promise.all([moviesRequest, genresRequest]).then(values => {
-        listMovies(values[0],values[1],moviesTarget,5,true)
+        listMovies(values[0],values[1],moviesTarget,0,5,true)
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
         let errorMsg = document.createElement("p")
@@ -60,11 +61,11 @@ requestMoviesInTheater();
 //
 //  Liste des cinq films dans les salles
 /////////////////////////////////////////
-function listMovies (movies, genres, target, amount, clean) {
+function listMovies (movies, genres, target, index, amount, clean) {
     if (clean){
         target.innerHTML = ""
     }
-    for (let i = 0; i < amount ; i++) {
+    for (let i = index; i < index+amount ; i++) {
         let entry = document.createElement("div");
         entry.className = "movie-entry"
         entry.title = movies.results[i].original_title
@@ -113,17 +114,24 @@ function listMovies (movies, genres, target, amount, clean) {
 // Liste des films en vedette
 //
 /////////////////////////////////////////
+let featMoviesFullList = {"results":[]}
+let genre = "null"
+let displayedMovies = 0
 let moviePage = 1
 
-function requestFeatMovies(genre = "null"){
+function requestFeatMovies(){
     let genreRequest = `&with_genres=${genre}`
-    if (genre = "null"){
-        genreRequest = ``
+    if (genre == "null"){
+        genreRequest = ""
     }
-    let featMoviesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/movie?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviePage}${genre}`)
+    let featMoviesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/movie?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviePage}${genreRequest}`)
 
     Promise.all([featMoviesRequest, genresRequest]).then(values => {
-        listMovies(values[0],values[1],featMoviesTarget,12,true)
+        for (const item of values[0].results) {
+            featMoviesFullList.results.push(item)
+        }
+        listMovies(values[0],values[1],featMoviesTarget,displayedMovies,12,true)
+        displayedMovies += 12
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
         let errorMsg = document.createElement("p")
@@ -134,6 +142,55 @@ function requestFeatMovies(genre = "null"){
 }
 
 requestFeatMovies()
+
+//
+// Afficher plus de films
+//////////////////////////////::
+document.getElementById("more-movie-btn").addEventListener("click", () => {
+    moviePage++
+
+    let genreRequest = `&with_genres=${genre}`
+    if (genre == "null"){
+        genreRequest = ""
+    }
+    let featMoviesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/movie?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviePage}${genreRequest}`)
+    console.log(featMoviesRequest)
+    Promise.all([featMoviesRequest, genresRequest]).then(values => {
+        for (const item of values[0].results) {
+            featMoviesFullList.results.push(item)
+        }
+        listMovies(featMoviesFullList,values[1],featMoviesTarget,displayedMovies,12,false)
+        displayedMovies += 12
+        console.log("displayed")
+    }, reason => {
+        console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
+        let errorMsg = document.createElement("p")
+        featMoviesTarget.innerHTML = `Erreur ${reason}`
+        featMoviesTarget.style.fontSize = '3em'
+        featMoviesTarget.style.justifyContent = 'center'
+    })
+})
+
+//
+//  Filtre des genres
+////////////////////////
+let moviesGenreBtns = document.getElementsByClassName("filter-movie")
+for (const btn of moviesGenreBtns) {
+    btn.addEventListener("click", () => {
+        document.getElementsByClassName(`movie-${genre}`)[0].classList.remove("btn-primary")
+        document.getElementsByClassName(`movie-${genre}`)[0].classList.add("btn-outline-primary")
+
+        genre = btn.getAttribute("data-genre")
+        moviePage = 1
+        displayedMovies = 0
+        requestFeatMovies()
+
+        document.getElementsByClassName(`movie-${genre}`)[0].classList.remove("btn-outline-primary")
+        document.getElementsByClassName(`movie-${genre}`)[0].classList.add("btn-primary")
+
+    })
+}
+
 
 /////////////////////////////////////////
 //
