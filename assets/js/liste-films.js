@@ -93,7 +93,7 @@ requestMoviesInTheater();
 //
 //  Liste des cinq films dans les salles
 /////////////////////////////////////////
-function listMovies (type,movies, genres, target, index, amount, clean) {
+function listMovies (type,movies, target, index, amount, clean) {
     if (clean){
         target.innerHTML = ""
     }
@@ -127,7 +127,7 @@ function listMovies (type,movies, genres, target, index, amount, clean) {
 
         // Affichage du genre (on cherche la première ID sur la deuxième API demandé pour avoir le nom du genre)
         if (movies.results[i].genre_ids.length > 0){
-            let genreFind = genres.genres.find(genre => genre.id == movies.results[i].genre_ids[0])
+            let genreFind = genresList.genres.find(genre => genre.id == movies.results[i].genre_ids[0])
             genre.innerText += genreFind.name
         }
         genre.className = "movie-year-genre"
@@ -173,7 +173,7 @@ function requestFeatMovies(){
         for (const item of values[0].results) {
             featMoviesFullList.results.push(item)
         }
-        listMovies("movie",values[0],values[1],featMoviesTarget,displayedMovies,12,true)
+        listMovies("movie",values[0],featMoviesTarget,displayedMovies,12,true)
         displayedMovies += 12
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
@@ -184,7 +184,7 @@ function requestFeatMovies(){
     })
 }
 
-// requestFeatMovies()
+requestFeatMovies()
 
 //
 // Afficher plus de films
@@ -201,7 +201,7 @@ document.getElementById("more-movie-btn").addEventListener("click", () => {
         for (const item of values[0].results) {
             featMoviesFullList.results.push(item)
         }
-        listMovies("movie",featMoviesFullList,values[1],featMoviesTarget,displayedMovies,12,false)
+        listMovies("movie",featMoviesFullList,featMoviesTarget,displayedMovies,12,false)
         displayedMovies += 12
         console.log("displayed")
     }, reason => {
@@ -256,7 +256,7 @@ function requestFeatSeries(){
         for (const item of values[0].results) {
             featSeriesFullList.results.push(item)
         }
-        listMovies("serie",values[0],values[1],featSeriesTarget,displayedSeries,12,true)
+        listMovies("serie",values[0],featSeriesTarget,displayedSeries,12,true)
         displayedSeries += 12
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
@@ -267,7 +267,7 @@ function requestFeatSeries(){
     })
 }
 
-// requestFeatSeries()
+requestFeatSeries()
 
 //
 // Afficher plus de séries
@@ -285,7 +285,7 @@ document.getElementById("more-serie-btn").addEventListener("click", () => {
         for (const item of values[0].results) {
             featSeriesFullList.results.push(item)
         }
-        listMovies("serie",featSeriesFullList,values[1],featSeriesTarget,displayedSeries,12,false)
+        listMovies("serie",featSeriesFullList,featSeriesTarget,displayedSeries,12,false)
         displayedSeries += 12
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
@@ -358,12 +358,15 @@ function displayMovieDetails (details, trailers, credits) {
         let trailerFind
         while (v < trailers.results.length && trailerFind == undefined)  {
             trailerFind = trailers.results.find(trailer => trailer.type == "Trailer")
-            if (trailerFind.site){
+            if (typeof trailerFind != "undefined"){
                 if (trailerFind.site != "YouTube"){
                     trailerFind = undefined
                 }
             }
             v++
+            if(v == trailers.results.length){
+                trailerFind = trailers.results[0]
+            }
         } 
     
         ul.appendChild(status)
@@ -376,7 +379,7 @@ function displayMovieDetails (details, trailers, credits) {
         infoMovieTarget.appendChild(desc)
         infoMovieTarget.appendChild(ul)
 
-        if(trailerFind){
+        if(typeof trailerFind != "undefined"){
             video.innerHTML = `<iframe class="detail-video" width="560" height="315" src="https://www.youtube.com/embed/${trailerFind.key}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
             infoMovieTarget.appendChild(video)
         }
@@ -395,7 +398,7 @@ function displayMovieDetails (details, trailers, credits) {
 
 
 //
-//  Requête des détails et des bandes d'annonce du film
+//  Requête des détails et des bandes d'annonce de la série
 /////////////////////////////////////////////////////////
 function gatherSerieDetails(serieID, serieTitle){
     document.getElementById("info-movie-title").innerHTML = serieTitle
@@ -450,6 +453,21 @@ function displaySerieDetails (details, trailers, credits){
         }
         cast.innerText = `Featured cast: ${topCast}`
 
+        let v = 0
+        let trailerFind
+        while (v < trailers.results.length && trailerFind == undefined)  {
+            trailerFind = trailers.results.find(trailer => trailer.type == "Trailer")
+            if (typeof trailerFind != "undefined"){
+                if (trailerFind.site != "YouTube"){
+                    trailerFind = undefined
+                }
+            }
+            v++
+            if(v == trailers.results.length){
+                trailerFind = trailers.results[0]
+            }
+        } 
+
         ul.appendChild(status)
         ul.appendChild(date)
         ul.appendChild(episodes)
@@ -461,6 +479,11 @@ function displaySerieDetails (details, trailers, credits){
         infoMovieTarget.appendChild(img)
         infoMovieTarget.appendChild(desc)
         infoMovieTarget.appendChild(ul)
+
+        if(typeof trailerFind != "undefined"){
+            video.innerHTML = `<iframe class="detail-video" width="560" height="315" src="https://www.youtube.com/embed/${trailerFind.key}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+            infoMovieTarget.appendChild(video)
+        }
     } catch (err) {
         console.error(err)
         infoMovieTarget.innerHTML = `Un erreur est survenue lors de la récupération des détails du film <br> ${err}`
