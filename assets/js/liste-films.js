@@ -296,6 +296,27 @@ document.getElementById("more-serie-btn").addEventListener("click", () => {
     })
 })
 
+//
+//  Filtre des genres des séries
+////////////////////////////////////
+let seriesGenreBtns = document.getElementsByClassName("filter-serie")
+for (const btn of seriesGenreBtns) {
+    btn.addEventListener("click", () => {
+        document.getElementsByClassName(`serie-${serieGenre}`)[0].classList.remove("btn-primary")
+        document.getElementsByClassName(`serie-${serieGenre}`)[0].classList.add("btn-outline-primary")
+
+        serieGenre = btn.getAttribute("data-genre")
+        seriePage = 1
+        displayedSeries = 0
+        featSeriesFullList = {"results":[]}
+        requestFeatSeries()
+
+        document.getElementsByClassName(`serie-${serieGenre}`)[0].classList.remove("btn-outline-primary")
+        document.getElementsByClassName(`serie-${serieGenre}`)[0].classList.add("btn-primary")
+
+    })
+}
+
 /////////////////////////////////////////
 //
 // Ouverture des détails d'un film
