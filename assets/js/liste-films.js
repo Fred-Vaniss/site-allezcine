@@ -34,17 +34,17 @@ function ajaxRequest (url){
 }
 
 //
-//  Requête de la liste des films
+//  Requête de la liste des films en salle
 /////////////////////////////////////////////////
 
-let genresRequest
+let movieGenresRequest
 
 function requestMoviesInTheater(){
     let moviesRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=fr`);
-    genresRequest = ajaxRequest(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-EN`);
+    movieGenresRequest = ajaxRequest(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-EN`);
     
     //  Vérification si ces deux requêtes ont bien étés abouties avant de lister les films
-    Promise.all([moviesRequest, genresRequest]).then(values => {
+    Promise.all([moviesRequest, movieGenresRequest]).then(values => {
         listMovies("movie",values[0],values[1],moviesTarget,0,5,true)
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
@@ -112,7 +112,7 @@ function listMovies (type,movies, genres, target, index, amount, clean) {
         if(type == "movie"){
             entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id, movies.results[i].original_title))
         } else {
-            entry.addEventListener("click", () => gatherSerieDetails(movies.results[i].id, movies.results[i].original_title))
+            entry.addEventListener("click", () => gatherSerieDetails(movies.results[i].id, movies.results[i].original_name))
         }
     }
 }
@@ -136,7 +136,7 @@ function requestFeatMovies(){
     }
     let featMoviesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/movie?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviePage}${genreRequest}`)
 
-    Promise.all([featMoviesRequest, genresRequest]).then(values => {
+    Promise.all([featMoviesRequest, movieGenresRequest]).then(values => {
         for (const item of values[0].results) {
             featMoviesFullList.results.push(item)
         }
@@ -164,7 +164,7 @@ document.getElementById("more-movie-btn").addEventListener("click", () => {
         genreRequest = ""
     }
     let featMoviesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/movie?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${moviePage}${genreRequest}`)
-    Promise.all([featMoviesRequest, genresRequest]).then(values => {
+    Promise.all([featMoviesRequest, movieGenresRequest]).then(values => {
         for (const item of values[0].results) {
             featMoviesFullList.results.push(item)
         }
@@ -212,14 +212,17 @@ let serieGenre = "null"
 let displayedSeries = 0
 let seriePage = 1
 
+let serieGenresRequest
+
 function requestFeatSeries(){
     let genreRequest = `&with_genres=${serieGenre}`
     if (serieGenre == "null"){
         genreRequest = ""
     }
-    let featSeriesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/tv?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&page=${seriePage}&timezone=America%2FNew_York&include_null_first_air_dates=false${genreRequest}`)
+    let featSeriesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&page=${seriePage}&timezone=America%2FNew_York&include_null_first_air_dates=false${genreRequest}`)
+    serieGenresRequest = ajaxRequest(`https://api.themoviedb.org/3/genre/tv/list?api_key=${apiKey}&language=en-US`)
 
-    Promise.all([featSeriesRequest, genresRequest]).then(values => {
+    Promise.all([featSeriesRequest, serieGenresRequest]).then(values => {
         for (const item of values[0].results) {
             featSeriesFullList.results.push(item)
         }
@@ -247,7 +250,7 @@ document.getElementById("more-serie-btn").addEventListener("click", () => {
         genreRequest = ""
     }
     let featSeriesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/tv?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&page=${seriePage}&timezone=America%2FNew_York&include_null_first_air_dates=false${genreRequest}`)
-    Promise.all([featSeriesRequest, genresRequest]).then(values => {
+    Promise.all([featSeriesRequest, serieGenresRequest]).then(values => {
         console.log(values[0])
         for (const item of values[0].results) {
             featSeriesFullList.results.push(item)
@@ -354,3 +357,82 @@ function displayMovieDetails (details, trailers, credits) {
     
 }
 
+/////////////////////////////////////////
+//
+// Ouverture des détails d'une série
+//
+/////////////////////////////////////////
+
+
+//
+//  Requête des détails et des bandes d'annonce du film
+/////////////////////////////////////////////////////////
+function gatherSerieDetails(serieID, serieTitle){
+    document.getElementById("info-movie-title").innerHTML = serieTitle
+    infoMovieTarget.innerHTML = "<h1>Chargement...</h1>"
+
+    // Appel des requêtes
+    let detailsRequest = ajaxRequest(`https://api.themoviedb.org/3/tv/${serieID}?api_key=${apiKey}&language=en-US`)
+    let trailerRequest = ajaxRequest(`https://api.themoviedb.org/3/tv/${serieID}/videos?api_key=${apiKey}&language=en-US`)
+    let castRequest = ajaxRequest(`https://api.themoviedb.org/3/tv/${serieID}/credits?api_key=${apiKey}&language=en-US`)
+
+    Promise.all([detailsRequest, trailerRequest, castRequest]).then(values => {
+        displaySerieDetails(values[0],values[1],values[2])
+    }, reason => {
+        console.error(`Une des promesses n'a pas été tenue lors de la récupération des détails du film.`)
+        infoMovieTarget.innerHTML = `Un erreur est survenue lors de la récupération des détails de la série <br> ${reason}`
+    })
+}
+
+//
+//  Affichage des détails de la série
+//////////////////////////////////////
+function displaySerieDetails (details, trailers, credits){
+    try{
+        let desc = document.createElement("p")
+        desc.innerText = details.overview
+
+        let img = document.createElement("img")
+        img.src = `https://image.tmdb.org/t/p/w780/${details.backdrop_path}`
+        img.className = "detail-img"
+
+        let ul = document.createElement("ul")
+        let status = document.createElement("li")
+        let date = document.createElement("li")
+        let episodes = document.createElement("li")
+        let seasons = document.createElement("li")
+        let lastDate = document.createElement("li")
+        let cast = document.createElement("li")
+        let video = document.createElement("div")
+        video.className = "detail-video-container"
+
+        status.innerText = details.status
+        date.innerText = `First air date: ${details.first_air_date}`
+
+        episodes.innerText = `Episodes: ${details.number_of_episodes}`
+        seasons.innerText = `Seasons: ${details.number_of_seasons}`
+
+        lastDate.innerText = `Last air date: ${details.last_air_date}`
+
+        let topCast = ""
+        for(let i = 0; i < 3; i++) {
+            topCast += `${credits.cast[i].name}, `
+        }
+        cast.innerText = `Featured cast: ${topCast}`
+
+        ul.appendChild(status)
+        ul.appendChild(date)
+        ul.appendChild(episodes)
+        ul.appendChild(seasons)
+        ul.appendChild(lastDate)
+        ul.appendChild(cast)
+
+        infoMovieTarget.innerHTML = ""
+        infoMovieTarget.appendChild(img)
+        infoMovieTarget.appendChild(desc)
+        infoMovieTarget.appendChild(ul)
+    } catch (err) {
+        console.error(err)
+        infoMovieTarget.innerHTML = `Un erreur est survenue lors de la récupération des détails du film <br> ${err}`
+    }
+}
