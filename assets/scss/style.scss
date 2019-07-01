@@ -108,85 +108,82 @@ footer {
     background-color: $main-color;
 }
 
-//top-navbar
-nav {
-    font-family: 'Roboto', sans-serif !important;
+/////////////////////////////////////////////////////////
+//
+//  Header
+//
+/////////////////////////////////////////////////////////
 
-    .navbar-brand {
-        font-size: 4rem;
-        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-    }
-
-    li {
-        font-weight: 500;
-        background-color: rgba($color: #000000, $alpha: 0.3);
-        transition: background-color 0.3s;
-        margin: auto;
-        white-space: nowrap;
-
-        &:hover {
-            background-color: $main-color;
+header {
+    nav {
+        position: absolute !important;
+        z-index: 1;
+        font-family: 'Roboto', sans-serif !important;
+        background-color: transparent;
+        .navbar-brand {
+            font-size: 4rem;
+            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
         }
 
-        a {
-            color: $main-color !important;
-            transition: color 0.3s;
+        li {
+            font-weight: 500;
+            background-color: rgba($color: #000000, $alpha: 0.3);
+            transition: background-color 0.3s;
+            margin: auto;
+            white-space: nowrap;
 
             &:hover {
+                background-color: $main-color;
+            }
+
+            a {
+                color: $main-color !important;
+                transition: color 0.3s;
+
+                &:hover {
+                    color: white !important;
+                }
+            }
+        }
+
+        form {
+            background-color: rgba($color: #000000, $alpha: 0.3) !important;
+        }
+
+        input {
+            border: none !important;
+            background-color: transparent !important;
+
+            &:focus {
+                box-shadow: none !important;
+            }
+
+            &::placeholder {
                 color: white !important;
+            }
+        }
+
+        button {
+            background-color: transparent !important;
+            color: white !important;
+
+            &:focus {
+                box-shadow: none !important;
             }
         }
     }
 
-    form {
-        background-color: rgba($color: #000000, $alpha: 0.3) !important;
+    .carousel {
+
     }
 
-    input {
-        border: none !important;
-        background-color: transparent !important;
-
-        &:focus {
-            box-shadow: none !important;
-        }
-
-        &::placeholder {
-            color: white !important;
-        }
-    }
-
-    button {
-        background-color: transparent !important;
-        color: white !important;
-
-        &:focus {
-            box-shadow: none !important;
-        }
-    }
-}
-
-/////////////////////////////////////////////////////////
-//
-//  Positionnement du Jumbotron à l'intérieur du carousel
-//
-/////////////////////////////////////////////////////////
-/* .carousel-inner {
+    /////////////////////////////////////////////////////////
+    //
+    //  Bande rouge avec "login" et "s'enregistrer"
+    //
+    /////////////////////////////////////////////////////////
 
 }
-.carousel-item {
-}
- */
-.jumbotron {
-    position: relative;
-    z-index: 1;
-    background-color: transparent;
-}
-
-/////////////////////////////////////////////////////////
-//
-//  Bande rouge avec "login" et "s'enregistrer"
-//
-/////////////////////////////////////////////////////////
 
 .red-band {
     background-color: $main-color;

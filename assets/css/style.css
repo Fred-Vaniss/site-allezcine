@@ -90,90 +90,79 @@ footer span {
   background-color: #FF0036;
 }
 
-nav {
+header nav {
+  position: absolute !important;
+  z-index: 1;
   font-family: 'Roboto', sans-serif !important;
+  background-color: transparent;
 }
 
-nav .navbar-brand {
+header nav .navbar-brand {
   font-size: 4rem;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
-nav li {
+header nav li {
   font-weight: 500;
   background-color: rgba(0, 0, 0, 0.3);
   -webkit-transition: background-color 0.3s;
-  -o-transition: background-color 0.3s;
   transition: background-color 0.3s;
   margin: auto;
   white-space: nowrap;
 }
 
-nav li:hover {
+header nav li:hover {
   background-color: #FF0036;
 }
 
-nav li a {
+header nav li a {
   color: #FF0036 !important;
   -webkit-transition: color 0.3s;
-  -o-transition: color 0.3s;
   transition: color 0.3s;
 }
 
-nav li a:hover {
+header nav li a:hover {
   color: white !important;
 }
 
-nav form {
+header nav form {
   background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
-nav input {
+header nav input {
   border: none !important;
   background-color: transparent !important;
 }
 
-nav input:focus {
+header nav input:focus {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
 
-nav input::-webkit-input-placeholder {
+header nav input::-webkit-input-placeholder {
   color: white !important;
 }
 
-nav input:-ms-input-placeholder {
+header nav input:-ms-input-placeholder {
   color: white !important;
 }
 
-nav input::-ms-input-placeholder {
+header nav input::-ms-input-placeholder {
   color: white !important;
 }
 
-nav input::placeholder {
+header nav input::placeholder {
   color: white !important;
 }
 
-nav button {
+header nav button {
   background-color: transparent !important;
   color: white !important;
 }
 
-nav button:focus {
+header nav button:focus {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
-}
-
-/* .carousel-inner {
-
-}
-.carousel-item {
-}
- */
-.jumbotron {
-  position: relative;
-  z-index: 1;
-  background-color: transparent;
 }
 
 .red-band {
@@ -200,7 +189,6 @@ nav button:focus {
   position: relative;
   -webkit-transition: -webkit-transform .2s;
   transition: -webkit-transform .2s;
-  -o-transition: transform .2s;
   transition: transform .2s;
   transition: transform .2s, -webkit-transform .2s;
 }
@@ -216,7 +204,6 @@ nav button:focus {
 
 .soc-button:hover {
   -webkit-transform: translateX(130px);
-      -ms-transform: translateX(130px);
           transform: translateX(130px);
 }
 
@@ -252,7 +239,9 @@ nav button:focus {
   margin-top: 1em;
 }
 
-#movies-target, #feat-movies-target, #feat-series-target {
+#movies-target,
+#feat-movies-target,
+#feat-series-target {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -269,13 +258,12 @@ nav button:focus {
 }
 
 .movie-entry {
-  max-width: 180px;
+  max-width: 200px;
   overflow: hidden;
   cursor: pointer;
   padding: 10px;
   border-radius: 5px;
   -webkit-transition: background-color .2s;
-  -o-transition: background-color .2s;
   transition: background-color .2s;
 }
 
@@ -291,8 +279,7 @@ nav button:focus {
   margin-top: 5px;
   font-size: 14px;
   text-align: center;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
