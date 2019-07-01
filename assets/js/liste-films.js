@@ -91,7 +91,7 @@ requestMoviesInTheater();
 
 
 //
-//  Liste des cinq films dans les salles
+//  Fonction générale pour lister la liste des films
 /////////////////////////////////////////
 function listMovies (type,movies, target, index, amount, clean) {
     if (clean){
@@ -106,18 +106,20 @@ function listMovies (type,movies, target, index, amount, clean) {
 
         let img = document.createElement("img");
         let title = document.createElement("h3");
-        let details = document.createElement("div")
+        let details = document.createElement("div");
         let genre = document.createElement("p");
         let year = document.createElement("p");
+        let shopDetails = document.createElement("div")
+        let price = document.createElement("p");
 
         img.src = `https://image.tmdb.org/t/p/w500/${movies.results[i].poster_path}`;
         img.className = "movie-poster"
 
-        if (type == "movie"){
+        if (type == "movie" || type == "shop"){
             entry.title = movies.results[i].original_title;
             title.textContent = movies.results[i].original_title;
             year.textContent = movies.results[i].release_date.substr(0,4);
-        } else{
+        } else if (type = "serie"){
             entry.title = movies.results[i].original_name;
             title.textContent = movies.results[i].original_name;
             year.textContent = movies.results[i].first_air_date.substr(0,4);
@@ -126,25 +128,39 @@ function listMovies (type,movies, target, index, amount, clean) {
         year.className = "movie-year-genre"
 
         // Affichage du genre (on cherche la première ID sur la deuxième API demandé pour avoir le nom du genre)
-        if (movies.results[i].genre_ids.length > 0){
-            let genreFind = genresList.genres.find(genre => genre.id == movies.results[i].genre_ids[0])
-            genre.innerText += genreFind.name
+        if (type == "movie" || type == "serie"){
+            if (movies.results[i].genre_ids.length > 0){
+                let genreFind = genresList.genres.find(genre => genre.id == movies.results[i].genre_ids[0])
+                genre.innerText += genreFind.name
+            }
+            genre.className = "movie-year-genre"
+        } else {
+            price.innerText = "15€"
+            price.className = "movie-year-genre"
         }
-        genre.className = "movie-year-genre"
-
 
         entry.appendChild(img);
-        entry.appendChild(title);
-        details.appendChild(year);
-        details.appendChild(genre);
-        details.className = "movie-details"
-        entry.appendChild(details)
+        if (type == "movie" || type == "serie"){
+            entry.appendChild(title);
+            details.appendChild(year);
+            details.appendChild(genre);
+            details.className = "movie-details"
+            entry.appendChild(details);
+        } else {
+            shopDetails.className = "shop-details"
+            shopDetails.appendChild(title);
+            details.appendChild(year);
+            details.appendChild(price);
+            details.className = "movie-details"
+            shopDetails.appendChild(details)
+            entry.appendChild(shopDetails)
+        }
 
         target.appendChild(entry)
 
         if(type == "movie"){
             entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id, movies.results[i].original_title))
-        } else {
+        } else if (type == "serie") {
             entry.addEventListener("click", () => gatherSerieDetails(movies.results[i].id, movies.results[i].original_name))
         }
     }
@@ -510,3 +526,28 @@ function displaySerieDetails (details, trailers, credits){
         infoMovieTarget.innerHTML = `Un erreur est survenue lors de la récupération des détails du film <br> ${err}`
     }
 }
+
+/////////////////////////////////////////
+//
+// Magasin
+//
+/////////////////////////////////////////
+let shopTarget = document.getElementById("shop-list-target")
+let shopDetailsTarget = document.getElementById("shop-selected-target")
+
+function requestShopList() {
+    let shopRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/movie?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&include_adult=false&include_video=false&page=1&primary_release_date.lte=2018-12-31`)
+    
+    Promise.all([shopRequest, movieGenresRequest]).then(values => {
+        console.log("requête réussie");
+        listMovies("shop",values[0],shopTarget,0,8,true);
+    }, reason => {
+        console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération du magasin`)
+        let errorMsg = document.createElement("p")
+        moviesTarget.innerHTML = `Erreur ${reason}`
+        moviesTarget.style.fontSize = '3em'
+        moviesTarget.style.justifyContent = 'center'
+    })
+}
+
+requestShopList();
