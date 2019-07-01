@@ -177,9 +177,9 @@ nav {
 }
  */
 .jumbotron {
-position: relative;
-z-index: 1;
-background-color: transparent;
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
 }
 
 /////////////////////////////////////////////////////////
@@ -275,13 +275,20 @@ background-color: transparent;
     margin-top: 1em;
 }
 
-#movies-target {
+#movies-target,
+#feat-movies-target,
+#feat-series-target {
     display: flex;
     justify-content: space-around;
-    border: 2px solid #f5f5f5;
     border-radius: 5px;
-    padding: 1em;
+    flex-wrap: wrap;
 }
+
+#movies-target {
+    padding: 1em;
+    border: 2px solid #f5f5f5;
+}
+
 
 .movie-entry {
     max-width: 200px;
@@ -317,6 +324,11 @@ background-color: transparent;
 .movie-year-genre {
     font-size: 12px;
     margin-bottom: 0;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
 }
 
 /////////////////////////////////////////////////////////
