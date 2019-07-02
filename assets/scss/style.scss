@@ -115,34 +115,15 @@ footer {
 /////////////////////////////////////////////////////////
 
 header {
-    nav {
-        position: absolute !important;
-        z-index: 1;
-        font-family: 'Roboto', sans-serif !important;
-        background-color: transparent;
-        .navbar-brand {
-            font-size: 4rem;
-            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-        }
+    font-family: 'Roboto', sans-serif !important;
 
+    nav {
         li {
             font-weight: 500;
-            background-color: rgba($color: #000000, $alpha: 0.3);
             transition: background-color 0.3s;
-            margin: auto;
-            white-space: nowrap;
-
-            &:hover {
-                background-color: $main-color;
-            }
 
             a {
                 color: $main-color !important;
-                transition: color 0.3s;
-
-                &:hover {
-                    color: white !important;
-                }
             }
         }
 
@@ -172,17 +153,46 @@ header {
             }
         }
     }
-
-    .carousel {
-
+    jumbo-content {
+        position: relative;
+        
     }
 
-    /////////////////////////////////////////////////////////
-    //
-    //  Bande rouge avec "login" et "s'enregistrer"
-    //
-    /////////////////////////////////////////////////////////
+}
 
+@media (min-width: 1200px) {
+    header {
+        nav {
+            position: absolute !important;
+            width: 100%;
+            z-index: 1;
+            background-color: transparent;
+
+            .navbar-brand {
+                font-size: 4rem;
+                text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+            }
+
+            li {
+                background-color: rgba($color: #000000, $alpha: 0.3);
+                transition: background-color 0.3s;
+                margin: auto;
+                white-space: nowrap;
+
+                &:hover {
+                    background-color: $main-color;
+                }
+
+                a {
+                    transition: color 0.3s;
+
+                    &:hover {
+                        color: white !important;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .red-band {
