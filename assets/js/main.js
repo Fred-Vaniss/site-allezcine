@@ -1,8 +1,11 @@
-// Bouton pour revenir au début de la page
+/////////////////////////////
+//
+//  Bouton pour revenir au début de la page
+//
+///////////////////////////// 
 const createbtn = document.createElement("a");
 createbtn.innerHTML = "<i class='fas fa-xs fa-arrow-up'></i>"
 createbtn.setAttribute('id', 'btnscroll');
-createbtn.setAttribute('href', '#up');
 document.body.appendChild(createbtn);
 const btnscroll = document.getElementById("btnscroll");
 
@@ -17,6 +20,11 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 });
 
+//Au clic, on revient au début de la page
+btnscroll.addEventListener('click', () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+})
 /////////////////////////////
 //
 //  Vérification de l'age
@@ -106,7 +114,6 @@ document.getElementById('loginConnexion').addEventListener('click', () => {
 })
 
 //sign up modal
-
 const signupUser = document.getElementById('signupUser');
 const signupEmail = document.getElementById('signupEmail');
 const signupPassword1 = document.getElementById('signupPassword1');
@@ -116,13 +123,12 @@ const signupCGU = document.getElementById('signupCGU');
 document.getElementById('signupRegister').addEventListener('click', () => {
     if (signupEmail.value === "" || signupUser.value === "" || signupPassword1.value === "") {
         alert('Veillez remplir les champs');
-    } else if(signupCGU.checked === false) {
+    } else if (signupCGU.checked === false) {
         alert('Il faut accepter les CGU');
     } else if (signupPassword1.value !== signupPassword2.value) {
         signupPassword1.style.borderColor = 'red';
         signupPassword2.style.borderColor = 'red';
-    }
-    else {
+    } else {
         signupPassword1.style.borderColor = 'gray';
         signupPassword2.style.borderColor = 'gray';
         $('#valinscrip').modal('toggle');
@@ -150,34 +156,3 @@ csubmbit.addEventListener('click', () => {
         $('#confirmation').modal('toggle');
     }
 })
-
-
-
-
-
-
-
-
-/* const confirmname = document.querySelector('#confirm-name')
-const confirmfirstname = document.querySelector("#confirm-firstname")
-const confirmmail = document.querySelector("#confirm-mail")
-const confirmobject = document.querySelector("#confirm-object")
-const confirmmess = document.querySelector("#confirm-mess")
-const missName = document.querySelector("#missName")
-
-const confirm = document.querySelector('#envoie').addEventListener('click', () => {
-    const name = document.querySelector('#cname').value
-    const firstname = document.querySelector('#cfirstname').value
-    const mail = document.querySelector('#cmail').value
-    const object = document.querySelector('#cobject').value
-    const message = document.querySelector('#cmessage').value
-    confirmname.value = name
-    confirmfirstname.value = firstname
-    confirmmail.value = mail
-    confirmobject.value = object
-    confirmmess.value = message
-    if (name == "" || firstname == "" || mail == "" || object == "" || message == "") {
-        $("#confirmation").modal('toggle');
-    } else {
-    }
-}) */
