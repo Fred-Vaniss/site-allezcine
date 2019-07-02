@@ -99,7 +99,6 @@ function listMovies (type,movies, target, index, amount, clean) {
     }
     for (let i = index; i < index+amount ; i++) {
         let entry = document.createElement("div");
-        entry.className = "movie-entry"
         entry.setAttribute("data-toggle","modal")
         entry.setAttribute("data-target", ".modal-info-movie")
         entry.id = movies.results[i].id
@@ -129,12 +128,14 @@ function listMovies (type,movies, target, index, amount, clean) {
 
         // Affichage du genre (on cherche la première ID sur la deuxième API demandé pour avoir le nom du genre)
         if (type == "movie" || type == "serie"){
+            entry.className = "movie-entry"
             if (movies.results[i].genre_ids.length > 0){
                 let genreFind = genresList.genres.find(genre => genre.id == movies.results[i].genre_ids[0])
                 genre.innerText += genreFind.name
             }
             genre.className = "movie-year-genre"
         } else {
+            entry.className = "shop-entry"
             price.innerText = "15€"
             price.className = "movie-year-genre"
         }

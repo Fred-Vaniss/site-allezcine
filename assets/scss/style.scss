@@ -276,15 +276,37 @@ nav {
     border: 2px solid #f5f5f5;
 }
 
-.movie-entry{
-    max-width: 180px;
-    overflow: hidden;
+@mixin entries{
     cursor: pointer;
-    padding: 10px;
+    overflow: hidden;
+}
+
+@mixin title{
+    margin-top: 5px;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.movie-entry{
+    @include entries;
+    width: 180px;
     border-radius: 5px;
+    padding: 10px;
     transition: background-color .2s;
     &:hover{
         background-color: rgba(0, 0, 0, 0.253);
+    }
+
+    .movie-title {
+        @include title;
+        font-size: 14px;
+    }
+
+    .movie-year-genre{
+        font-size: 12px;
+        margin-bottom: 0;
     }
 }
 
@@ -292,24 +314,15 @@ nav {
     width: 100%;
 }
 
-.movie-title {
-    margin-top: 5px;
-    font-size: 14px;
-    text-align: center;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
 .movie-details {
     display: flex;
     justify-content: space-between;
+    p{
+        margin-bottom: 8px;
+    }
 }
 
-.movie-year-genre{
-    font-size: 12px;
-    margin-bottom: 0;
-}
+
 
 .btn-container{
     display: flex;
@@ -339,6 +352,38 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+/////////////////////////////////////////////////////////
+//
+//  Liste magasin
+//
+/////////////////////////////////////////////////////////
+
+.shop-entry{
+    @include entries; 
+    position: relative;
+    width: 160px;
+
+    .movie-title{
+        @include title;
+        font-size: 11px;
+        font-weight: normal;
+    }
+
+    .movie-year-genre{
+        font-size: 11px;
+    }
+}
+
+.shop-details{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 5px 10px 0 10px;
+
+    background-color: #EEEDF2;
 }
 
 /////////////////////////////////////////////////////////
