@@ -405,9 +405,24 @@ nav {
 //
 /////////////////////////////////////////////////////////
 
-.shop-details{
+#shop-selected-target, .detail-video-container{
     background-color: #0D0D0D;
+}
+
+.shop-details{
     padding: 15px;
+    height: 285px;
+    overflow: auto;
+
+    &::-webkit-scrollbar{
+        width: 8px;
+        &-thumb{
+            background-color: #FE4240;
+        }
+        &-track{
+            background-color: #666;
+        }
+    }
 }
 
 .shop-detail{
@@ -419,6 +434,7 @@ nav {
     &-desc{
         color: #666;
         font-size: 14px;
+        padding: 5px 0 5px 0;
     }
     &-subtitle{
         color: #FE4240;

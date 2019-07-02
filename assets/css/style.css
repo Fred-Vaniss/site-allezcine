@@ -387,9 +387,26 @@ nav button:focus {
       align-content: flex-start;
 }
 
-.shop-details {
+#shop-selected-target, .detail-video-container {
   background-color: #0D0D0D;
+}
+
+.shop-details {
   padding: 15px;
+  height: 285px;
+  overflow: auto;
+}
+
+.shop-details::-webkit-scrollbar {
+  width: 8px;
+}
+
+.shop-details::-webkit-scrollbar-thumb {
+  background-color: #FE4240;
+}
+
+.shop-details::-webkit-scrollbar-track {
+  background-color: #666;
 }
 
 .shop-detail-title {
@@ -401,6 +418,7 @@ nav button:focus {
 .shop-detail-desc {
   color: #666;
   font-size: 14px;
+  padding: 5px 0 5px 0;
 }
 
 .shop-detail-subtitle {
