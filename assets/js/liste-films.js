@@ -91,7 +91,7 @@ requestMoviesInTheater();
 
 
 //
-//  Liste des cinq films dans les salles
+//  Fonction générale pour lister la liste des films
 /////////////////////////////////////////
 function listMovies (type,movies, target, index, amount, clean) {
     if (clean){
@@ -99,25 +99,29 @@ function listMovies (type,movies, target, index, amount, clean) {
     }
     for (let i = index; i < index+amount ; i++) {
         let entry = document.createElement("div");
-        entry.className = "movie-entry"
-        entry.setAttribute("data-toggle","modal")
-        entry.setAttribute("data-target", ".modal-info-movie")
+        if (type == "movie" || type == "serie"){
+            entry.setAttribute("data-toggle","modal")
+            entry.setAttribute("data-target", ".modal-info-movie")
+        }
         entry.id = movies.results[i].id
+        
 
         let img = document.createElement("img");
         let title = document.createElement("h3");
-        let details = document.createElement("div")
+        let details = document.createElement("div");
         let genre = document.createElement("p");
         let year = document.createElement("p");
+        let shopDetails = document.createElement("div")
+        let price = document.createElement("p");
 
         img.src = `https://image.tmdb.org/t/p/w500/${movies.results[i].poster_path}`;
         img.className = "movie-poster"
 
-        if (type == "movie"){
+        if (type == "movie" || type == "shop"){
             entry.title = movies.results[i].original_title;
             title.textContent = movies.results[i].original_title;
             year.textContent = movies.results[i].release_date.substr(0,4);
-        } else{
+        } else if (type = "serie"){
             entry.title = movies.results[i].original_name;
             title.textContent = movies.results[i].original_name;
             year.textContent = movies.results[i].first_air_date.substr(0,4);
@@ -126,26 +130,44 @@ function listMovies (type,movies, target, index, amount, clean) {
         year.className = "movie-year-genre"
 
         // Affichage du genre (on cherche la première ID sur la deuxième API demandé pour avoir le nom du genre)
-        if (movies.results[i].genre_ids.length > 0){
-            let genreFind = genresList.genres.find(genre => genre.id == movies.results[i].genre_ids[0])
-            genre.innerText += genreFind.name
+        if (type == "movie" || type == "serie"){
+            entry.className = "movie-entry"
+            if (movies.results[i].genre_ids.length > 0){
+                let genreFind = genresList.genres.find(genre => genre.id == movies.results[i].genre_ids[0])
+                genre.innerText += genreFind.name
+            }
+            genre.className = "movie-year-genre"
+        } else {
+            entry.className = "shop-entry"
+            price.innerText = "15€"
+            price.className = "movie-year-genre"
         }
-        genre.className = "movie-year-genre"
-
 
         entry.appendChild(img);
-        entry.appendChild(title);
-        details.appendChild(year);
-        details.appendChild(genre);
-        details.className = "movie-details"
-        entry.appendChild(details)
+        if (type == "movie" || type == "serie"){
+            entry.appendChild(title);
+            details.appendChild(year);
+            details.appendChild(genre);
+            details.className = "movie-details"
+            entry.appendChild(details);
+        } else {
+            shopDetails.className = "shop-entry-details"
+            shopDetails.appendChild(title);
+            details.appendChild(year);
+            details.appendChild(price);
+            details.className = "movie-details"
+            shopDetails.appendChild(details)
+            entry.appendChild(shopDetails)
+        }
 
         target.appendChild(entry)
 
         if(type == "movie"){
             entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id, movies.results[i].original_title))
-        } else {
+        } else if (type == "serie") {
             entry.addEventListener("click", () => gatherSerieDetails(movies.results[i].id, movies.results[i].original_name))
+        } else {
+            entry.addEventListener("click", () => gatherShopDetails(movies.results[i].id))
         }
     }
 }
@@ -417,10 +439,9 @@ function displayMovieDetails (details, trailers, credits) {
 //
 /////////////////////////////////////////
 
-
 //
 //  Requête des détails et des bandes d'annonce de la série
-/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
 function gatherSerieDetails(serieID, serieTitle){
     document.getElementById("info-movie-title").innerHTML = serieTitle
     infoMovieTarget.innerHTML = "<h1>Chargement...</h1>"
@@ -508,5 +529,158 @@ function displaySerieDetails (details, trailers, credits){
     } catch (err) {
         console.error(err)
         infoMovieTarget.innerHTML = `Un erreur est survenue lors de la récupération des détails du film <br> ${err}`
+    }
+}
+
+/////////////////////////////////////////
+//
+// Magasin
+//
+/////////////////////////////////////////
+
+let shopTarget = document.getElementById("shop-list-target")
+let shopDetailsTarget = document.getElementById("shop-selected-target")
+
+function requestShopList() {
+    let shopRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/movie?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&include_adult=false&include_video=false&page=1&primary_release_date.lte=2018-12-31`)
+    
+    Promise.all([shopRequest, movieGenresRequest]).then(values => {
+        console.log("requête réussie");
+        listMovies("shop",values[0],shopTarget,0,8,true);
+        firstShopDetails();
+    }, reason => {
+        console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération du magasin`)
+        let errorMsg = document.createElement("p")
+        moviesTarget.innerHTML = `Erreur ${reason}`
+        moviesTarget.style.fontSize = '3em'
+        moviesTarget.style.justifyContent = 'center'
+    })
+}
+
+requestShopList();
+
+//
+//  Affichage automatique des détails du premier film de la liste
+///////////////////////////////////////////////////////////////////
+function firstShopDetails(){
+    const shopList = document.getElementsByClassName("shop-entry")
+
+    gatherShopDetails(shopList[0].getAttribute('id'))
+}
+
+
+
+function gatherShopDetails(movieID) {
+    let detailsRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}&language=en-US`)
+    let trailerRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${apiKey}&language=en-US`)
+
+    Promise.all([detailsRequest, trailerRequest]).then(values => {
+        displayShopDetails(values[0],values[1]);
+    }, reason => {
+        console.error(`Une des promesses n'a pas été tenue lors de la récupération des détails du film.`)
+        infoMovieTarget.innerHTML = `Un erreur est survenue lors de la récupération des détails du film <br> ${reason}`
+    })
+
+}
+
+function displayShopDetails(details, trailers){
+    let target = document.getElementById("shop-selected-target")
+    target.innerHTML = ""
+    try{
+        let video = document.createElement ("div")
+        let detailsTarget = document.createElement ("div")
+        let title = document.createElement("h2")
+
+        let table = document.createElement("table")
+        let rowOne = document.createElement("tr")
+        let storyLineInd = document.createElement("td")
+        let storyLineTarg = document.createElement("td")
+
+        let rowTwo = document.createElement("tr")
+        let releaseInd = document.createElement("td")
+        let releaseTarg = document.createElement("td")
+
+        let rowThree = document.createElement("tr")
+        let genreInd = document.createElement("td")
+        let genreTarg = document.createElement("td")
+
+        let rowFour = document.createElement("tr")
+        let priceInd = document.createElement("td")
+        let priceTarg = document.createElement("td")
+
+        let v = 0
+        let trailerFind
+        while (v < trailers.results.length && trailerFind == undefined)  {
+            trailerFind = trailers.results.find(trailer => trailer.type == "Trailer")
+            if (typeof trailerFind != "undefined"){
+                if (trailerFind.site != "YouTube"){
+                    trailerFind = undefined
+                }
+            }
+            v++
+            if(v == trailers.results.length){
+                trailerFind = trailers.results[0]
+            }
+        } 
+
+        if(typeof trailerFind != "undefined"){
+            video.innerHTML = `<iframe class="detail-video" width="560" height="315" src="https://www.youtube.com/embed/${trailerFind.key}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+            infoMovieTarget.appendChild(video)
+        }
+
+        title.textContent = details.original_title;
+        storyLineInd.innerText = "Story line"
+        storyLineTarg.innerText = details.overview;
+        
+        releaseInd.innerText = "Release on";
+        releaseTarg.innerText = details.release_date;
+
+        genreInd.innerText = "Genres"
+        for(let i = 0; i < details.genres.length; i++) {
+            genreTarg.innerText += details.genres[i].name;
+            if(i < details.genres.length-1){
+                genreTarg.innerText += " | "
+            }
+        }
+
+        priceInd.innerText = "Price"
+        priceTarg.innerText = "15 euro"
+
+        video.className = "detail-video-container"
+        target.appendChild(video)
+        
+        title.className = "shop-detail-title"
+        detailsTarget.appendChild(title)
+
+        storyLineInd.className = "shop-detail-subtitle"
+        storyLineTarg.className = "shop-detail-desc"
+        rowOne.appendChild(storyLineInd)
+        rowOne.appendChild(storyLineTarg)
+        table.appendChild(rowOne)
+        
+        releaseInd.className = "shop-detail-subtitle"
+        releaseTarg.className = "shop-detail-desc"
+        rowTwo.appendChild(releaseInd)
+        rowTwo.appendChild(releaseTarg)
+        table.appendChild(rowTwo)
+
+        genreInd.className = "shop-detail-subtitle"
+        genreTarg.className = "shop-detail-desc"
+        rowThree.appendChild(genreInd)
+        rowThree.appendChild(genreTarg)
+        table.appendChild(rowThree)
+
+        priceInd.className = "shop-detail-subtitle"
+        priceTarg.className = "shop-detail-desc"
+        rowFour.appendChild(priceInd)
+        rowFour.appendChild(priceTarg)
+        table.appendChild(rowFour)
+
+        detailsTarget.className = "shop-details"
+        detailsTarget.appendChild(table)
+        target.appendChild(detailsTarget)
+
+    } catch (err){
+        console.error(err)
     }
 }

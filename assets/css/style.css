@@ -101,6 +101,7 @@ header {
 header nav li {
   font-weight: 500;
   -webkit-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
 
@@ -181,6 +182,7 @@ header .jumbo-text p {
   header nav li {
     background-color: rgba(0, 0, 0, 0.3);
     -webkit-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
     transition: background-color 0.3s;
     margin: auto;
     white-space: nowrap;
@@ -190,6 +192,7 @@ header .jumbo-text p {
   }
   header nav li a {
     -webkit-transition: color 0.3s;
+    -o-transition: color 0.3s;
     transition: color 0.3s;
   }
   header nav li a:hover {
@@ -291,6 +294,7 @@ header .jumbo-text p {
   position: relative;
   -webkit-transition: -webkit-transform .2s;
   transition: -webkit-transform .2s;
+  -o-transition: transform .2s;
   transition: transform .2s;
   transition: transform .2s, -webkit-transform .2s;
 }
@@ -306,6 +310,7 @@ header .jumbo-text p {
 
 .soc-button:hover {
   -webkit-transform: translateX(130px);
+      -ms-transform: translateX(130px);
           transform: translateX(130px);
 }
 
@@ -341,9 +346,7 @@ header .jumbo-text p {
   margin-top: 1em;
 }
 
-#movies-target,
-#feat-movies-target,
-#feat-series-target {
+#movies-target, #feat-movies-target, #feat-series-target, #shop-list-target {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -360,12 +363,13 @@ header .jumbo-text p {
 }
 
 .movie-entry {
-  max-width: 200px;
-  overflow: hidden;
   cursor: pointer;
-  padding: 10px;
+  overflow: hidden;
+  width: 180px;
   border-radius: 5px;
+  padding: 10px;
   -webkit-transition: background-color .2s;
+  -o-transition: background-color .2s;
   transition: background-color .2s;
 }
 
@@ -373,17 +377,26 @@ header .jumbo-text p {
   background-color: rgba(0, 0, 0, 0.253);
 }
 
-.movie-poster {
-  width: 100%;
-}
-
-.movie-title {
+.movie-entry .movie-title {
   margin-top: 5px;
-  font-size: 14px;
   text-align: center;
-  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  font-size: 14px;
+}
+
+.movie-entry .movie-year-genre {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.movie-poster {
+  width: 160px;
+  height: 240px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .movie-details {
@@ -395,9 +408,8 @@ header .jumbo-text p {
           justify-content: space-between;
 }
 
-.movie-year-genre {
-  font-size: 12px;
-  margin-bottom: 0;
+.movie-details p {
+  margin-bottom: 8px;
 }
 
 .btn-container {
@@ -426,6 +438,88 @@ header .jumbo-text p {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.shop-entry {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  width: 160px;
+  height: 240px;
+  margin-bottom: 20px;
+}
+
+.shop-entry .movie-title {
+  margin-top: 5px;
+  text-align: center;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: normal;
+}
+
+.shop-entry .movie-year-genre {
+  font-size: 11px;
+}
+
+.shop-entry-details {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 5px 10px 0 10px;
+  background-color: #EEEDF2;
+}
+
+#shop-list-target, #shop-selected-target {
+  padding: 0;
+}
+
+#shop-list-target {
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+}
+
+.shop-details, .detail-video-container {
+  background-color: #0D0D0D;
+}
+
+.shop-details {
+  padding: 15px;
+  height: 285px;
+  overflow: auto;
+}
+
+.shop-details::-webkit-scrollbar {
+  width: 8px;
+}
+
+.shop-details::-webkit-scrollbar-thumb {
+  background-color: #FE4240;
+}
+
+.shop-details::-webkit-scrollbar-track {
+  background-color: #666;
+}
+
+.shop-detail-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #FE4240;
+}
+
+.shop-detail-desc {
+  color: #666;
+  font-size: 14px;
+  padding: 5px 0 5px 0;
+}
+
+.shop-detail-subtitle {
+  color: #FE4240;
+  font-size: 14px;
+  width: 90px;
 }
 
 footer {

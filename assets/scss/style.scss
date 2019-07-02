@@ -391,9 +391,7 @@ header {
     margin-top: 1em;
 }
 
-#movies-target,
-#feat-movies-target,
-#feat-series-target {
+#movies-target, #feat-movies-target, #feat-series-target, #shop-list-target {
     display: flex;
     justify-content: space-around;
     border-radius: 5px;
@@ -405,42 +403,55 @@ header {
     border: 2px solid #f5f5f5;
 }
 
-
-.movie-entry {
-    max-width: 200px;
-    overflow: hidden;
+@mixin entries{
     cursor: pointer;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color .2s;
-
-    &:hover {
-        background-color: rgba(0, 0, 0, 0.253);
-    }
+    overflow: hidden;
 }
 
-.movie-poster {
-    width: 100%;
-}
-
-.movie-title {
+@mixin title{
     margin-top: 5px;
-    font-size: 14px;
     text-align: center;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }
 
+.movie-entry{
+    @include entries;
+    width: 180px;
+    border-radius: 5px;
+    padding: 10px;
+    transition: background-color .2s;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.253);
+    }
+
+    .movie-title {
+        @include title;
+        font-size: 14px;
+    }
+
+    .movie-year-genre{
+        font-size: 12px;
+        margin-bottom: 0;
+    }
+}
+
+.movie-poster{
+    width: 160px;
+    height: 240px;
+    object-fit: cover;
+}
+
 .movie-details {
     display: flex;
     justify-content: space-between;
+    p{
+        margin-bottom: 8px;
+    }
 }
 
-.movie-year-genre {
-    font-size: 12px;
-    margin-bottom: 0;
-}
 
 .btn-container {
     display: flex;
@@ -470,6 +481,93 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+/////////////////////////////////////////////////////////
+//
+//  Liste magasin
+//
+/////////////////////////////////////////////////////////
+
+.shop-entry{
+    @include entries; 
+    position: relative;
+    width: 160px;
+    height: 240px;
+
+    margin-bottom: 20px;
+
+    .movie-title{
+        @include title;
+        font-size: 11px;
+        font-weight: normal;
+    }
+
+    .movie-year-genre{
+        font-size: 11px;
+    }
+}
+
+.shop-entry-details{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 5px 10px 0 10px;
+
+    background-color: #EEEDF2;
+}
+
+#shop-list-target, #shop-selected-target{
+    padding: 0;
+}
+
+#shop-list-target{
+    align-content: flex-start;
+}
+
+/////////////////////////////////////////////////////////
+//
+//  Détails magasin
+//
+/////////////////////////////////////////////////////////
+
+.shop-details, .detail-video-container{
+    background-color: #0D0D0D;
+}
+
+.shop-details{
+    padding: 15px;
+    height: 285px;
+    overflow: auto;
+
+    &::-webkit-scrollbar{
+        width: 8px;
+        &-thumb{
+            background-color: #FE4240;
+        }
+        &-track{
+            background-color: #666;
+        }
+    }
+}
+
+.shop-detail{
+    &-title{
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #FE4240;
+    }
+    &-desc{
+        color: #666;
+        font-size: 14px;
+        padding: 5px 0 5px 0;
+    }
+    &-subtitle{
+        color: #FE4240;
+        font-size: 14px;
+        width: 90px;
+    }
 }
 
 /////////////////////////////////////////////////////////
