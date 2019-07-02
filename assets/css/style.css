@@ -298,7 +298,10 @@ nav button:focus {
 }
 
 .movie-poster {
-  width: 100%;
+  width: 160px;
+  height: 240px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .movie-details {
@@ -347,6 +350,8 @@ nav button:focus {
   overflow: hidden;
   position: relative;
   width: 160px;
+  height: 240px;
+  margin-bottom: 20px;
 }
 
 .shop-entry .movie-title {
@@ -364,13 +369,44 @@ nav button:focus {
   font-size: 11px;
 }
 
-.shop-details {
+.shop-entry-details {
   position: absolute;
   width: 100%;
   bottom: 0;
   left: 0;
   padding: 5px 10px 0 10px;
   background-color: #EEEDF2;
+}
+
+#shop-list-target, #shop-selected-target {
+  padding: 0;
+}
+
+#shop-list-target {
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+}
+
+.shop-details {
+  background-color: #0D0D0D;
+  padding: 15px;
+}
+
+.shop-detail-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #FE4240;
+}
+
+.shop-detail-desc {
+  color: #666;
+  font-size: 14px;
+}
+
+.shop-detail-subtitle {
+  color: #FE4240;
+  font-size: 14px;
+  width: 90px;
 }
 
 footer {

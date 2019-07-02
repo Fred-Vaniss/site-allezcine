@@ -311,7 +311,9 @@ nav {
 }
 
 .movie-poster{
-    width: 100%;
+    width: 160px;
+    height: 240px;
+    object-fit: cover;
 }
 
 .movie-details {
@@ -364,6 +366,9 @@ nav {
     @include entries; 
     position: relative;
     width: 160px;
+    height: 240px;
+
+    margin-bottom: 20px;
 
     .movie-title{
         @include title;
@@ -376,7 +381,7 @@ nav {
     }
 }
 
-.shop-details{
+.shop-entry-details{
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -384,6 +389,42 @@ nav {
     padding: 5px 10px 0 10px;
 
     background-color: #EEEDF2;
+}
+
+#shop-list-target, #shop-selected-target{
+    padding: 0;
+}
+
+#shop-list-target{
+    align-content: flex-start;
+}
+
+/////////////////////////////////////////////////////////
+//
+//  Détails magasin
+//
+/////////////////////////////////////////////////////////
+
+.shop-details{
+    background-color: #0D0D0D;
+    padding: 15px;
+}
+
+.shop-detail{
+    &-title{
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #FE4240;
+    }
+    &-desc{
+        color: #666;
+        font-size: 14px;
+    }
+    &-subtitle{
+        color: #FE4240;
+        font-size: 14px;
+        width: 90px;
+    }
 }
 
 /////////////////////////////////////////////////////////
