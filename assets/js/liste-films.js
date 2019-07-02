@@ -636,7 +636,12 @@ function displayShopDetails(details, trailers){
         releaseTarg.innerText = details.release_date;
 
         genreInd.innerText = "Genres"
-        genreTarg.innerText = "En attente..."
+        for(let i = 0; i < details.genres.length; i++) {
+            genreTarg.innerText += details.genres[i].name;
+            if(i < details.genres.length-1){
+                genreTarg.innerText += " | "
+            }
+        }
 
         priceInd.innerText = "Price"
         priceTarg.innerText = "15 euro"
