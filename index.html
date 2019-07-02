@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr-BE">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -24,7 +24,7 @@
         <!--Jumbotron-->
         <div class="jumbotron jumbotron-fluid p-0 m-0">
             <!--Navbar-->
-            <nav id="up" class="navbar navbar-expand-xl navbar-light">
+            <nav id="upNav" class="navbar navbar-expand-xl navbar-light">
                 <div class="container-fluid">
                     <a class="navbar-brand font-weight-bold white-border" href="#"><span
                             class="text-maincolor">ALLEZ</span>CINE!</a>
@@ -41,11 +41,11 @@
                             </li>
                             <!--Featured Movies-->
                             <li class="nav-item dropdown mx-1 rounded">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMovies" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Featured Movies
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">All</a>
                                     <a class="dropdown-item" href="#">Action</a>
                                     <a class="dropdown-item" href="#">Comedy</a>
@@ -57,11 +57,11 @@
                             </li>
                             <!--Features Shows -->
                             <li class="nav-item dropdown mx-1 rounded">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownShows" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Featured Shows
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">All</a>
                                     <a class="dropdown-item" href="#">Action</a>
                                     <a class="dropdown-item" href="#">Comedy</a>
@@ -94,8 +94,7 @@
             <div id="carouselMovies" class="carousel slide" data-ride="carousel">
                 <!--Jumbo texte-->
                 <div class="jumbo-text">
-                    <h2>Latest <span class="text-maincolor">On</span>line <span
-                            class="text-maincolor">Mo</span>vie</h2>
+                    <h2>Latest <span class="text-maincolor">On</span>line <span class="text-maincolor">Mo</span>vie</h2>
                     <p class="lead">In space, No one can hear you scream</p>
                 </div>
                 <ol class="carousel-indicators">
@@ -125,10 +124,10 @@
     <section class="red-band">
         <div class="container">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Login">
+            <button type="button" id="login" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
                 Login
             </button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enregistre">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModal">
                 S'enregistrer
             </button>
         </div>
@@ -231,28 +230,25 @@
             <form>
                 <div class="form-group row">
                     <div class="col-md-4 offset-2">
-                        <input id="cname" type="text" class="form-control" placeholder="Nom" required>
+                        <input id="cname" type="text" class="form-control" placeholder="Nom">
                     </div>
                     <div class="col-md-4">
-                        <input id="cfirstname" type="text" class="form-control" placeholder="Prénom" required>
+                        <input id="cfirstname" type="text" class="form-control" placeholder="Prénom">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="col-md-4 offset-2">
-                        <input id="cmail" type="text" class="form-control" placeholder="Email" required>
+                        <input id="cmail" type="text" class="form-control" placeholder="Email">
                     </div>
                     <div class="col-md-4">
-                        <input id="cobject" type="text" class="form-control" placeholder="Objet" required>
+                        <input id="cobject" type="text" class="form-control" placeholder="Objet">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-8 offset-2">
-                        <input id="cmessage" type="text" class="form-control" placeholder="Votre message" required>
-                        <button id="envoie" type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#confirmation">
-                            Envoyer
-                        </button>
+                        <input id="cmessage" type="text" class="form-control" placeholder="Votre message">
+                        <button id="csubmit" type="button" class="btn btn-primary">Envoyer</button>
                     </div>
                 </div>
             </form>
@@ -260,7 +256,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="page-footer font-small indigo" id="up">
+    <footer class="page-footer font-small indigo" id="upFoot">
 
         <!-- Footer Links -->
         <div class="container text-center text-md-left">
@@ -272,7 +268,7 @@
 
                     <form class="input-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Your email"
-                            aria-label="Your email" aria-describedby="basic-addon2">
+                            aria-label="Your email">
                         <div class="input-group-append">
                             <button class="btn btn-sm btn-outline-white btn btn-danger my-0 ml-2 rounded-0"
                                 type="button">SUBSCRIBE</button>
@@ -370,7 +366,6 @@
                         <span class="else mr-1 mb-1 py-1 px-2">Historical</span>
 
                     </div>
-
                 </div>
 
                 <!-- Fourth list -->
@@ -381,7 +376,7 @@
 
                     <div class="row">
                         <div class="col-4 col-sm-4 col-md-4 col-lg-4 px-0 mb-1 ml-3"><img class="img-fluid uui"
-                                src="assets/img/latestMoviesOk.png"></div>
+                                src="assets/img/latestMoviesOk.png" alt=""></div>
                         <div class="col-4 col-sm-6 col-md-6 col-lg-6 ml-1 px-0 mb-1"><span>Eveniet Ut molesti</span>
                         </div>
                     </div>
@@ -463,6 +458,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </footer>
 
     <!-- Bandeau GPDR -->
@@ -483,12 +479,10 @@
     <!-- ================== Boites modal ================== -->
     <!-- ================================================== -->
     <!-- Modal info film -->
-    <div class="modal fade modal-info-movie" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-        aria-hidden="true">
+    <div class="modal fade modal-info-movie" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="info-movie-title"></h5>
                     <button id="info-movie-close-cross" type="button" class="close" data-dismiss="modal"
                         aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -546,18 +540,18 @@
                         participate in competitions. The personal information you provide may for example include
                         contact information, birth date and billing information.</p>
                     <h5>What do we use your personal information to?</h5>
-                    <p>We may use your personal information for the following purposes:
-                        <ul>
-                            <li>To be able to answer questions and inform you about new or changed services</li>
-                            <li>To send promotional offers such as newsletters and catalogs</li>
-                            <li>To inform winners of online contests</li>
-                            <li>To analyze the information so we can send you relevant marketing offers and information
-                            </li>
-                            <li>To send you surveys that give you the ability to influence supply and services</li>
-                            <li>To test and improve the systems we use to provide services</li>
-                            <li>To prevent the abuse or misuse of our services</li>
-                        </ul>
-                        We will only keep your information for as long as is necessary to perform the above services, or
+                    <p>We may use your personal information for the following purposes:</p>
+                    <ul>
+                        <li>To be able to answer questions and inform you about new or changed services</li>
+                        <li>To send promotional offers such as newsletters and catalogs</li>
+                        <li>To inform winners of online contests</li>
+                        <li>To analyze the information so we can send you relevant marketing offers and information
+                        </li>
+                        <li>To send you surveys that give you the ability to influence supply and services</li>
+                        <li>To test and improve the systems we use to provide services</li>
+                        <li>To prevent the abuse or misuse of our services</li>
+                    </ul>
+                    <p>We will only keep your information for as long as is necessary to perform the above services, or
                         as long as the law requires us to keep them. After this, the data will be deleted.</p>
                 </div>
                 <div class="modal-footer">
@@ -568,11 +562,11 @@
     </div>
 
     <!-- boite modal connexion -->
-    <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="connexion">Se connecter</h5>
+                    <h5 class="modal-title">Se connecter</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -581,13 +575,11 @@
                     <form>
                         <div class="form-group">
                             <label for="user">Identifiant</label>
-                            <input type="user" class="form-control" id="user" aria-describedby="emailHelp"
-                                placeholder="Entrer identifiant">
+                            <input type="text" class="form-control" id="loginUser" placeholder="Entrer identifiant">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                placeholder="Password">
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Password">
                             <small id="PasswordHelp" class="form-text text-muted"><a href="">Mot de passe
                                     oublié?</a></small>
                         </div>
@@ -595,26 +587,23 @@
                             <input type="checkbox" class="form-check-input" id="Check1">
                             <label class="form-check-label" for="Check1">Rester connecter</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Connexion</button>
+                        <button id="loginConnexion" type="submit" class="btn btn-primary">Connexion</button>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="register" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
-                        data-target="#enregistre">
-                        Créer un compte
-                    </button>
+                    <button type="button" id="signUp" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+                        data-target="#signupModal">Créer un compte</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- boite modal s'enregistrer -->
-    <div class="modal fade" id="enregistre" tabindex="-1" role="dialog" aria-labelledby="enregistrer"
-        aria-hidden="true">
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="connexion">S'enregistrer</h5>
+                    <h5 class="modal-title">S'enregistrer</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -622,91 +611,42 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="user">Nom</label>
-                            <input type="user" class="form-control" id="user2" aria-describedby="emailHelp"
-                                placeholder="Entrer votre nom">
+                            <label for="signupUser">Nom</label>
+                            <input type="text" class="form-control" id="signupUser" placeholder="Entrer votre nom">
                         </div>
                         <div class="form-group">
-                            <label for="mail">Adresse email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email">
+                            <label for="signupEmail">Adresse email</label>
+                            <input type="email" class="form-control" id="signupEmail" placeholder="Email">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="Password1" placeholder="Password">
+                            <label for="signupPassword1">Password</label>
+                            <input type="password" class="form-control" id="signupPassword1" placeholder="Password">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Comfirmer Password</label>
-                            <input type="password" class="form-control" id="Password2" placeholder="Password">
+                            <label for="signupPassword2">Confirmer Password</label>
+                            <input type="password" class="form-control" id="signupPassword2" placeholder="Password">
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="Check2">
-                            <label class="form-check-label" for="Check2">Conditions générales d'utilisation</label>
+                            <input type="checkbox" class="form-check-input" id="signupCGU">
+                            <label class="form-check-label" for="signupCGU">Conditions générales d'utilisation</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="register" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
-                        data-target="#valinscrip">
-                        S'enregistrer
-                    </button>
+                    <button type="button" id="signupRegister" class="btn btn-primary">S'enregistrer</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal confirmation formulaire -->
-    <div class="modal" tabindex="-1" id="confirmation" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Confirmation</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <label for="confirm">Name</label>
-                            <input id="confirm-name" type="text" class="form-control" readonly>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="confirm">Firstname</label>
-                            <input id="confirm-firstname" type="text" class="form-control" readonly>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <label for="confirm">Email</label>
-                            <input id="confirm-mail" type="text" class="form-control" readonly>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="confirm">Object</label>
-                            <input id="confirm-object" type="text" class="form-control" readonly>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <label for="confirm">Message</label>
-                            <input id="confirm-mess" type="text" class="form-control" readonly>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button id="envoie" type="button" class="btn btn-primary" data-toggle="modal" data-target="#send"
-                        data-dismiss="modal">
-                        Confirm and send
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Modal box validation inscription-->
+    <!--Modal validation inscription-->
     <div class="modal" tabindex="-1" id="valinscrip" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Inscription validé</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" id="signupSubmit" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -729,7 +669,53 @@
         </div>
     </div>
 
-    <!-- Modal message envoyée -->
+    <!-- Modal confirmation formulaire -->
+    <div class="modal" tabindex="-1" id="confirmation" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Confirmation</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="confirm-name">Name</label>
+                            <input id="confirm-name" type="text" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="confirm-firstname">Firstname</label>
+                            <input id="confirm-firstname" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="confirm-mail">Email</label>
+                            <input id="confirm-mail" type="text" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="confirm-object">Object</label>
+                            <input id="confirm-object" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label for="confirm-mess">Message</label>
+                            <input id="confirm-mess" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="envoie1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#send"
+                        data-dismiss="modal">
+                        Confirm and send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal message envoyé -->
     <div class="modal" tabindex="-1" id="send" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -776,7 +762,6 @@
     </script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/liste-films.js"></script>
-    <script src="assets/js/app.js"></script>
 </body>
 
 </html>

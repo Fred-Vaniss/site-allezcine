@@ -1,3 +1,22 @@
+// Bouton pour revenir au début de la page
+const createbtn = document.createElement("a");
+createbtn.innerHTML = "<i class='fas fa-xs fa-arrow-up'></i>"
+createbtn.setAttribute('id', 'btnscroll');
+createbtn.setAttribute('href', '#up');
+document.body.appendChild(createbtn);
+const btnscroll = document.getElementById("btnscroll");
+
+//Fonction qui fait apparaitre et disparaitre le bouton en fonction du scroll
+document.addEventListener('DOMContentLoaded', function () {
+    window.onscroll = (() => {
+        if (window.pageYOffset >= 550) {
+            btnscroll.style.display = "inline";
+        } else {
+            btnscroll.style.display = "none";
+        }
+    })
+});
+
 /////////////////////////////
 //
 //  Vérification de l'age
@@ -50,8 +69,13 @@ validate.addEventListener('click', () => {
     }
 })
 
-
+/////////////////////////////
+//
 //Affiche le GDPR seulement si le GDPR check != true
+//
+/////////////////////////////
+
+//seulement si le GDPR check != true
 if (localStorage.getItem('GDPRCheck') === "true") {
     console.log('GDPR check is ok');
 } else {
@@ -70,35 +94,83 @@ collapseGPDR.addEventListener('click', () => localStorage.setItem('GDPRCheck', t
 //
 /////////////////////////////////////
 
-//
-//Vérification password
-/////////////////////////////
-let passeone = document.querySelector('#Password1');
-let passetwo = document.querySelector('#Password2');
-
-document.querySelector('.butt-enregistrer').addEventListener('click', () => {
-    if (passeone !== passetwo) {
-        passeone.style.borderColor = "red";
-        passetwo.style.borderColor = "red";
+//login modal
+const loginUser = document.getElementById('loginUser');
+const loginPassword = document.getElementById('loginPassword')
+document.getElementById('loginConnexion').addEventListener('click', () => {
+    if (loginUser.value === "" || loginPassword.value === "") {
+        alert('Veuillez remplir les champs');
+    } else {
+        $('#loginModal').modal('toggle')
     }
 })
 
-//
-// Validation formulaire
-//////////////////////////////
-let confirmname = document.querySelector('#confirm-name')
-let confirmfirstname = document.querySelector("#confirm-firstname")
-let confirmmail = document.querySelector("#confirm-mail")
-let confirmobject = document.querySelector("#confirm-object")
-let confirmmess = document.querySelector("#confirm-mess")
-let missName = document.querySelector("#missName")
+//sign up modal
 
-let confirm = document.querySelector('#envoie').addEventListener('click', () => {
-    let name = document.querySelector('#cname').value
-    let firstname = document.querySelector('#cfirstname').value
-    let mail = document.querySelector('#cmail').value
-    let object = document.querySelector('#cobject').value
-    let message = document.querySelector('#cmessage').value
+const signupUser = document.getElementById('signupUser');
+const signupEmail = document.getElementById('signupEmail');
+const signupPassword1 = document.getElementById('signupPassword1');
+const signupPassword2 = document.getElementById('signupPassword2');
+const signupCGU = document.getElementById('signupCGU');
+
+document.getElementById('signupRegister').addEventListener('click', () => {
+    if (signupEmail.value === "" || signupUser.value === "" || signupPassword1.value === "") {
+        alert('Veillez remplir les champs');
+    } else if(signupCGU.checked === false) {
+        alert('Il faut accepter les CGU');
+    } else if (signupPassword1.value !== signupPassword2.value) {
+        signupPassword1.style.borderColor = 'red';
+        signupPassword2.style.borderColor = 'red';
+    }
+    else {
+        signupPassword1.style.borderColor = 'gray';
+        signupPassword2.style.borderColor = 'gray';
+        $('#valinscrip').modal('toggle');
+        $('#signupModal').modal('toggle');
+    }
+})
+
+//footer form
+const cname = document.getElementById('cname');
+const cfirstname = document.getElementById("cfirstname");
+const cmail = document.getElementById("cmail");
+const cobject = document.getElementById("cobject");
+const cmess = document.getElementById("cmessage");
+const csubmbit = document.getElementById("csubmit");
+
+csubmbit.addEventListener('click', () => {
+    if (cname.value === '' || cfirstname.value === '' || cmail.value === '' || cobject.value === '' || cmessage.value === '') {
+        alert('Veuillez remplir tous les champs');
+    } else {
+        document.getElementById('confirm-name').value = cname.value;
+        document.getElementById('confirm-firstname').value = cfirstname.value;
+        document.getElementById('confirm-mail').value = cmail.value;
+        document.getElementById('confirm-object').value = cobject.value;
+        document.getElementById('confirm-mess').value = cmessage.value;
+        $('#confirmation').modal('toggle');
+    }
+})
+
+
+
+
+
+
+
+
+/* const confirmname = document.querySelector('#confirm-name')
+const confirmfirstname = document.querySelector("#confirm-firstname")
+const confirmmail = document.querySelector("#confirm-mail")
+const confirmobject = document.querySelector("#confirm-object")
+const confirmmess = document.querySelector("#confirm-mess")
+const missName = document.querySelector("#missName")
+
+const confirm = document.querySelector('#envoie').addEventListener('click', () => {
+    const name = document.querySelector('#cname').value
+    const firstname = document.querySelector('#cfirstname').value
+    const mail = document.querySelector('#cmail').value
+    const object = document.querySelector('#cobject').value
+    const message = document.querySelector('#cmessage').value
     confirmname.value = name
     confirmfirstname.value = firstname
     confirmmail.value = mail
@@ -106,5 +178,6 @@ let confirm = document.querySelector('#envoie').addEventListener('click', () => 
     confirmmess.value = message
     if (name == "" || firstname == "" || mail == "" || object == "" || message == "") {
         $("#confirmation").modal('toggle');
+    } else {
     }
-})
+}) */
