@@ -202,55 +202,14 @@ header .jumbo-text p {
     top: 40%;
   }
   header .jumbo-text h2 {
-    font-size: 3.5em;
+    font-size: 3.5em !important;
   }
   header .jumbo-text p {
-    font-size: 1.5em;
+    font-size: 1.5em !important;
   }
 }
 
 @media (min-width: 992px) {
-  header nav {
-    position: absolute !important;
-    width: 100%;
-    z-index: 2;
-    background-color: transparent;
-  }
-  header nav .navbar-brand {
-    font-size: 4rem;
-  }
-  header nav li {
-    background-color: rgba(0, 0, 0, 0.3);
-    -webkit-transition: background-color 0.3s;
-    transition: background-color 0.3s;
-    margin: auto;
-    white-space: nowrap;
-  }
-  header nav li:hover {
-    background-color: #FF0036;
-  }
-  header nav li a {
-    -webkit-transition: color 0.3s;
-    transition: color 0.3s;
-  }
-  header nav li a:hover {
-    color: white !important;
-  }
-  header .carousel-inner {
-    max-height: 30em;
-  }
-  header .jumbo-text {
-    top: 40%;
-  }
-  header .jumbo-text h2 {
-    font-size: 3.5em;
-  }
-  header .jumbo-text p {
-    font-size: 1.5em;
-  }
-}
-
-@media (min-width: 768px) {
   header nav {
     background-color: transparent;
     width: 100%;
@@ -272,10 +231,39 @@ header .jumbo-text p {
     top: 30%;
   }
   header .jumbo-text h2 {
-    font-size: 3em;
+    font-size: 3em !important;
   }
   header .jumbo-text p {
-    font-size: 1em;
+    font-size: 1em !important;
+  }
+}
+
+@media (min-width: 768px) {
+  header nav {
+    background-color: transparent;
+    width: 100%;
+  }
+  header nav .navbar-brand {
+    font-size: 3em;
+  }
+  header nav li {
+    margin: auto;
+    white-space: nowrap;
+  }
+  header nav form {
+    max-width: 16.5em;
+  }
+  header .carousel-inner {
+    max-height: 30em;
+  }
+  header .jumbo-text {
+    top: 30%;
+  }
+  header .jumbo-text h2 {
+    font-size: 3em !important;
+  }
+  header .jumbo-text p {
+    font-size: 1em !important;
   }
 }
 

@@ -217,76 +217,33 @@ header {
 
         .jumbo-text {
             top: 40%;
+
             h2 {
-                font-size: 3.5em;
+                font-size: 3.5em !important;
             }
-    
+
             p {
-                font-size: 1.5em;
+                font-size: 1.5em !important;
             }
         }
     }
 }
+
 @media (min-width: 992px) {
     header {
         nav {
-            position: absolute !important;
-            width: 100%;
-            z-index: 2;
-            background-color: transparent;
-
-            .navbar-brand {
-                font-size: 4rem;
-            }
-
-            li {
-                background-color: rgba($color: #000000, $alpha: 0.3);
-                transition: background-color 0.3s;
-                margin: auto;
-                white-space: nowrap;
-
-                &:hover {
-                    background-color: $main-color;
-                }
-
-                a {
-                    transition: color 0.3s;
-
-                    &:hover {
-                        color: white !important;
-                    }
-                }
-            }
-        }
-
-        .carousel-inner {
-            max-height: 30em;
-        }
-
-        .jumbo-text {
-            top: 40%;
-            h2 {
-                font-size: 3.5em;
-            }
-    
-            p {
-                font-size: 1.5em;
-            }
-        }
-    }
-}
-@media (min-width: 768px) {
-    header {
-        nav {
             background-color: transparent;
             width: 100%;
+
             .navbar-brand {
                 font-size: 3.5em;
             }
+
             li {
                 margin: auto;
                 white-space: nowrap;
             }
+
             form {
                 max-width: 16.5em;
             }
@@ -299,10 +256,49 @@ header {
         .jumbo-text {
             top: 30%;
             h2 {
+                font-size: 3em !important;
+            }
+
+            p {
+                font-size: 1em !important;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    header {
+        nav {
+            background-color: transparent;
+            width: 100%;
+
+            .navbar-brand {
                 font-size: 3em;
             }
+
+            li {
+                margin: auto;
+                white-space: nowrap;
+            }
+
+            form {
+                max-width: 16.5em;
+            }
+        }
+
+        .carousel-inner {
+            max-height: 30em;
+        }
+
+        .jumbo-text {
+            top: 30%;
+
+            h2 {
+                font-size: 3em !important;
+            }
+
             p {
-                font-size: 1em;
+                font-size: 1em !important;
             }
         }
     }
