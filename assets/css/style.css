@@ -482,7 +482,7 @@ header .jumbo-text p {
       align-content: flex-start;
 }
 
-#shop-selected-target, .detail-video-container {
+.shop-details, .detail-video-container {
   background-color: #0D0D0D;
 }
 
