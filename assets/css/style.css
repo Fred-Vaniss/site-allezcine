@@ -440,6 +440,17 @@ header .jumbo-text p {
   height: 100%;
 }
 
+.shop-nav {
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+.shop-nav-button {
+  background-color: black;
+  color: white;
+  border: none;
+}
+
 .shop-entry {
   cursor: pointer;
   overflow: hidden;
@@ -473,8 +484,12 @@ header .jumbo-text p {
   background-color: #EEEDF2;
 }
 
+#shop-list-target {
+  padding-right: 0;
+}
+
 #shop-list-target, #shop-selected-target {
-  padding: 0;
+  padding-left: 0;
 }
 
 #shop-list-target {

@@ -548,6 +548,7 @@ function requestShopList() {
         console.log("requête réussie");
         listMovies("shop",values[0],shopTarget,0,8,true);
         firstShopDetails();
+        shopIndexing();
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération du magasin`)
         let errorMsg = document.createElement("p")
@@ -560,6 +561,16 @@ function requestShopList() {
 requestShopList();
 
 //
+//  Attribution d'un index pour chaque film
+/////////////////////////////////////////////
+function shopIndexing (){
+    let movies = document.getElementsByClassName("shop-entry")
+    for(let i = 0; i < movies.length;i++){
+        movies[i].setAttribute("index", i)
+    }
+}
+
+//
 //  Affichage automatique des détails du premier film de la liste
 ///////////////////////////////////////////////////////////////////
 function firstShopDetails(){
@@ -569,8 +580,40 @@ function firstShopDetails(){
 }
 
 
+//
+//  Boutton suivant et précédent
+///////////////////////////////////////////////////////////////////
+let shopIndex = 0
+document.getElementById("shop-next").addEventListener("click", () => nextShopMovie("next"))
+document.getElementById("shop-previous").addEventListener("click", () => nextShopMovie("previous"))
 
+function nextShopMovie(action){
+    if (isNaN(shopIndex)){shopIndex = 0}
+
+    if (action == "next"){
+        shopIndex += 1
+    } else {
+        shopIndex -= 1
+    }
+
+    if (shopIndex > 7){
+        shopIndex = 0
+    } else if (shopIndex < 0){
+        shopIndex = 7
+    }
+
+    let movies = document.getElementsByClassName("shop-entry")
+
+    gatherShopDetails(movies[shopIndex].id)
+}
+
+//
+//  Affichage des détails d'un film 
+///////////////////////////////////////////////////////////////////
 function gatherShopDetails(movieID) {
+    shopIndex = document.getElementById(movieID).getAttribute("index")
+    shopIndex = parseInt(shopIndex)
+
     let detailsRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}&language=en-US`)
     let trailerRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${apiKey}&language=en-US`)
 

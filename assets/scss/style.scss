@@ -488,6 +488,15 @@ header {
 //  Liste magasin
 //
 /////////////////////////////////////////////////////////
+.shop-nav{
+    text-align: right;
+    margin-bottom: 5px;
+    &-button{
+        background-color: black;
+        color: white;
+        border: none;
+    }
+}
 
 .shop-entry{
     @include entries; 
@@ -518,8 +527,12 @@ header {
     background-color: #EEEDF2;
 }
 
+#shop-list-target{
+    padding-right: 0;
+}
+
 #shop-list-target, #shop-selected-target{
-    padding: 0;
+    padding-left: 0;
 }
 
 #shop-list-target{
