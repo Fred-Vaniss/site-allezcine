@@ -90,94 +90,189 @@ footer span {
   background-color: #FF0036;
 }
 
-nav {
+.white-border {
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+header {
   font-family: 'Roboto', sans-serif !important;
 }
 
-nav .navbar-brand {
-  font-weight: 700;
-  font-size: 4rem;
-}
-
-nav li {
+header nav li {
   font-weight: 500;
-  background-color: rgba(0, 0, 0, 0.3);
   -webkit-transition: background-color 0.3s;
   -o-transition: background-color 0.3s;
   transition: background-color 0.3s;
-  margin: auto;
-  white-space: nowrap;
 }
 
-nav li:hover {
-  background-color: #FF0036;
-}
-
-nav li a {
+header nav li a {
   color: #FF0036 !important;
-  -webkit-transition: color 0.3s;
-  -o-transition: color 0.3s;
-  transition: color 0.3s;
 }
 
-nav li a:hover {
-  color: white !important;
-}
-
-nav form {
+header nav form {
   background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
-nav input {
+header nav input {
   border: none !important;
   background-color: transparent !important;
 }
 
-nav input:focus {
+header nav input:focus {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
 
-nav input::-webkit-input-placeholder {
+header nav input::-webkit-input-placeholder {
   color: white !important;
 }
 
-nav input:-ms-input-placeholder {
+header nav input:-ms-input-placeholder {
   color: white !important;
 }
 
-nav input::-ms-input-placeholder {
+header nav input::-ms-input-placeholder {
   color: white !important;
 }
 
-nav input::placeholder {
+header nav input::placeholder {
   color: white !important;
 }
 
-nav button {
+header nav button {
   background-color: transparent !important;
   color: white !important;
 }
 
-nav button:focus {
+header nav button:focus {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
 
-.carousel-inner {
-  position: relative;
-  height: 500px;
+header .jumbo-text {
+  color: white;
+  position: absolute !important;
+  width: 100%;
+  z-index: 1;
+  top: 20%;
+  text-align: center;
+  background-color: transparent;
 }
 
-.jumbotron {
-  background-color: transparent;
-  position: absolute;
-  top: 100px;
-  width: 100vw;
+header .jumbo-text h2 {
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+header .jumbo-text p {
+  letter-spacing: 0.15em;
+  font-size: 1em;
+}
+
+@media (min-width: 1200px) {
+  header nav {
+    position: absolute !important;
+    width: 100%;
+    z-index: 2;
+    background-color: transparent;
+  }
+  header nav .navbar-brand {
+    font-size: 4rem;
+  }
+  header nav li {
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    margin: auto;
+    white-space: nowrap;
+  }
+  header nav li:hover {
+    background-color: #FF0036;
+  }
+  header nav li a {
+    -webkit-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+  }
+  header nav li a:hover {
+    color: white !important;
+  }
+  header .carousel-inner {
+    max-height: 30em;
+  }
+  header .jumbo-text {
+    top: 40%;
+  }
+  header .jumbo-text h2 {
+    font-size: 3.5em !important;
+  }
+  header .jumbo-text p {
+    font-size: 1.5em !important;
+  }
+}
+
+@media (min-width: 992px) {
+  header nav {
+    background-color: transparent;
+    width: 100%;
+  }
+  header nav .navbar-brand {
+    font-size: 3.5em;
+  }
+  header nav li {
+    margin: auto;
+    white-space: nowrap;
+  }
+  header nav form {
+    max-width: 16.5em;
+  }
+  header .carousel-inner {
+    max-height: 30em;
+  }
+  header .jumbo-text {
+    top: 30%;
+  }
+  header .jumbo-text h2 {
+    font-size: 3em !important;
+  }
+  header .jumbo-text p {
+    font-size: 1em !important;
+  }
+}
+
+@media (min-width: 768px) {
+  header nav {
+    background-color: transparent;
+    width: 100%;
+  }
+  header nav .navbar-brand {
+    font-size: 3em;
+  }
+  header nav li {
+    margin: auto;
+    white-space: nowrap;
+  }
+  header nav form {
+    max-width: 16.5em;
+  }
+  header .carousel-inner {
+    max-height: 30em;
+  }
+  header .jumbo-text {
+    top: 30%;
+  }
+  header .jumbo-text h2 {
+    font-size: 3em !important;
+  }
+  header .jumbo-text p {
+    font-size: 1em !important;
+  }
 }
 
 .red-band {
   background-color: #FF0036;
+  height: 3rem;
 }
 
 .soc-buttons {
