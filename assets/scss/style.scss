@@ -108,6 +108,10 @@ footer {
     background-color: $main-color;
 }
 
+.white-border {
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
 /////////////////////////////////////////////////////////
 //
 //  Header
@@ -153,11 +157,26 @@ header {
             }
         }
     }
-    jumbo-content {
-        position: relative;
-        
-    }
 
+    .jumbo-text {
+        color: white;
+        position: absolute !important;
+        width: 100%;
+        z-index: 1;
+        top: 20%;
+        text-align: center;
+        background-color: transparent;
+
+        h2 {
+            font-size: 1.5em;
+            text-transform: uppercase;
+        }
+
+        p {
+            letter-spacing: 0.15em;
+            font-size: 1em;
+        }
+    }
 }
 
 @media (min-width: 1200px) {
@@ -165,12 +184,11 @@ header {
         nav {
             position: absolute !important;
             width: 100%;
-            z-index: 1;
+            z-index: 2;
             background-color: transparent;
 
             .navbar-brand {
                 font-size: 4rem;
-                text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
             }
 
             li {
@@ -190,6 +208,101 @@ header {
                         color: white !important;
                     }
                 }
+            }
+        }
+
+        .carousel-inner {
+            max-height: 30em;
+        }
+
+        .jumbo-text {
+            top: 40%;
+            h2 {
+                font-size: 3.5em;
+            }
+    
+            p {
+                font-size: 1.5em;
+            }
+        }
+    }
+}
+@media (min-width: 992px) {
+    header {
+        nav {
+            position: absolute !important;
+            width: 100%;
+            z-index: 2;
+            background-color: transparent;
+
+            .navbar-brand {
+                font-size: 4rem;
+            }
+
+            li {
+                background-color: rgba($color: #000000, $alpha: 0.3);
+                transition: background-color 0.3s;
+                margin: auto;
+                white-space: nowrap;
+
+                &:hover {
+                    background-color: $main-color;
+                }
+
+                a {
+                    transition: color 0.3s;
+
+                    &:hover {
+                        color: white !important;
+                    }
+                }
+            }
+        }
+
+        .carousel-inner {
+            max-height: 30em;
+        }
+
+        .jumbo-text {
+            top: 40%;
+            h2 {
+                font-size: 3.5em;
+            }
+    
+            p {
+                font-size: 1.5em;
+            }
+        }
+    }
+}
+@media (min-width: 768px) {
+    header {
+        nav {
+            background-color: transparent;
+            width: 100%;
+            .navbar-brand {
+                font-size: 3.5em;
+            }
+            li {
+                margin: auto;
+                white-space: nowrap;
+            }
+            form {
+                max-width: 16.5em;
+            }
+        }
+
+        .carousel-inner {
+            max-height: 30em;
+        }
+
+        .jumbo-text {
+            top: 30%;
+            h2 {
+                font-size: 3em;
+            }
+            p {
+                font-size: 1em;
             }
         }
     }

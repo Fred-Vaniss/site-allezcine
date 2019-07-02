@@ -90,6 +90,10 @@ footer span {
   background-color: #FF0036;
 }
 
+.white-border {
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
 header {
   font-family: 'Roboto', sans-serif !important;
 }
@@ -144,20 +148,35 @@ header nav button:focus {
           box-shadow: none !important;
 }
 
-header jumbo-content {
-  position: relative;
+header .jumbo-text {
+  color: white;
+  position: absolute !important;
+  width: 100%;
+  z-index: 1;
+  top: 20%;
+  text-align: center;
+  background-color: transparent;
+}
+
+header .jumbo-text h2 {
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+header .jumbo-text p {
+  letter-spacing: 0.15em;
+  font-size: 1em;
 }
 
 @media (min-width: 1200px) {
   header nav {
     position: absolute !important;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
     background-color: transparent;
   }
   header nav .navbar-brand {
     font-size: 4rem;
-    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   }
   header nav li {
     background-color: rgba(0, 0, 0, 0.3);
@@ -175,6 +194,88 @@ header jumbo-content {
   }
   header nav li a:hover {
     color: white !important;
+  }
+  header .carousel-inner {
+    max-height: 30em;
+  }
+  header .jumbo-text {
+    top: 40%;
+  }
+  header .jumbo-text h2 {
+    font-size: 3.5em;
+  }
+  header .jumbo-text p {
+    font-size: 1.5em;
+  }
+}
+
+@media (min-width: 992px) {
+  header nav {
+    position: absolute !important;
+    width: 100%;
+    z-index: 2;
+    background-color: transparent;
+  }
+  header nav .navbar-brand {
+    font-size: 4rem;
+  }
+  header nav li {
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    margin: auto;
+    white-space: nowrap;
+  }
+  header nav li:hover {
+    background-color: #FF0036;
+  }
+  header nav li a {
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+  }
+  header nav li a:hover {
+    color: white !important;
+  }
+  header .carousel-inner {
+    max-height: 30em;
+  }
+  header .jumbo-text {
+    top: 40%;
+  }
+  header .jumbo-text h2 {
+    font-size: 3.5em;
+  }
+  header .jumbo-text p {
+    font-size: 1.5em;
+  }
+}
+
+@media (min-width: 768px) {
+  header nav {
+    background-color: transparent;
+    width: 100%;
+  }
+  header nav .navbar-brand {
+    font-size: 3.5em;
+  }
+  header nav li {
+    margin: auto;
+    white-space: nowrap;
+  }
+  header nav form {
+    max-width: 16.5em;
+  }
+  header .carousel-inner {
+    max-height: 30em;
+  }
+  header .jumbo-text {
+    top: 30%;
+  }
+  header .jumbo-text h2 {
+    font-size: 3em;
+  }
+  header .jumbo-text p {
+    font-size: 1em;
   }
 }
 
