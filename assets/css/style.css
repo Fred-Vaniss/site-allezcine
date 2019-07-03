@@ -101,12 +101,15 @@ header {
 header nav li {
   font-weight: 500;
   -webkit-transition: background-color 0.3s;
-  -o-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
 
 header nav li a {
   color: #FF0036 !important;
+}
+
+header nav h1 {
+  font-weight: 800 !important;
 }
 
 header nav form {
@@ -170,7 +173,7 @@ header .jumbo-text p {
 }
 
 header .carousel-inner {
-  min-height: 480px;
+  max-height: 10%;
   background-color: #8b453a;
 }
 
@@ -196,7 +199,6 @@ header #trailer-btn {
   header nav li {
     background-color: rgba(0, 0, 0, 0.3);
     -webkit-transition: background-color 0.3s;
-    -o-transition: background-color 0.3s;
     transition: background-color 0.3s;
     margin: auto;
     white-space: nowrap;
@@ -206,7 +208,6 @@ header #trailer-btn {
   }
   header nav li a {
     -webkit-transition: color 0.3s;
-    -o-transition: color 0.3s;
     transition: color 0.3s;
   }
   header nav li a:hover {
@@ -307,7 +308,6 @@ header #trailer-btn {
   position: relative;
   -webkit-transition: -webkit-transform .2s;
   transition: -webkit-transform .2s;
-  -o-transition: transform .2s;
   transition: transform .2s;
   transition: transform .2s, -webkit-transform .2s;
 }
@@ -323,7 +323,6 @@ header #trailer-btn {
 
 .soc-button:hover {
   -webkit-transform: translateX(130px);
-      -ms-transform: translateX(130px);
           transform: translateX(130px);
 }
 
@@ -382,7 +381,6 @@ header #trailer-btn {
   border-radius: 5px;
   padding: 10px;
   -webkit-transition: background-color .2s;
-  -o-transition: background-color .2s;
   transition: background-color .2s;
 }
 
@@ -393,8 +391,7 @@ header #trailer-btn {
 .movie-entry .movie-title {
   margin-top: 5px;
   text-align: center;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   font-size: 14px;
@@ -476,8 +473,7 @@ header #trailer-btn {
 .shop-entry .movie-title {
   margin-top: 5px;
   text-align: center;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   font-size: 11px;
