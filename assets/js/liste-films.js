@@ -70,14 +70,13 @@ requestGenresList()
 //  Requête de la liste des films en salle
 /////////////////////////////////////////////////
 
-
-
 function requestMoviesInTheater(){
     let moviesRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=fr`);
     
     //  Vérification si ces deux requêtes ont bien étés abouties avant de lister les films
     Promise.all([moviesRequest, movieGenresRequest]).then(values => {
         listMovies("movie",values[0],moviesTarget,0,5,true)
+        bannerMovies(values[0])
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
         let errorMsg = document.createElement("p")
@@ -92,7 +91,7 @@ requestMoviesInTheater();
 
 //
 //  Fonction générale pour lister la liste des films
-/////////////////////////////////////////
+//////////////////////////////////////////////////////
 function listMovies (type,movies, target, index, amount, clean) {
     if (clean){
         target.innerHTML = ""
@@ -114,16 +113,20 @@ function listMovies (type,movies, target, index, amount, clean) {
         let shopDetails = document.createElement("div")
         let price = document.createElement("p");
 
-        img.src = `https://image.tmdb.org/t/p/w500/${movies.results[i].poster_path}`;
+        if(movies.results[i].poster_path){
+            img.src = `https://image.tmdb.org/t/p/w185/${movies.results[i].poster_path}`;
+        } else {
+            img.src = "assets/img/no-poster.jpg"
+        }
         img.className = "movie-poster"
 
         if (type == "movie" || type == "shop"){
-            entry.title = movies.results[i].original_title;
-            title.textContent = movies.results[i].original_title;
+            entry.title = movies.results[i].title;
+            title.textContent = movies.results[i].title;
             year.textContent = movies.results[i].release_date.substr(0,4);
         } else if (type = "serie"){
-            entry.title = movies.results[i].original_name;
-            title.textContent = movies.results[i].original_name;
+            entry.title = movies.results[i].name;
+            title.textContent = movies.results[i].name;
             year.textContent = movies.results[i].first_air_date.substr(0,4);
         }
         title.className = "movie-title"
@@ -163,12 +166,23 @@ function listMovies (type,movies, target, index, amount, clean) {
         target.appendChild(entry)
 
         if(type == "movie"){
-            entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id, movies.results[i].original_title))
+            entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id, movies.results[i].title))
         } else if (type == "serie") {
-            entry.addEventListener("click", () => gatherSerieDetails(movies.results[i].id, movies.results[i].original_name))
+            entry.addEventListener("click", () => gatherSerieDetails(movies.results[i].id, movies.results[i].name))
         } else {
             entry.addEventListener("click", () => gatherShopDetails(movies.results[i].id))
         }
+    }
+}
+
+//
+//  Images 4 films dans la bannière
+//////////////////////////////////////
+
+function bannerMovies (movies) {
+    let banners = document.getElementsByClassName("banner-movie")
+    for (let i = 0; i < 6; i++) {
+        banners[i].setAttribute("src", `https://image.tmdb.org/t/p/original/${movies.results[i].backdrop_path}`)
     }
 }
 
@@ -515,7 +529,7 @@ function displaySerieDetails (details, trailers, credits){
         lastDate.innerText = `Last air date: ${details.last_air_date}`
 
         let topCast = ""
-        for(let i = 0; i < 3; i++) {
+        for(let i = 0; i < 3 && i < credits.cast.length; i++) {
             topCast += `${credits.cast[i].name}, `
         }
         cast.innerText = `Featured cast: ${topCast}`
@@ -696,7 +710,7 @@ function displayShopDetails(details, trailers){
             infoMovieTarget.appendChild(video)
         }
 
-        title.textContent = details.original_title;
+        title.textContent = details.title;
         storyLineInd.innerText = "Story line"
         storyLineTarg.innerText = details.overview;
         
