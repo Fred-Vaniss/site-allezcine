@@ -529,7 +529,7 @@ function displaySerieDetails (details, trailers, credits){
         lastDate.innerText = `Last air date: ${details.last_air_date}`
 
         let topCast = ""
-        for(let i = 0; i < 3; i++) {
+        for(let i = 0; i < 3 && i < credits.cast.length; i++) {
             topCast += `${credits.cast[i].name}, `
         }
         cast.innerText = `Featured cast: ${topCast}`
