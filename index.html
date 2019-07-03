@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>ALLEZ CINE!</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <!--Google Font-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,800&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- FontAwesome CSS -->
@@ -22,10 +22,10 @@
         <!--Jumbotron-->
         <div class="jumbotron jumbotron-fluid p-0 m-0">
             <!--Navbar-->
-            <nav id="upNav" class="navbar navbar-expand-xl navbar-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand font-weight-bold white-border" href="#"><span
-                            class="text-maincolor">ALLEZ</span>CINE!</a>
+            <nav id="upNav" class="navbar navbar-expand-xl navbar-light container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <h1><span class="text-maincolor">ALLEZ</span>CINE!</h1>
+                    </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -100,7 +100,6 @@
                             </button>
                         </form>
                     </div>
-                </div>
             </nav>
             <!-- Carousel -->
             <div id="carouselMovies" class="carousel slide" data-ride="carousel">
@@ -139,8 +138,8 @@
 
     <!-- Bande rouge -->
     <section class="red-band container-fluid py-2 d-flex align-items-center flex-wrap">
-        <span class="phone-nb my-1 text-white d-flex justify-content-between mx-auto mx-xl-4">
-            <i class="fas fa-phone-alt"></i>
+        <span class="phone-nb my-1 text-white d-flex justify-content-between align-items-center mx-auto mx-xl-4">
+            <i class="fas fa-phone-alt mx-2"></i>
             (+000) 009 455 4088
         </span>
         <!-- Buttons trigger modal -->
@@ -165,7 +164,7 @@
     <section id="feat-movies">
         <div class="container">
             <h2>Featured movies</h2>
-            <div class="feat-movies-filters btn-group" role="group">
+            <div class="feat-movies-filters btn-group flex-wrap" role="group">
                 <button type="button" class="btn btn-primary filter-movie movie-null" data-genre="null">All</button>
                 <button type="button" class="btn btn-outline-primary filter-movie movie-28"
                     data-genre="28">Action</button>
@@ -191,7 +190,7 @@
     <section id="feat-serie">
         <div class="container">
             <h2>Featured series TV</h2>
-            <div class="feat-serie-filters btn-group" role="group">
+            <div class="feat-serie-filters btn-group flex-wrap" role="group">
                 <button type="button" class="btn btn-primary filter-serie serie-null" data-genre="null">All</button>
                 <button type="button" class="btn btn-outline-primary filter-serie serie-28"
                     data-genre="28">Action</button>
