@@ -14,8 +14,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/c8b24a6209.js"></script>
 </head>
 
 <body>
@@ -121,17 +120,21 @@
     </header>
 
     <!-- Bande rouge -->
-    <section class="red-band">
-        <div class="container">
-            <!-- Button trigger modal -->
-            <button type="button" id="login" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-                Login
-            </button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModal">
-                S'enregistrer
-            </button>
-        </div>
-    </section>
+        <section class="red-band container-fluid py-2 d-flex align-items-center flex-wrap">
+            <span class="phone-nb my-1 text-white d-flex justify-content-between mx-auto mx-xl-4">
+                <i class="fas fa-phone-alt"></i>
+                (+000) 009 455 4088
+            </span>
+            <!-- Buttons trigger modal -->
+            <div class="d-flex justify-content-between mx-auto mx-xl-0">
+                <button type="button" id="login" class="btn btn-dark mx-1" data-toggle="modal" data-target="#loginModal">
+                    Login
+                </button>
+                <button type="button" class="btn btn-dark mx-1" data-toggle="modal" data-target="#signupModal">
+                    S'enregistrer
+                </button>
+            </div>
+        </section>
 
     <!-- Liste des films -->
     <section id="movies">
@@ -725,9 +728,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button id="envoie1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#send"
-                        data-dismiss="modal">
-                        Confirm and send
-                    </button>
+                        data-dismiss="modal">Confirm and send</button>
                 </div>
             </div>
         </div>

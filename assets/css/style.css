@@ -101,7 +101,6 @@ header {
 header nav li {
   font-weight: 500;
   -webkit-transition: background-color 0.3s;
-  -o-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
 
@@ -182,7 +181,6 @@ header .jumbo-text p {
   header nav li {
     background-color: rgba(0, 0, 0, 0.3);
     -webkit-transition: background-color 0.3s;
-    -o-transition: background-color 0.3s;
     transition: background-color 0.3s;
     margin: auto;
     white-space: nowrap;
@@ -192,7 +190,6 @@ header .jumbo-text p {
   }
   header nav li a {
     -webkit-transition: color 0.3s;
-    -o-transition: color 0.3s;
     transition: color 0.3s;
   }
   header nav li a:hover {
@@ -272,7 +269,6 @@ header .jumbo-text p {
 
 .red-band {
   background-color: #FF0036;
-  height: 3rem;
 }
 
 .soc-buttons {
@@ -294,7 +290,6 @@ header .jumbo-text p {
   position: relative;
   -webkit-transition: -webkit-transform .2s;
   transition: -webkit-transform .2s;
-  -o-transition: transform .2s;
   transition: transform .2s;
   transition: transform .2s, -webkit-transform .2s;
 }
@@ -310,7 +305,6 @@ header .jumbo-text p {
 
 .soc-button:hover {
   -webkit-transform: translateX(130px);
-      -ms-transform: translateX(130px);
           transform: translateX(130px);
 }
 
@@ -369,7 +363,6 @@ header .jumbo-text p {
   border-radius: 5px;
   padding: 10px;
   -webkit-transition: background-color .2s;
-  -o-transition: background-color .2s;
   transition: background-color .2s;
 }
 
@@ -380,8 +373,7 @@ header .jumbo-text p {
 .movie-entry .movie-title {
   margin-top: 5px;
   text-align: center;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   font-size: 14px;
@@ -463,8 +455,7 @@ header .jumbo-text p {
 .shop-entry .movie-title {
   margin-top: 5px;
   text-align: center;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   font-size: 11px;
