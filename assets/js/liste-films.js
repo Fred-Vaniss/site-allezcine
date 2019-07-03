@@ -239,20 +239,32 @@ document.getElementById("more-movie-btn").addEventListener("click", () => {
 //  Filtre des genres des films
 ////////////////////////////////////
 let moviesGenreBtns = document.getElementsByClassName("filter-movie")
-for (const btn of moviesGenreBtns) {
-    btn.addEventListener("click", () => {
-        document.getElementsByClassName(`movie-${movieGenre}`)[0].classList.remove("btn-primary")
-        document.getElementsByClassName(`movie-${movieGenre}`)[0].classList.add("btn-outline-primary")
+let moviesGenreNav = document.getElementsByClassName("filter-movie-nav")
 
-        movieGenre = btn.getAttribute("data-genre")
-        moviePage = 1
-        displayedMovies = 0
-        featMoviesFullList = {"results":[]}
-        requestFeatMovies()
+filterMovieEventListener (moviesGenreBtns)
+filterMovieEventListener (moviesGenreNav)
 
-        document.getElementsByClassName(`movie-${movieGenre}`)[0].classList.remove("btn-outline-primary")
-        document.getElementsByClassName(`movie-${movieGenre}`)[0].classList.add("btn-primary")
-    })
+function filterMovieEventListener (buttons){
+    for (const btn of buttons) {
+        btn.addEventListener("click", () => {
+            let genreId = btn.getAttribute("data-genre")
+            filterMovieGenre(genreId)
+        })
+    }
+}
+
+function filterMovieGenre (genreId) {
+    document.getElementsByClassName(`movie-${movieGenre}`)[0].classList.remove("btn-primary")
+    document.getElementsByClassName(`movie-${movieGenre}`)[0].classList.add("btn-outline-primary")
+
+    movieGenre = genreId
+    moviePage = 1
+    displayedMovies = 0
+    featMoviesFullList = {"results":[]}
+    requestFeatMovies()
+
+    document.getElementsByClassName(`movie-${movieGenre}`)[0].classList.remove("btn-outline-primary")
+    document.getElementsByClassName(`movie-${movieGenre}`)[0].classList.add("btn-primary")
 }
 
 /////////////////////////////////////////
