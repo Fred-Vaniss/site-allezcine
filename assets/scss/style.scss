@@ -184,6 +184,14 @@ header {
         max-height: 10%;
         background-color: rgb(139, 69, 58);
     }
+    .carousel-item{
+        opacity: 0.3;
+    }
+
+    #trailer-btn{
+        background-color: #FE4240;
+        border: none;
+    }
 }
 
 @media (min-width: 1200px) {
