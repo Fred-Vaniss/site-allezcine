@@ -501,10 +501,6 @@ header #trailer-btn {
   padding-right: 0;
 }
 
-#shop-list-target, #shop-selected-target {
-  padding-left: 0;
-}
-
 #shop-list-target {
   -ms-flex-line-pack: start;
       align-content: flex-start;
@@ -516,7 +512,7 @@ header #trailer-btn {
 
 .shop-details {
   padding: 15px;
-  height: 285px;
+  height: 295px;
   overflow: auto;
 }
 
@@ -530,6 +526,24 @@ header #trailer-btn {
 
 .shop-details::-webkit-scrollbar-track {
   background-color: #666;
+}
+
+.shop-entry {
+  margin-right: 10px;
+}
+
+#shop-selected-target {
+  position: relative;
+}
+
+#shop-list-target {
+  margin-bottom: 25px;
+}
+
+.shop-nav {
+  position: absolute;
+  top: -35px;
+  right: 15px;
 }
 
 .shop-detail-title {

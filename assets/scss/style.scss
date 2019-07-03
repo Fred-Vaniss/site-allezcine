@@ -543,10 +543,6 @@ header {
     padding-right: 0;
 }
 
-#shop-list-target, #shop-selected-target{
-    padding-left: 0;
-}
-
 #shop-list-target{
     align-content: flex-start;
 }
@@ -563,7 +559,7 @@ header {
 
 .shop-details{
     padding: 15px;
-    height: 285px;
+    height: 295px;
     overflow: auto;
 
     &::-webkit-scrollbar{
@@ -575,6 +571,24 @@ header {
             background-color: #666;
         }
     }
+}
+
+.shop-entry{
+    margin-right: 10px;
+}
+
+#shop-selected-target{
+    position: relative;
+}
+
+#shop-list-target{
+    margin-bottom: 25px;
+}
+
+.shop-nav{
+    position: absolute;
+    top: -35px;
+    right: 15px;
 }
 
 .shop-detail{

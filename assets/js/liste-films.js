@@ -649,6 +649,9 @@ $('.modal-banner-trailer').on("hidden.bs.modal", function() {
 // Magasin
 //
 /////////////////////////////////////////
+let shopNav = document.getElementsByClassName("shop-nav")[0]
+let navDupe = document.importNode(shopNav,true)
+let shopBtnsHaveEventListener = false
 
 let shopTarget = document.getElementById("shop-list-target")
 let shopDetailsTarget = document.getElementById("shop-selected-target")
@@ -762,6 +765,15 @@ function displayShopDetails(details, trailers){
         let rowFour = document.createElement("tr")
         let priceInd = document.createElement("td")
         let priceTarg = document.createElement("td")
+
+        target.appendChild(navDupe)
+
+        if(!shopBtnsHaveEventListener){
+            document.getElementById("shop-next").addEventListener("click", () => nextShopMovie("next"))
+            document.getElementById("shop-previous").addEventListener("click", () => nextShopMovie("previous"))
+            shopBtnsHaveEventListener = true
+        }
+
 
         let v = 0
         let trailerFind
