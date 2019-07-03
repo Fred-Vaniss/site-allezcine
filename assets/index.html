@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Login">
+        Login
+    </button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enregistre">
+        S'enregistrer
+    </button>
+    <!-- connexion -->
+    <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="connexion">Se connecter</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="user">Identifiant</label>
+                            <input type="user" class="form-control" id="user" aria-describedby="emailHelp"
+                                placeholder="Entrer identifiant">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                placeholder="Password">
+                            <small id="PasswordHelp" class="form-text text-muted"><a href="">Mot de passe
+                                    oublié?</a></small>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Check1">
+                            <label class="form-check-label" for="Check1">Rester connecter</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Connexion</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enregistre">
+                        Créer un compte
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--enregistrer-->
+    <div class="modal fade" id="enregistre" tabindex="-1" role="dialog" aria-labelledby="enregistrer"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="connexion">S'enregistrer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="user">Nom</label>
+                            <input type="user" class="form-control" id="user" aria-describedby="emailHelp"
+                                placeholder="Entrer votre nom">
+                        </div>
+                        <div class="form-group">
+                            <label for="mail">Adresse email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="Password1" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Comfirmer Password</label>
+                            <input type="password" class="form-control" id="Password2" placeholder="Password">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Check1">
+                            <label class="form-check-label" for="Check1">Conditions générales d'utilisation</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="butt-enregistrer">S'enregistrer</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Contact-->
+    <form>
+        <div class="form-group row">
+            <div class="col-md-4 offset-2">
+                <input id="cname" type="text" class="form-control" placeholder="Nom" required>
+            </div>
+            <div class="col-md-4">
+                <input id="cfirstname" type="text" class="form-control" placeholder="Prénom"required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 offset-2">
+                <input id="cmail" type="text" class="form-control" placeholder="Email"required>
+            </div>
+            <div class="col-md-4">
+                <input id="cobject" type="text" class="form-control" placeholder="Objet"required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-8 offset-2">
+                <input id="cmessage" type="text" class="form-control" placeholder="Votre message"required>
+                <button id="envoie" type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#confirmation">
+                    Envoyer
+                </button>
+            </div>
+
+            <!--Popup-->
+            <div class="modal" tabindex="-1" id="confirmation" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Confirmation</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label for="confirm">Name</label>
+                                    <input id="confirm-name" type="text" class="form-control" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="confirm">Firstname</label>
+                                    <input id="confirm-firstname" type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label for="confirm">Email</label>
+                                    <input id="confirm-mail" type="text" class="form-control" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="confirm">Object</label>
+                                    <input id="confirm-object" type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="confirm">Message</label>
+                                    <input id="confirm-mess" type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="envoie" type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#send" data-dismiss="modal">
+                                Confirm and send
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!--Confirmation-->
+        <div class="modal" tabindex="-1" id="send" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Message envoyé</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <p><i class="fas fa-check"></i></p>
+                            </div>
+                            <div class="col-md-7">
+                                <p>Nous vous remercions pour votre message. Nous mettons tout en oeuvre pour vous
+                                    répondre dans
+                                    les plus brefs délais.
+                                    En attendant notre réponse, nous vous proposons de faire un tour du côté de nos
+                                    actualités.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+<script src="main.js"></script>
+
+</html>

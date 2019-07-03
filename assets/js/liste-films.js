@@ -624,6 +624,26 @@ function displaySerieDetails (details, trailers, credits){
     }
 }
 
+////////////////////////////////////////////////////
+//
+// Suppression video lors de la fermeture du modal
+//
+////////////////////////////////////////////////////
+
+$('.modal-info-movie').on("hidden.bs.modal", function() {
+    let video = document.getElementById("info-movie-target").getElementsByClassName("detail-video-container")[0]
+    if (video){
+        video.parentNode.removeChild(video)
+    }
+})
+
+$('.modal-banner-trailer').on("hidden.bs.modal", function() {
+    let video = document.getElementById("banner-trailer-target").getElementsByClassName("detail-video-container")[0]
+    if (video){
+        video.parentNode.removeChild(video)
+    }
+})
+
 /////////////////////////////////////////
 //
 // Magasin
