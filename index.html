@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
     <!--Google Font-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
@@ -45,13 +44,20 @@
                                     Featured Movies
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="null"   href="#feat-movies">All</a>
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="28"     href="#feat-movies">Action</a>
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="35"     href="#feat-movies">Comedy</a>
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="878"    href="#feat-movies">Fiction</a>
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="10749"  href="#feat-movies">Romance</a>
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="27"     href="#feat-movies">Horror</a>
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="53"     href="#feat-movies">Thriller</a>
+                                    <a class="dropdown-item filter-movie-nav" data-genre="null"
+                                        href="#feat-movies">All</a>
+                                    <a class="dropdown-item filter-movie-nav" data-genre="28"
+                                        href="#feat-movies">Action</a>
+                                    <a class="dropdown-item filter-movie-nav" data-genre="35"
+                                        href="#feat-movies">Comedy</a>
+                                    <a class="dropdown-item filter-movie-nav" data-genre="878"
+                                        href="#feat-movies">Fiction</a>
+                                    <a class="dropdown-item filter-movie-nav " data-genre="10749"
+                                        href="#feat-movies">Romance</a>
+                                    <a class="dropdown-item filter-movie-nav" data-genre="27"
+                                        href="#feat-movies">Horror</a>
+                                    <a class="dropdown-item filter-movie-nav" data-genre="53"
+                                        href="#feat-movies">Thriller</a>
                                 </div>
                             </li>
                             <!--Features Shows -->
@@ -61,13 +67,20 @@
                                     Featured Shows
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="null"   href="#feat-serie">All</a>
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="28"     href="#feat-serie">Action</a>
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="35"     href="#feat-serie">Comedy</a>
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="878"    href="#feat-serie">Fiction</a>
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="10749"  href="#feat-serie">Romance</a>
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="27"     href="#feat-serie">Horror</a>
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="53"     href="#feat-serie">Thriller</a>
+                                    <a class="dropdown-item filter-serie-nav" data-genre="null"
+                                        href="#feat-serie">All</a>
+                                    <a class="dropdown-item filter-serie-nav" data-genre="28"
+                                        href="#feat-serie">Action</a>
+                                    <a class="dropdown-item filter-serie-nav" data-genre="35"
+                                        href="#feat-serie">Comedy</a>
+                                    <a class="dropdown-item filter-serie-nav" data-genre="878"
+                                        href="#feat-serie">Fiction</a>
+                                    <a class="dropdown-item filter-serie-nav" data-genre="10749"
+                                        href="#feat-serie">Romance</a>
+                                    <a class="dropdown-item filter-serie-nav" data-genre="27"
+                                        href="#feat-serie">Horror</a>
+                                    <a class="dropdown-item filter-serie-nav" data-genre="53"
+                                        href="#feat-serie">Thriller</a>
                                 </div>
                             </li>
                             <!--Shop movie-->
@@ -120,21 +133,21 @@
     </header>
 
     <!-- Bande rouge -->
-        <section class="red-band container-fluid py-2 d-flex align-items-center flex-wrap">
-            <span class="phone-nb my-1 text-white d-flex justify-content-between mx-auto mx-xl-4">
-                <i class="fas fa-phone-alt"></i>
-                (+000) 009 455 4088
-            </span>
-            <!-- Buttons trigger modal -->
-            <div class="d-flex justify-content-between mx-auto mx-xl-0">
-                <button type="button" id="login" class="btn btn-dark mx-1" data-toggle="modal" data-target="#loginModal">
-                    Login
-                </button>
-                <button type="button" class="btn btn-dark mx-1" data-toggle="modal" data-target="#signupModal">
-                    S'enregistrer
-                </button>
-            </div>
-        </section>
+    <section class="red-band container-fluid py-2 d-flex align-items-center flex-wrap">
+        <span class="phone-nb my-1 text-white d-flex justify-content-between mx-auto mx-xl-4">
+            <i class="fas fa-phone-alt"></i>
+            (+000) 009 455 4088
+        </span>
+        <!-- Buttons trigger modal -->
+        <div class="d-flex justify-content-between mx-auto mx-xl-0">
+            <button type="button" id="login" class="btn btn-dark mx-1" data-toggle="modal" data-target="#loginModal">
+                Login
+            </button>
+            <button type="button" class="btn btn-dark mx-1" data-toggle="modal" data-target="#signupModal">
+                S'enregistrer
+            </button>
+        </div>
+    </section>
 
     <!-- Liste des films -->
     <section id="movies">
@@ -147,7 +160,7 @@
     <section id="feat-movies">
         <div class="container">
             <h2>Featured movies</h2>
-            <div class="feat-movies-filters">
+            <div class="feat-movies-filters btn-group" role="group">
                 <button type="button" class="btn btn-primary filter-movie movie-null" data-genre="null">All</button>
                 <button type="button" class="btn btn-outline-primary filter-movie movie-28"
                     data-genre="28">Action</button>
@@ -173,7 +186,7 @@
     <section id="feat-serie">
         <div class="container">
             <h2>Featured series TV</h2>
-            <div class="feat-serie-filters">
+            <div class="feat-serie-filters btn-group" role="group">
                 <button type="button" class="btn btn-primary filter-serie serie-null" data-genre="null">All</button>
                 <button type="button" class="btn btn-outline-primary filter-serie serie-28"
                     data-genre="28">Action</button>
@@ -249,7 +262,8 @@
     <!--Formulaire contact-->
     <section id="contact">
         <div class="container">
-            <form>
+            <h2>Shop movies</h2>
+            <form class="my-4">
                 <div class="form-group row">
                     <div class="col-md-4 offset-2">
                         <input id="cname" type="text" class="form-control" placeholder="Nom">
