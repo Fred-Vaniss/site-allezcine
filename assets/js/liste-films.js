@@ -114,16 +114,16 @@ function listMovies (type,movies, target, index, amount, clean) {
         let shopDetails = document.createElement("div")
         let price = document.createElement("p");
 
-        img.src = `https://image.tmdb.org/t/p/w500/${movies.results[i].poster_path}`;
+        img.src = `https://image.tmdb.org/t/p/w185/${movies.results[i].poster_path}`;
         img.className = "movie-poster"
 
         if (type == "movie" || type == "shop"){
-            entry.title = movies.results[i].original_title;
-            title.textContent = movies.results[i].original_title;
+            entry.title = movies.results[i].title;
+            title.textContent = movies.results[i].title;
             year.textContent = movies.results[i].release_date.substr(0,4);
         } else if (type = "serie"){
-            entry.title = movies.results[i].original_name;
-            title.textContent = movies.results[i].original_name;
+            entry.title = movies.results[i].name;
+            title.textContent = movies.results[i].name;
             year.textContent = movies.results[i].first_air_date.substr(0,4);
         }
         title.className = "movie-title"
@@ -163,9 +163,9 @@ function listMovies (type,movies, target, index, amount, clean) {
         target.appendChild(entry)
 
         if(type == "movie"){
-            entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id, movies.results[i].original_title))
+            entry.addEventListener("click", () => gatherMovieDetails(movies.results[i].id, movies.results[i].title))
         } else if (type == "serie") {
-            entry.addEventListener("click", () => gatherSerieDetails(movies.results[i].id, movies.results[i].original_name))
+            entry.addEventListener("click", () => gatherSerieDetails(movies.results[i].id, movies.results[i].name))
         } else {
             entry.addEventListener("click", () => gatherShopDetails(movies.results[i].id))
         }
@@ -696,7 +696,7 @@ function displayShopDetails(details, trailers){
             infoMovieTarget.appendChild(video)
         }
 
-        title.textContent = details.original_title;
+        title.textContent = details.title;
         storyLineInd.innerText = "Story line"
         storyLineTarg.innerText = details.overview;
         
