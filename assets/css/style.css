@@ -109,6 +109,10 @@ header nav li a {
   color: #FF0036 !important;
 }
 
+header nav h1 {
+  font-weight: 800 !important;
+}
+
 header nav form {
   background-color: rgba(0, 0, 0, 0.3) !important;
 }
@@ -160,17 +164,15 @@ header .jumbo-text {
 }
 
 header .jumbo-text h2 {
-  font-size: 1.5em;
   text-transform: uppercase;
 }
 
 header .jumbo-text p {
   letter-spacing: 0.15em;
-  font-size: 1em;
 }
 
 header .carousel-inner {
-  min-height: 480px;
+  max-height: 10%;
   background-color: #8b453a;
 }
 
@@ -288,6 +290,15 @@ header #trailer-btn {
   background-color: #FF0036;
 }
 
+.section-title {
+  padding-left: 1em;
+  border-left: solid 0.2em #FF0036;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
 .soc-buttons {
   position: fixed;
   bottom: 15vh;
@@ -359,7 +370,10 @@ header #trailer-btn {
   margin-top: 1em;
 }
 
-#movies-target, #feat-movies-target, #feat-series-target, #shop-list-target {
+#movies-target,
+#feat-movies-target,
+#feat-series-target,
+#shop-list-target {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -501,12 +515,18 @@ header #trailer-btn {
   padding-right: 0;
 }
 
+#shop-list-target,
+#shop-selected-target {
+  padding-left: 0;
+}
+
 #shop-list-target {
   -ms-flex-line-pack: start;
       align-content: flex-start;
 }
 
-.shop-details, .detail-video-container {
+.shop-details,
+.detail-video-container {
   background-color: #0D0D0D;
 }
 

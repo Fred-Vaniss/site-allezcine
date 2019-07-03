@@ -1,0 +1,66 @@
+{
+    "batman": {
+        "titre": "Batman",
+        "image": "../img/batmanmovie-2017-comedie.jpg",
+        "annee": 2017,
+        "genre": "Comédie",
+        "realisateur": " Chris McKay",
+        "acteur": ["Philippe Valmont", "Rayane Bensetti", "Stéphane Bern"],
+        "ressume": "Il en rêvait depuis La Grande Aventure Lego : Batman est enfin le héros de son propre film ! Mais la situation a bien changé à Gotham – et s'il veut sauver la ville des griffes du Joker, il lui faudra arrêter de jouer au justicier masqué et découvrir le travail d'équipe ! Peut-être pourra-t-il alors se décoincer un peu…",
+        "bande annonce": "https://www.youtube.com/embed/9mznUFqFy74"
+
+    },
+    "Hostel": {
+        "titre": "Hostel",
+        "image": "../img/hostel-2005-thriller.jpg",
+        "annee": 2005,
+        "genre": "Thriller",
+        "realisateur": " Eli Roth",
+        "acteur": [" Jay Hernandez"," Derek Richardson"," Eythor Gudjonsson"],
+        "ressume": "Deux étudiants américains, Paxton et Josh, ont décidé de découvrir l'Europe avec un maximum d'aventures et de sensations fortes. Avec Oli, un Islandais qu'ils ont rencontré en chemin, ils se retrouvent dans une petite ville de Slovaquie dans ce qu'on leur a décrit comme le nirvana des vacances de débauche : une propriété très spéciale, pleine de filles aussi belles que faciles...Natalya et Svetlana sont effectivement très cools... un peu trop, même. Paxton et Josh vont vite se rendre compte qu'ils sont tombés dans un piège. Ce voyage-là va les conduire au bout de l'horreur... ",
+        "bande annonce": "https://www.youtube.com/watch?v=cVBdQiUHhZI"
+
+    },
+    "Inception":{
+        "titre":"Inception" ,
+        "image":"../img/inception-2010-scifi.jpg" ,
+        "annee": 2010 ,
+        "genre":"Sciences Fiction", 
+        "ralisateur":"Christopher Nolan" ,
+        "acteur":["Leonardo DiCaprio", "Marion Cotillard", "Ellen Page"] , 
+        "ressume":"Dom Cobb est un voleur expérimenté – le meilleur qui soit dans l’art périlleux de l’extraction : sa spécialité consiste à s’approprier les secrets les plus précieux d’un individu, enfouis au plus profond de son subconscient, pendant qu’il rêve et que son esprit est particulièrement vulnérable. Très recherché pour ses talents dans l’univers trouble de l’espionnage industriel, Cobb est aussi devenu un fugitif traqué dans le monde entier qui a perdu tout ce qui lui est cher. Mais une ultime mission pourrait lui permettre de retrouver sa vie d’avant – à condition qu’il puisse accomplir l’impossible : l’inception. Au lieu de subtiliser un rêve, Cobb et son équipe doivent faire l’inverse : implanter une idée dans l’esprit d’un individu. S’ils y parviennent, il pourrait s’agir du crime parfait. Et pourtant, aussi méthodiques et doués soient-ils, rien n’aurait pu préparer Cobb et ses partenaires à un ennemi redoutable qui semble avoir systématiquement un coup d’avance sur eux. Un ennemi dont seul Cobb aurait pu soupçonner l’existence." , 
+        "bande annonce":"https://www.youtube.com/watch?v=HcoZbHBDHQA"
+        
+    },
+    "Intouchables":{
+        "titre":"Intouchables" ,
+        "image":"../img/intouchables-2011-comedie.jpg",
+        "annee":2011 ,
+        "genre": "Comédie" , 
+        "ralisateur": " Eric Toledano, Olivier Nakache",
+        "acteur":["François Cluzet", "Omar Sy", "Anne Le Ny "] , 
+        "ressume": "A la suite d’un accident de parapente, Philippe, riche aristocrate, engage comme aide à domicile Driss, un jeune de banlieue tout juste sorti de prison. Bref la personne la moins adaptée pour le job. Ensemble ils vont faire cohabiter Vivaldi et Earth Wind and Fire, le verbe et la vanne, les costumes et les bas de survêtement... Deux univers vont se télescoper, s’apprivoiser, pour donner naissance à une amitié aussi dingue, drôle et forte qu’inattendue, une relation unique qui fera des étincelles et qui les rendra... Intouchables.", 
+        "bande annonce":"https://www.youtube.com/watch?v=nWcWgBCPj1c"
+        
+},
+"Le patient anglais":{
+    "titre":"Le patient anglais" ,
+    "image": "../img/lepatientanglais-1996-dramatique.jpg",
+    "annee":1996,
+    "genre": "Dramatique" , 
+    "ralisateur":"Anthony Minghella" ,
+    "acteur":["Ralph Fiennes", "Juliette Binoche", "Willem Dafoe" ], 
+    "ressume": "En 1945, quatre personnes dechirées par la guerre se réfugient dans un monastère abandonné de Toscane pour se guérir de leurs maux. Peu à peu le passé va resurgir et la présence d'un homme mystérieux et méconnaissable, le patient anglais, va bouleverser le destin de ceux qui croisent son chemin.", 
+    "bande annonce":"https://www.youtube.com/watch?v=FguRZAv_LS4"
+},
+"Les deux tours":{
+    "titre": "Le seigneurs des anneaux : Les deux tours",
+    "image":"../img/lesdeuxtours-2002-aventure.jpg" ,
+    "annee": 2002,
+    "genre": "Aventure" , 
+    "ralisateur": ,
+    "acteur": , 
+    "ressume":"Après la mort de Boromir et la disparition de Gandalf, la Communauté s'est scindée en trois. Perdus dans les collines d'Emyn Muil, Frodon et Sam découvrent qu'ils sont suivis par Gollum, une créature versatile corrompue par l'Anneau. Celui-ci promet de conduire les Hobbits jusqu'à la Porte Noire du Mordor. A travers la Terre du Milieu, Aragorn, Legolas et Gimli font route vers le Rohan, le royaume assiégé de Theoden. Cet ancien grand roi, manipulé par l'espion de Saroumane, le sinistre Langue de Serpent, est désormais tombé sous la coupe du malfaisant Magicien. Eowyn, la nièce du Roi, reconnaît en Aragorn un meneur d'hommes. Entretemps, les Hobbits Merry et Pippin, prisonniers des Uruk-hai, se sont échappés et ont découvert dans la mystérieuse Forêt de Fangorn un allié inattendu : Sylvebarbe, gardien des arbres, représentant d'un ancien peuple végétal dont Saroumane a décimé la forêt..." , 
+    "bande annonce": , 
+    
+    

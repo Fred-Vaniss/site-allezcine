@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="icon" type="image/png" href="assets/img/cine.png"/>
+    <title>ALLEZ CINE!</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
     <!--Google Font-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,800&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- FontAwesome CSS -->
@@ -23,70 +23,75 @@
         <!--Jumbotron-->
         <div class="jumbotron jumbotron-fluid p-0 m-0">
             <!--Navbar-->
-            <nav id="upNav" class="navbar navbar-expand-xl navbar-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand font-weight-bold white-border" href="#"><span
-                            class="text-maincolor">ALLEZ</span>CINE!</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <!--Home-->
-                            <li class="nav-item mx-1 rounded">
-                                <a class="nav-link" href="#">Home</a>
-                            </li>
-                            <!--Featured Movies-->
-                            <li class="nav-item dropdown mx-1 rounded">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMovies" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Featured Movies
-                                </a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="null"   href="#feat-movies">All</a>
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="28"     href="#feat-movies">Action</a>
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="35"     href="#feat-movies">Comedy</a>
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="878"    href="#feat-movies">Fiction</a>
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="10749"  href="#feat-movies">Romance</a>
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="27"     href="#feat-movies">Horror</a>
-                                    <a class="dropdown-item filter-movie-nav"   data-genre="53"     href="#feat-movies">Thriller</a>
-                                </div>
-                            </li>
-                            <!--Features Shows -->
-                            <li class="nav-item dropdown mx-1 rounded">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownShows" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Featured Shows
-                                </a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="null"   href="#feat-serie">All</a>
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="28"     href="#feat-serie">Action</a>
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="35"     href="#feat-serie">Comedy</a>
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="878"    href="#feat-serie">Fiction</a>
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="10749"  href="#feat-serie">Romance</a>
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="27"     href="#feat-serie">Horror</a>
-                                    <a class="dropdown-item filter-serie-nav"   data-genre="53"     href="#feat-serie">Thriller</a>
-                                </div>
-                            </li>
-                            <!--Shop movie-->
-                            <li class="nav-item mx-1 rounded">
-                                <a class="nav-link" href="#shop">Shop movie</a>
-                            </li>
-                            <!--Contact-->
-                            <li class="nav-item mx-1 rounded">
-                                <a class="nav-link" href="#contact">Contact</a>
-                            </li>
-                        </ul>
-                        <!--Search bar-->
-                        <form class="form-inline rounded-pill overflow-hidden flex-nowrap">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
+            <nav id="upNav" class="navbar navbar-expand-xl navbar-light container-fluid">
+                <a class="navbar-brand" href="#">
+                    <h1 class="m-0 p-0"><span class="text-maincolor">ALLEZ</span>CINE!</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <!--Home-->
+                        <li class="nav-item mx-1 rounded">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <!--Featured Movies-->
+                        <li class="nav-item dropdown mx-1 rounded">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMovies" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Featured Movies
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item filter-movie-nav" data-genre="null" href="#feat-movies">All</a>
+                                <a class="dropdown-item filter-movie-nav" data-genre="28" href="#feat-movies">Action</a>
+                                <a class="dropdown-item filter-movie-nav" data-genre="35" href="#feat-movies">Comedy</a>
+                                <a class="dropdown-item filter-movie-nav" data-genre="878"
+                                    href="#feat-movies">Fiction</a>
+                                <a class="dropdown-item filter-movie-nav " data-genre="10749"
+                                    href="#feat-movies">Romance</a>
+                                <a class="dropdown-item filter-movie-nav" data-genre="27" href="#feat-movies">Horror</a>
+                                <a class="dropdown-item filter-movie-nav" data-genre="53"
+                                    href="#feat-movies">Thriller</a>
+                            </div>
+                        </li>
+                        <!--Features Shows -->
+                        <li class="nav-item dropdown mx-1 rounded">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownShows" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Featured Shows
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item filter-serie-nav" data-genre="null" href="#feat-serie">All</a>
+                                <a class="dropdown-item filter-serie-nav" data-genre="28" href="#feat-serie">Action</a>
+                                <a class="dropdown-item filter-serie-nav" data-genre="35" href="#feat-serie">Comedy</a>
+                                <a class="dropdown-item filter-serie-nav" data-genre="878"
+                                    href="#feat-serie">Fiction</a>
+                                <a class="dropdown-item filter-serie-nav" data-genre="10749"
+                                    href="#feat-serie">Romance</a>
+                                <a class="dropdown-item filter-serie-nav" data-genre="27" href="#feat-serie">Horror</a>
+                                <a class="dropdown-item filter-serie-nav" data-genre="53"
+                                    href="#feat-serie">Thriller</a>
+                            </div>
+                        </li>
+                        <!--Shop movie-->
+                        <li class="nav-item mx-1 rounded">
+                            <a class="nav-link" href="#shop">Shop movie</a>
+                        </li>
+                        <!--Contact-->
+                        <li class="nav-item mx-1 rounded">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <!--Search bar-->
+                    <form class="form-inline rounded-pill overflow-hidden flex-nowrap">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
                 </div>
             </nav>
             <!-- Carousel -->
@@ -95,7 +100,8 @@
                 <div class="jumbo-text">
                     <h2>Latest <span class="text-maincolor">On</span>line <span class="text-maincolor">Mo</span>vie</h2>
                     <p class="lead">In space, No one can hear you scream</p>
-                    <button type="button" id="trailer-btn" class="btn btn-primary btn-trailer" data-toggle="modal" data-target=".modal-banner-trailer">Watch trailer</button>
+                    <button type="button" id="trailer-btn" class="btn btn-primary btn-trailer" data-toggle="modal"
+                        data-target=".modal-banner-trailer">Watch trailer</button>
                 </div>
                 <ol class="carousel-indicators">
                     <li data-target="#carouselMovies" data-slide-to="0" class="carousel-button active"></li>
@@ -106,24 +112,19 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100 banner-movie"
-                            src="" alt="First slide">
+                        <img class="d-block w-100 banner-movie" src="" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100 banner-movie"
-                            src="" alt="Second slide">
+                        <img class="d-block w-100 banner-movie" src="" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100 banner-movie"
-                            src="" alt="Third slide">
+                        <img class="d-block w-100 banner-movie" src="" alt="Third slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100 banner-movie"
-                            src="" alt="Fourth slide">
+                        <img class="d-block w-100 banner-movie" src="" alt="Fourth slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100 banner-movie"
-                            src="" alt="Fifth slide">
+                        <img class="d-block w-100 banner-movie" src="" alt="Fifth slide">
                     </div>
                 </div>
             </div>
@@ -131,21 +132,22 @@
     </header>
 
     <!-- Bande rouge -->
-        <section class="red-band container-fluid py-2 d-flex align-items-center flex-wrap">
-            <span class="phone-nb my-1 text-white d-flex justify-content-between mx-auto mx-xl-4">
-                <i class="fas fa-phone-alt"></i>
-                (+000) 009 455 4088
-            </span>
-            <!-- Buttons trigger modal -->
-            <div class="d-flex justify-content-between mx-auto mx-xl-0">
-                <button type="button" id="login" class="btn btn-dark mx-1" data-toggle="modal" data-target="#loginModal">
-                    Login
-                </button>
-                <button type="button" class="btn btn-dark mx-1" data-toggle="modal" data-target="#signupModal">
-                    S'enregistrer
-                </button>
-            </div>
-        </section>
+    <section class="red-band container-fluid py-2 d-flex align-items-center flex-wrap">
+        <span class="phone-nb my-1 text-white d-flex justify-content-between align-items-center mx-auto mx-xl-4">
+            <i class="fas fa-phone-alt mx-2"></i>
+            (+000) 009 455 4088
+        </span>
+        <!-- Buttons trigger modal -->
+        <div class="d-flex justify-content-between mx-auto mx-xl-0">
+            <button type="button" id="login" class="btn btn-dark mx-1 rounded-0" data-toggle="modal"
+                data-target="#loginModal">
+                Login
+            </button>
+            <button type="button" class="btn btn-dark mx-1 rounded-0" data-toggle="modal" data-target="#signupModal">
+                S'enregistrer
+            </button>
+        </div>
+    </section>
 
     <!-- Liste des films -->
     <section id="movies">
@@ -155,61 +157,62 @@
     </section>
 
     <!-- Liste des films en vedette -->
-    <section id="feat-movies">
-        <div class="container">
-            <h2>Featured movies</h2>
-            <div class="feat-movies-filters">
-                <button type="button" class="btn btn-primary filter-movie movie-null" data-genre="null">All</button>
-                <button type="button" class="btn btn-outline-primary filter-movie movie-28"
-                    data-genre="28">Action</button>
-                <button type="button" class="btn btn-outline-primary filter-movie movie-35"
-                    data-genre="35">Comedy</button>
-                <button type="button" class="btn btn-outline-primary filter-movie movie-878"
-                    data-genre="878">Fiction</button>
-                <button type="button" class="btn btn-outline-primary filter-movie movie-10749"
-                    data-genre="10749">Romance</button>
-                <button type="button" class="btn btn-outline-primary filter-movie movie-27"
-                    data-genre="27">Horror</button>
-                <button type="button" class="btn btn-outline-primary filter-movie movie-53"
-                    data-genre="53">Thriller</button>
-            </div>
-            <div id="feat-movies-target"></div>
-            <div class="btn-container">
-                <button type="button" id="more-movie-btn" class="btn btn-primary" data-genre="27">Show more</button>
-            </div>
+    <section id="feat-movies" class="container">
+        <h2 class="section-title">Featured movies</h2>
+        <div class="feat-movies-filters btn-group flex-wrap rounded-0" role="group">
+            <button type="button" class="btn btn-primary filter-movie movie-null rounded-0"
+                data-genre="null">All</button>
+            <button type="button" class="btn btn-outline-primary filter-movie movie-28 rounded-0"
+                data-genre="28">Action</button>
+            <button type="button" class="btn btn-outline-primary filter-movie movie-35 rounded-0"
+                data-genre="35">Comedy</button>
+            <button type="button" class="btn btn-outline-primary filter-movie movie-878 rounded-0"
+                data-genre="878">Fiction</button>
+            <button type="button" class="btn btn-outline-primary filter-movie movie-10749 rounded-0"
+                data-genre="10749">Romance</button>
+            <button type="button" class="btn btn-outline-primary filter-movie movie-27 rounded-0"
+                data-genre="27">Horror</button>
+            <button type="button" class="btn btn-outline-primary filter-movie movie-53 rounded-0"
+                data-genre="53">Thriller</button>
+        </div>
+        <div id="feat-movies-target"></div>
+        <div class="btn-container">
+            <button type="button" id="more-movie-btn" class="btn btn-primary" data-genre="27">Show more</button>
         </div>
     </section>
 
     <!-- Liste des séries en vedette -->
-    <section id="feat-serie">
-        <div class="container">
-            <h2>Featured series TV</h2>
-            <div class="feat-serie-filters">
-                <button type="button" class="btn btn-primary filter-serie serie-null" data-genre="null">All</button>
-                <button type="button" class="btn btn-outline-primary filter-serie serie-28"
+    <section id="feat-serie" class="container">
+            <h2 class="section-title">Featured series TV</h2>
+            <div class="feat-serie-filters btn-group flex-wrap" role="group">
+                <button type="button" class="btn btn-primary filter-serie serie-null rounded-0"
+                    data-genre="null">All</button>
+                <button type="button" class="btn btn-outline-primary filter-serie serie-28 rounded-0"
                     data-genre="28">Action</button>
-                <button type="button" class="btn btn-outline-primary filter-serie serie-35"
+                <button type="button" class="btn btn-outline-primary filter-serie serie-35 rounded-0"
                     data-genre="35">Comedy</button>
-                <button type="button" class="btn btn-outline-primary filter-serie serie-878"
+                <button type="button" class="btn btn-outline-primary filter-serie serie-878 rounded-0"
                     data-genre="878">Fiction</button>
-                <button type="button" class="btn btn-outline-primary filter-serie serie-10749"
+                <button type="button" class="btn btn-outline-primary filter-serie serie-10749 rounded-0"
                     data-genre="10749">Romance</button>
-                <button type="button" class="btn btn-outline-primary filter-serie serie-27"
+                <button type="button" class="btn btn-outline-primary filter-serie serie-27 rounded-0"
                     data-genre="27">Horror</button>
-                <button type="button" class="btn btn-outline-primary filter-serie serie-53"
+                <button type="button" class="btn btn-outline-primary filter-serie serie-53 rounded-0"
                     data-genre="53">Thriller</button>
             </div>
             <div id="feat-series-target"></div>
             <div class="btn-container">
                 <button type="button" id="more-serie-btn" class="btn btn-primary" data-genre="27">Show more</button>
             </div>
-        </div>
     </section>
 
     <!-- Magasin -->
-    <section id="shop">
-        <div class="container">
-            <h2>Shop movies</h2>
+    <section id="shop" class="container">
+            <h2 class="section-title">Shop movies</h2>
+            <div class="shop-nav">
+                <button class="shop-nav-button" id="shop-previous"><i class="fas fa-chevron-left"></i></button>
+                <button class="shop-nav-button" id="shop-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
             <div class="row">
                 <div id="shop-list-target" class="col-lg-7 col-xl-8"></div>
                 <div id="shop-selected-target" class="col-lg-5 col-xl-4">
@@ -219,7 +222,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Bouttons réseaux socieaux (suit le scroll de l'écran) -->
@@ -261,26 +263,27 @@
     <!--Formulaire contact-->
     <section id="contact">
         <div class="container">
-            <form>
+            <h2 class="section-title">Contact us</h2>
+            <form class="my-4">
                 <div class="form-group row">
-                    <div class="col-md-4 offset-2">
+                    <div class="sm-offset-1 col-md-4 offset-md-2 col-sm-6 ">
                         <input id="cname" type="text" class="form-control" placeholder="Nom">
                     </div>
-                    <div class="col-md-4">
+                    <div class="sm-offset-1 col-md-4 col-sm-6 ">
                         <input id="cfirstname" type="text" class="form-control" placeholder="Prénom">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-md-4 offset-2">
+                    <div class="sm-offset-1 col-sm-6 col-md-4 offset-md-2">
                         <input id="cmail" type="text" class="form-control" placeholder="Email">
                     </div>
-                    <div class="col-md-4">
+                    <div class="sm-offset-1 col-sm-6 col-md-4">
                         <input id="cobject" type="text" class="form-control" placeholder="Objet">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-8 offset-2">
+                    <div class="sm-offset-1 col-sm-12 col-md-8 offset-md-2">
                         <input id="cmessage" type="text" class="form-control" placeholder="Votre message">
                         <button id="csubmit" type="button" class="btn btn-primary">Envoyer</button>
                     </div>
@@ -298,7 +301,7 @@
 
                 <!--Grid column-->
                 <div class="col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-4 offset-lg-4 mb-4 mt-5">
-                    <h5 class="font-weight-bold text-uppercase text-center mt-3 mb-4 text-danger">SOUBSCRIBE TO US</h5>
+                    <h5 class="font-weight-bold text-uppercase text-center mt-3 mb-4 text-danger">SUBSCRIBE TO US</h5>
 
                     <form class="input-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Your email"
@@ -318,7 +321,7 @@
             <div class="row border-left-0 border-right-0 border-top-0 pb-5 border border-dark">
 
                 <!-- first list -->
-                <div class="col-2 col-sm-2 col-md-2 col-lg-2 line1 ">
+                <div class="col-2 d-none d-md-block col-md-2 col-lg-2 line1 ">
 
 
                     <h6
@@ -349,7 +352,7 @@
 
 
                 <!-- Grid column -->
-                <div class="col-2 col-sm-2 col-md-2 col-lg-2 line2">
+                <div class="col-2 d-none d-md-block col-md-2 col-lg-2 line2">
 
                     <!-- Second list -->
                     <h6
@@ -377,7 +380,7 @@
                 </div>
 
                 <!-- THIRD LIST -->
-                <div class="col-2 col-sm-2 col-md-2 col-lg-3">
+                <div class="col-2 d-none d-md-block col-md-2 col-lg-3">
                     <h6
                         class="font-weight-bold text-uppercase mt-3 mb-4 pb-2 text-white border-left-0 border-right-0 border-top-0 border border-dark">
                         REVIEWS MOVIES</h6>
@@ -403,7 +406,7 @@
                 </div>
 
                 <!-- Fourth list -->
-                <div class="col-2 col-sm-2 col-md-2 col-lg-2 ">
+                <div class="col-2 d-none d-md-block col-md-2 col-lg-2 fourth list">
                     <h6
                         class="font-weight-bold text-uppercase mt-3 mb-4 pb-2 text-white border-left-0 border-right-0 border-top-0 border border-dark">
                         LATEST MOVIES</h6>
@@ -434,7 +437,7 @@
                     </div>
                 </div>
                 <!-- Fifth list -->
-                <div class="col-2 col-sm-2 col-md-3 col-lg-3">
+                <div class="col-2 d-none d-md-block col-md-3 col-lg-3">
                     <h6
                         class="font-weight-bold text-uppercase mt-3 mb-4 text-danger pb-2 border-left-0 border-right-0 border-top-0 border border-dark">
                         ALLEZ
@@ -496,13 +499,13 @@
     </footer>
 
     <!-- Bandeau GPDR -->
-    <div class="container-fluid fixed-bottom bg-warning collapse hide" id="bandeauGPDR">
+    <div class="container-fluid fixed-bottom bg-primary text-white collapse hide" id="bandeauGPDR">
         <div class="m-0 p-0 d-flex justify-content-center align-items-center">
             <span class="mr-4">We use cookies on our website to give you a better experience, improve performance and
                 for analytics. By using this website you agree to the use of cookies.</span>
             <div>
-                <button class="btn btn-primary my-3" id="collapseGPDR" data-toggle="collapse"
-                    data-target="#bandeauGPDR"><i class="fas fa-check"></i>
+                <button class="btn btn-dark my-3" id="collapseGPDR" data-toggle="collapse" data-target="#bandeauGPDR"><i
+                        class="fas fa-check"></i>
                     Accept cookies</button>
                 <button class="btn btn-secondary my-3" data-toggle="modal" data-target="#GPDRmodal">Learn more</button>
             </div>
