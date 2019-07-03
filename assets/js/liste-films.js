@@ -113,7 +113,11 @@ function listMovies (type,movies, target, index, amount, clean) {
         let shopDetails = document.createElement("div")
         let price = document.createElement("p");
 
-        img.src = `https://image.tmdb.org/t/p/w185/${movies.results[i].poster_path}`;
+        if(movies.results[i].poster_path){
+            img.src = `https://image.tmdb.org/t/p/w185/${movies.results[i].poster_path}`;
+        } else {
+            img.src = "assets/img/no-poster.jpg"
+        }
         img.className = "movie-poster"
 
         if (type == "movie" || type == "shop"){
