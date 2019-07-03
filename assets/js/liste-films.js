@@ -113,7 +113,11 @@ function listMovies (type,movies, target, index, amount, clean) {
         let shopDetails = document.createElement("div")
         let price = document.createElement("p");
 
-        img.src = `https://image.tmdb.org/t/p/w185/${movies.results[i].poster_path}`;
+        if(movies.results[i].poster_path){
+            img.src = `https://image.tmdb.org/t/p/w185/${movies.results[i].poster_path}`;
+        } else {
+            img.src = "assets/img/no-poster.jpg"
+        }
         img.className = "movie-poster"
 
         if (type == "movie" || type == "shop"){
@@ -171,15 +175,68 @@ function listMovies (type,movies, target, index, amount, clean) {
     }
 }
 
+/////////////////////////////////////////
+//
+// Bannière du header
+//
+/////////////////////////////////////////
+
+
 //
 //  Images 4 films dans la bannière
 //////////////////////////////////////
 
 function bannerMovies (movies) {
     let banners = document.getElementsByClassName("banner-movie")
-    for (let i = 0; i < 6; i++) {
+    let carouBtns = document.getElementsByClassName("carousel-button")
+    for (let i = 0; i < 5; i++) {
         banners[i].setAttribute("src", `https://image.tmdb.org/t/p/original/${movies.results[i].backdrop_path}`)
+        carouBtns[i].setAttribute("data-id", movies.results[i].id)
+        carouBtns[i].setAttribute("data-name", movies.results[i].title)
     }
+}
+
+//
+//  Boutton "watch trailer"
+//////////////////////////////////////
+
+document.getElementById("trailer-btn").addEventListener("click", () => {
+    let activeImg = document.querySelector(".carousel-button.active")
+    let movieID = activeImg.getAttribute("data-id")
+    document.getElementById("trailer-movie-title").innerText = activeImg.getAttribute("data-name")
+
+    let trailerRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${apiKey}&language=en-US`).then(value => {
+        displayBannerTrailer(value)
+    })
+})
+
+function displayBannerTrailer(trailers) {
+    let target = document.getElementById("banner-trailer-target")
+    let video = document.createElement("div")
+    video.className = "detail-video-container"
+
+    let v = 0
+    let trailerFind
+    while (v < trailers.results.length && trailerFind == undefined)  {
+        trailerFind = trailers.results.find(trailer => trailer.type == "Trailer")
+        if (typeof trailerFind != "undefined"){
+            if (trailerFind.site != "YouTube"){
+                trailerFind = undefined
+            }
+        }
+        v++
+        if(v == trailers.results.length){
+            trailerFind = trailers.results[0]
+        }
+    } 
+
+    if(typeof trailerFind != "undefined"){
+        video.innerHTML = `<iframe class="detail-video" width="560" height="315" src="https://www.youtube.com/embed/${trailerFind.key}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+        infoMovieTarget.appendChild(video)
+    }
+
+    target.innerHTML = ""
+    target.appendChild(video)
 }
 
 /////////////////////////////////////////
@@ -525,7 +582,7 @@ function displaySerieDetails (details, trailers, credits){
         lastDate.innerText = `Last air date: ${details.last_air_date}`
 
         let topCast = ""
-        for(let i = 0; i < 3; i++) {
+        for(let i = 0; i < 3 && i < credits.cast.length; i++) {
             topCast += `${credits.cast[i].name}, `
         }
         cast.innerText = `Featured cast: ${topCast}`
@@ -566,6 +623,26 @@ function displaySerieDetails (details, trailers, credits){
         infoMovieTarget.innerHTML = `Un erreur est survenue lors de la récupération des détails du film <br> ${err}`
     }
 }
+
+////////////////////////////////////////////////////
+//
+// Suppression video lors de la fermeture du modal
+//
+////////////////////////////////////////////////////
+
+$('.modal-info-movie').on("hidden.bs.modal", function() {
+    let video = document.getElementById("info-movie-target").getElementsByClassName("detail-video-container")[0]
+    if (video){
+        video.parentNode.removeChild(video)
+    }
+})
+
+$('.modal-banner-trailer').on("hidden.bs.modal", function() {
+    let video = document.getElementById("banner-trailer-target").getElementsByClassName("detail-video-container")[0]
+    if (video){
+        video.parentNode.removeChild(video)
+    }
+})
 
 /////////////////////////////////////////
 //
