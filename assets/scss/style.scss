@@ -130,9 +130,11 @@ header {
                 color: $main-color !important;
             }
         }
-        h1{
+
+        h1 {
             font-weight: 800 !important;
         }
+
         form {
             background-color: rgba($color: #000000, $alpha: 0.3) !important;
         }
@@ -170,25 +172,24 @@ header {
         background-color: transparent;
 
         h2 {
-            font-size: 1.5em;
             text-transform: uppercase;
         }
 
         p {
             letter-spacing: 0.15em;
-            font-size: 1em;
         }
     }
 
-    .carousel-inner{
+    .carousel-inner {
         max-height: 10%;
         background-color: rgb(139, 69, 58);
     }
-    .carousel-item{
+
+    .carousel-item {
         opacity: 0.3;
     }
 
-    #trailer-btn{
+    #trailer-btn {
         background-color: #FE4240;
         border: none;
     }
@@ -270,6 +271,7 @@ header {
 
         .jumbo-text {
             top: 30%;
+
             h2 {
                 font-size: 3em !important;
             }
@@ -321,6 +323,16 @@ header {
 
 .red-band {
     background-color: $main-color;
+}
+
+
+.section-title {
+    padding-left: 1em;
+    border-left: solid 0.2em $main-color;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 /////////////////////////////////////////////////////////
@@ -405,7 +417,10 @@ header {
     margin-top: 1em;
 }
 
-#movies-target, #feat-movies-target, #feat-series-target, #shop-list-target {
+#movies-target,
+#feat-movies-target,
+#feat-series-target,
+#shop-list-target {
     display: flex;
     justify-content: space-around;
     border-radius: 5px;
@@ -417,12 +432,12 @@ header {
     border: 2px solid #f5f5f5;
 }
 
-@mixin entries{
+@mixin entries {
     cursor: pointer;
     overflow: hidden;
 }
 
-@mixin title{
+@mixin title {
     margin-top: 5px;
     text-align: center;
     text-overflow: ellipsis;
@@ -430,7 +445,7 @@ header {
     white-space: nowrap;
 }
 
-.movie-entry{
+.movie-entry {
     @include entries;
     width: 180px;
     border-radius: 5px;
@@ -446,13 +461,13 @@ header {
         font-size: 14px;
     }
 
-    .movie-year-genre{
+    .movie-year-genre {
         font-size: 12px;
         margin-bottom: 0;
     }
 }
 
-.movie-poster{
+.movie-poster {
     width: 160px;
     height: 240px;
     object-fit: cover;
@@ -461,7 +476,8 @@ header {
 .movie-details {
     display: flex;
     justify-content: space-between;
-    p{
+
+    p {
         margin-bottom: 8px;
     }
 }
@@ -502,36 +518,37 @@ header {
 //  Liste magasin
 //
 /////////////////////////////////////////////////////////
-.shop-nav{
+.shop-nav {
     text-align: right;
     margin-bottom: 5px;
-    &-button{
+
+    &-button {
         background-color: black;
         color: white;
         border: none;
     }
 }
 
-.shop-entry{
-    @include entries; 
+.shop-entry {
+    @include entries;
     position: relative;
     width: 160px;
     height: 240px;
 
     margin-bottom: 20px;
 
-    .movie-title{
+    .movie-title {
         @include title;
         font-size: 11px;
         font-weight: normal;
     }
 
-    .movie-year-genre{
+    .movie-year-genre {
         font-size: 11px;
     }
 }
 
-.shop-entry-details{
+.shop-entry-details {
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -541,15 +558,16 @@ header {
     background-color: #EEEDF2;
 }
 
-#shop-list-target{
+#shop-list-target {
     padding-right: 0;
 }
 
-#shop-list-target, #shop-selected-target{
+#shop-list-target,
+#shop-selected-target {
     padding-left: 0;
 }
 
-#shop-list-target{
+#shop-list-target {
     align-content: flex-start;
 }
 
@@ -559,38 +577,43 @@ header {
 //
 /////////////////////////////////////////////////////////
 
-.shop-details, .detail-video-container{
+.shop-details,
+.detail-video-container {
     background-color: #0D0D0D;
 }
 
-.shop-details{
+.shop-details {
     padding: 15px;
     height: 285px;
     overflow: auto;
 
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
         width: 8px;
-        &-thumb{
+
+        &-thumb {
             background-color: #FE4240;
         }
-        &-track{
+
+        &-track {
             background-color: #666;
         }
     }
 }
 
-.shop-detail{
-    &-title{
+.shop-detail {
+    &-title {
         font-size: 20px;
         margin-bottom: 20px;
         color: #FE4240;
     }
-    &-desc{
+
+    &-desc {
         color: #666;
         font-size: 14px;
         padding: 5px 0 5px 0;
     }
-    &-subtitle{
+
+    &-subtitle {
         color: #FE4240;
         font-size: 14px;
         width: 90px;
