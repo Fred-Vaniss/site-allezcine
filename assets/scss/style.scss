@@ -1,27 +1,311 @@
-/////////////////////////////////////////////////////////
-//
-//  Positionnement du Jumbotron à l'intérieur du carousel
-//
-/////////////////////////////////////////////////////////
-.carousel-inner{
-    position: relative;
-    height: 500px;
+// variables
+$main-color: #FF0036;
+
+/*font-size responsive */
+footer {
+    html {
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 0.8rem;
+    }
+
+    h6 {
+        font-size: 0.4rem;
+    }
+
+    p {
+        font-size: 0.6rem;
+    }
+
+    a {
+        font-size: 0.7rem;
+    }
+
+    span {
+        font-size: 0.7rem;
+
+    }
+
+    @media (max-width: 468px) {
+        html {
+            font-size: 0.6rem;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+        }
+
+        h2 {
+            font-size: 1rem;
+        }
+
+        p {
+            font-size: 0.6rem;
+        }
+
+        a {
+            font-size: 0.6rem;
+        }
+    }
+
+    @media (min-width: 991px) {
+        html {
+            font-size: 0.9rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+        }
+
+        a {
+            font-size: 0.7rem;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        html {
+            font-size: 1rem;
+        }
+
+        h1 {
+            font-size: 1.7rem;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+    }
 }
-.jumbotron{
-    background-color: transparent;
-    position: absolute;
-    top: 100px;
-    width: 100vw;
+
+.text-maincolor {
+    color: $main-color;
+}
+
+.bg-maincolor {
+    background-color: $main-color;
+}
+
+.white-border {
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 /////////////////////////////////////////////////////////
 //
-//  Bande rouge avec "login" et "s'enregistrer"
+//  Header
 //
 /////////////////////////////////////////////////////////
 
-.red-band{
-    background-color: red;
+header {
+    font-family: 'Roboto', sans-serif !important;
+
+    nav {
+        li {
+            font-weight: 500;
+            transition: background-color 0.3s;
+
+            a {
+                color: $main-color !important;
+            }
+        }
+
+        form {
+            background-color: rgba($color: #000000, $alpha: 0.3) !important;
+        }
+
+        input {
+            border: none !important;
+            background-color: transparent !important;
+
+            &:focus {
+                box-shadow: none !important;
+            }
+
+            &::placeholder {
+                color: white !important;
+            }
+        }
+
+        button {
+            background-color: transparent !important;
+            color: white !important;
+
+            &:focus {
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    .jumbo-text {
+        color: white;
+        position: absolute !important;
+        width: 100%;
+        z-index: 1;
+        top: 20%;
+        text-align: center;
+        background-color: transparent;
+
+        h2 {
+            font-size: 1.5em;
+            text-transform: uppercase;
+        }
+
+        p {
+            letter-spacing: 0.15em;
+            font-size: 1em;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    header {
+        nav {
+            position: absolute !important;
+            width: 100%;
+            z-index: 2;
+            background-color: transparent;
+
+            .navbar-brand {
+                font-size: 4rem;
+            }
+
+            li {
+                background-color: rgba($color: #000000, $alpha: 0.3);
+                transition: background-color 0.3s;
+                margin: auto;
+                white-space: nowrap;
+
+                &:hover {
+                    background-color: $main-color;
+                }
+
+                a {
+                    transition: color 0.3s;
+
+                    &:hover {
+                        color: white !important;
+                    }
+                }
+            }
+        }
+
+        .carousel-inner {
+            max-height: 30em;
+        }
+
+        .jumbo-text {
+            top: 40%;
+
+            h2 {
+                font-size: 3.5em !important;
+            }
+
+            p {
+                font-size: 1.5em !important;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    header {
+        nav {
+            background-color: transparent;
+            width: 100%;
+
+            .navbar-brand {
+                font-size: 3.5em;
+            }
+
+            li {
+                margin: auto;
+                white-space: nowrap;
+            }
+
+            form {
+                max-width: 16.5em;
+            }
+        }
+
+        .carousel-inner {
+            max-height: 30em;
+        }
+
+        .jumbo-text {
+            top: 30%;
+            h2 {
+                font-size: 3em !important;
+            }
+
+            p {
+                font-size: 1em !important;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    header {
+        nav {
+            background-color: transparent;
+            width: 100%;
+
+            .navbar-brand {
+                font-size: 3em;
+            }
+
+            li {
+                margin: auto;
+                white-space: nowrap;
+            }
+
+            form {
+                max-width: 16.5em;
+            }
+        }
+
+        .carousel-inner {
+            max-height: 30em;
+        }
+
+        .jumbo-text {
+            top: 30%;
+
+            h2 {
+                font-size: 3em !important;
+            }
+
+            p {
+                font-size: 1em !important;
+            }
+        }
+    }
+}
+
+.red-band {
+    background-color: $main-color;
 }
 
 /////////////////////////////////////////////////////////
@@ -30,16 +314,18 @@
 //
 /////////////////////////////////////////////////////////
 
-.soc-buttons{
+.soc-buttons {
     position: fixed;
     bottom: 15vh;
     left: -130px;
-    a{
+
+    a {
         color: unset;
         text-decoration: none;
     }
 }
-.soc-button{
+
+.soc-button {
     border-radius: 0px 25px 25px 0;
     height: 45px;
     width: 175px;
@@ -51,7 +337,7 @@
 
     transition: transform .2s;
 
-    p{
+    p {
         margin-left: 10px;
         line-height: 3em;
         font-weight: bold;
@@ -60,12 +346,12 @@
         text-align: center;
     }
 
-    &:hover{
+    &:hover {
         transform: translateX(130px);
     }
 }
 
-.soc-circle{
+.soc-circle {
     background-color: white;
     padding: 5px;
     border-radius: 50%;
@@ -78,19 +364,19 @@
     top: 6px;
 }
 
-.tweet{
+.tweet {
     background-color: #0EA4FC;
 }
 
-.face{
+.face {
     background-color: #3E5F94;
 }
 
-.dribl{
+.dribl {
     background-color: #F04888;
 }
 
-.gplus{
+.gplus {
     background-color: #DD4831;
 }
 
@@ -100,41 +386,243 @@
 //
 /////////////////////////////////////////////////////////
 
-#movies{
+#movies {
     margin-top: 1em;
 }
 
-#movies-target{
+#movies-target, #feat-movies-target, #feat-series-target, #shop-list-target {
     display: flex;
     justify-content: space-around;
-    border: 2px solid #f5f5f5;
     border-radius: 5px;
+    flex-wrap: wrap;
+}
+
+#movies-target {
     padding: 1em;
+    border: 2px solid #f5f5f5;
 }
 
-.movie-entry{
-    max-width: 140px;
-    overflow: hidden;
+@mixin entries{
     cursor: pointer;
+    overflow: hidden;
 }
 
-.movie-poster{
-    width: 140px;
-}
-
-.movie-title{
+@mixin title{
     margin-top: 5px;
-    font-size: 16px;
     text-align: center;
     text-overflow: ellipsis;
+    overflow: hidden;
     white-space: nowrap;
 }
 
-.movie-details{
-    display: flex;
-    justify-content: space-between;
+.movie-entry{
+    @include entries;
+    width: 180px;
+    border-radius: 5px;
+    padding: 10px;
+    transition: background-color .2s;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.253);
+    }
+
+    .movie-title {
+        @include title;
+        font-size: 14px;
+    }
+
+    .movie-year-genre{
+        font-size: 12px;
+        margin-bottom: 0;
+    }
 }
 
-.movie-year-genre{
-    font-size: 14px;
+.movie-poster{
+    width: 160px;
+    height: 240px;
+    object-fit: cover;
+}
+
+.movie-details {
+    display: flex;
+    justify-content: space-between;
+    p{
+        margin-bottom: 8px;
+    }
+}
+
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+/////////////////////////////////////////////////////////
+//
+//  Détails du film sélectionné
+//
+/////////////////////////////////////////////////////////
+
+.detail-img {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.detail-video-container {
+    position: relative;
+    padding-top: 56.25%;
+    width: 100%;
+}
+
+.detail-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/////////////////////////////////////////////////////////
+//
+//  Liste magasin
+//
+/////////////////////////////////////////////////////////
+.shop-nav{
+    text-align: right;
+    margin-bottom: 5px;
+    &-button{
+        background-color: black;
+        color: white;
+        border: none;
+    }
+}
+
+.shop-entry{
+    @include entries; 
+    position: relative;
+    width: 160px;
+    height: 240px;
+
+    margin-bottom: 20px;
+
+    .movie-title{
+        @include title;
+        font-size: 11px;
+        font-weight: normal;
+    }
+
+    .movie-year-genre{
+        font-size: 11px;
+    }
+}
+
+.shop-entry-details{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 5px 10px 0 10px;
+
+    background-color: #EEEDF2;
+}
+
+#shop-list-target{
+    padding-right: 0;
+}
+
+#shop-list-target, #shop-selected-target{
+    padding-left: 0;
+}
+
+#shop-list-target{
+    align-content: flex-start;
+}
+
+/////////////////////////////////////////////////////////
+//
+//  Détails magasin
+//
+/////////////////////////////////////////////////////////
+
+.shop-details, .detail-video-container{
+    background-color: #0D0D0D;
+}
+
+.shop-details{
+    padding: 15px;
+    height: 285px;
+    overflow: auto;
+
+    &::-webkit-scrollbar{
+        width: 8px;
+        &-thumb{
+            background-color: #FE4240;
+        }
+        &-track{
+            background-color: #666;
+        }
+    }
+}
+
+.shop-detail{
+    &-title{
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #FE4240;
+    }
+    &-desc{
+        color: #666;
+        font-size: 14px;
+        padding: 5px 0 5px 0;
+    }
+    &-subtitle{
+        color: #FE4240;
+        font-size: 14px;
+        width: 90px;
+    }
+}
+
+/////////////////////////////////////////////////////////
+//
+//  Footer
+//
+/////////////////////////////////////////////////////////
+
+footer {
+    background-color: black;
+    color: gray;
+}
+
+.test a {
+    text-decoration: none;
+    color: gray;
+}
+
+
+.else {
+    background-color: grey;
+    color: whitesmoke;
+}
+
+#btnscroll {
+    border: 0.1em solid red;
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background-color: black;
+    /* padding-bottom: 6%; */
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 0.2em;
+    position: fixed;
+    bottom: 0;
+    display: none;
+    margin-left: 90%;
+    text-decoration: none !important;
+    line-height: 1;
+}
+
+.cine {
+    font-size: 0.8rem;
 }
