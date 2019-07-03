@@ -177,6 +177,11 @@ header {
             font-size: 1em;
         }
     }
+
+    .carousel-inner{
+        min-height: 480px;
+        background-color: rgb(139, 69, 58);
+    }
 }
 
 @media (min-width: 1200px) {

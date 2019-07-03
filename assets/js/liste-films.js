@@ -70,14 +70,13 @@ requestGenresList()
 //  Requête de la liste des films en salle
 /////////////////////////////////////////////////
 
-
-
 function requestMoviesInTheater(){
     let moviesRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=fr`);
     
     //  Vérification si ces deux requêtes ont bien étés abouties avant de lister les films
     Promise.all([moviesRequest, movieGenresRequest]).then(values => {
         listMovies("movie",values[0],moviesTarget,0,5,true)
+        bannerMovies(values[0])
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
         let errorMsg = document.createElement("p")
@@ -92,7 +91,7 @@ requestMoviesInTheater();
 
 //
 //  Fonction générale pour lister la liste des films
-/////////////////////////////////////////
+//////////////////////////////////////////////////////
 function listMovies (type,movies, target, index, amount, clean) {
     if (clean){
         target.innerHTML = ""
@@ -169,6 +168,17 @@ function listMovies (type,movies, target, index, amount, clean) {
         } else {
             entry.addEventListener("click", () => gatherShopDetails(movies.results[i].id))
         }
+    }
+}
+
+//
+//  Images 4 films dans la bannière
+//////////////////////////////////////
+
+function bannerMovies (movies) {
+    let banners = document.getElementsByClassName("banner-movie")
+    for (let i = 0; i < 6; i++) {
+        banners[i].setAttribute("src", `https://image.tmdb.org/t/p/original/${movies.results[i].backdrop_path}`)
     }
 }
 
