@@ -345,7 +345,7 @@ header {
     position: fixed;
     bottom: 15vh;
     left: -130px;
-
+    z-index: 2;
     a {
         color: unset;
         text-decoration: none;
@@ -357,11 +357,7 @@ header {
     height: 45px;
     width: 175px;
     margin-bottom: 10px;
-
     position: relative;
-
-    // display: flex;
-
     transition: transform .2s;
 
     p {
