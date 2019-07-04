@@ -303,6 +303,7 @@ header #trailer-btn {
   position: fixed;
   bottom: 15vh;
   left: -130px;
+  z-index: 2;
 }
 
 .soc-buttons a {
