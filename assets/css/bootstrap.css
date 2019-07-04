@@ -2017,6 +2017,7 @@ pre code {
   border-radius: 0.25rem;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
@@ -2024,6 +2025,7 @@ pre code {
 @media (prefers-reduced-motion: reduce) {
   .form-control {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -2569,6 +2571,7 @@ textarea.form-control {
   border-radius: 0.25rem;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
@@ -2576,6 +2579,7 @@ textarea.form-control {
 @media (prefers-reduced-motion: reduce) {
   .btn {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -3213,12 +3217,14 @@ input[type="button"].btn-block {
 
 .fade {
   -webkit-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .fade {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -3236,12 +3242,14 @@ input[type="button"].btn-block {
   height: 0;
   overflow: hidden;
   -webkit-transition: height 0.35s ease;
+  -o-transition: height 0.35s ease;
   transition: height 0.35s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .collapsing {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -3968,6 +3976,7 @@ input[type="button"].btn-block {
   border-radius: 0.5rem;
   -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
@@ -3975,6 +3984,7 @@ input[type="button"].btn-block {
 @media (prefers-reduced-motion: reduce) {
   .custom-switch .custom-control-label::after {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -3982,6 +3992,7 @@ input[type="button"].btn-block {
 .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
   background-color: #fff;
   -webkit-transform: translateX(0.75rem);
+      -ms-transform: translateX(0.75rem);
           transform: translateX(0.75rem);
 }
 
@@ -4159,6 +4170,7 @@ input[type="button"].btn-block {
   border-radius: 1rem;
   -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
@@ -4168,6 +4180,7 @@ input[type="button"].btn-block {
 @media (prefers-reduced-motion: reduce) {
   .custom-range::-webkit-slider-thumb {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -4194,6 +4207,7 @@ input[type="button"].btn-block {
   border-radius: 1rem;
   -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   -moz-appearance: none;
@@ -4203,6 +4217,7 @@ input[type="button"].btn-block {
 @media (prefers-reduced-motion: reduce) {
   .custom-range::-moz-range-thumb {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -4232,6 +4247,7 @@ input[type="button"].btn-block {
   border-radius: 1rem;
   -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   appearance: none;
@@ -4240,6 +4256,7 @@ input[type="button"].btn-block {
 @media (prefers-reduced-motion: reduce) {
   .custom-range::-ms-thumb {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -4294,6 +4311,7 @@ input[type="button"].btn-block {
 .custom-select {
   -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
@@ -4303,6 +4321,7 @@ input[type="button"].btn-block {
   .custom-file-label,
   .custom-select {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -5258,6 +5277,7 @@ input[type="button"].btn-block {
   border-radius: 0.25rem;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
@@ -5265,6 +5285,7 @@ input[type="button"].btn-block {
 @media (prefers-reduced-motion: reduce) {
   .badge {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -5620,17 +5641,21 @@ a.badge-dark:focus, a.badge-dark.focus {
   white-space: nowrap;
   background-color: #FF0036;
   -webkit-transition: width 0.6s ease;
+  -o-transition: width 0.6s ease;
   transition: width 0.6s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .progress-bar {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
 
 .progress-bar-striped {
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-size: 1rem 1rem;
 }
@@ -6106,21 +6131,25 @@ a.close.disabled {
 .modal.fade .modal-dialog {
   -webkit-transition: -webkit-transform 0.3s ease-out;
   transition: -webkit-transform 0.3s ease-out;
+  -o-transition: transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
   transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
   -webkit-transform: translate(0, -50px);
+      -ms-transform: translate(0, -50px);
           transform: translate(0, -50px);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .modal.fade .modal-dialog {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
 
 .modal.show .modal-dialog {
   -webkit-transform: none;
+      -ms-transform: none;
           transform: none;
 }
 
@@ -6621,6 +6650,7 @@ a.close.disabled {
           backface-visibility: hidden;
   -webkit-transition: -webkit-transform 0.6s ease-in-out;
   transition: -webkit-transform 0.6s ease-in-out;
+  -o-transition: transform 0.6s ease-in-out;
   transition: transform 0.6s ease-in-out;
   transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
 }
@@ -6628,6 +6658,7 @@ a.close.disabled {
 @media (prefers-reduced-motion: reduce) {
   .carousel-item {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -6641,20 +6672,24 @@ a.close.disabled {
 .carousel-item-next:not(.carousel-item-left),
 .active.carousel-item-right {
   -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
           transform: translateX(100%);
 }
 
 .carousel-item-prev:not(.carousel-item-right),
 .active.carousel-item-left {
   -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
           transform: translateX(-100%);
 }
 
 .carousel-fade .carousel-item {
   opacity: 0;
   -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
   transition-property: opacity;
   -webkit-transform: none;
+      -ms-transform: none;
           transform: none;
 }
 
@@ -6670,6 +6705,7 @@ a.close.disabled {
   z-index: 0;
   opacity: 0;
   -webkit-transition: 0s 0.6s opacity;
+  -o-transition: 0s 0.6s opacity;
   transition: 0s 0.6s opacity;
 }
 
@@ -6677,6 +6713,7 @@ a.close.disabled {
   .carousel-fade .active.carousel-item-left,
   .carousel-fade .active.carousel-item-right {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -6701,6 +6738,7 @@ a.close.disabled {
   text-align: center;
   opacity: 0.5;
   -webkit-transition: opacity 0.15s ease;
+  -o-transition: opacity 0.15s ease;
   transition: opacity 0.15s ease;
 }
 
@@ -6708,6 +6746,7 @@ a.close.disabled {
   .carousel-control-prev,
   .carousel-control-next {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -6781,12 +6820,14 @@ a.close.disabled {
   border-bottom: 10px solid transparent;
   opacity: .5;
   -webkit-transition: opacity 0.6s ease;
+  -o-transition: opacity 0.6s ease;
   transition: opacity 0.6s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .carousel-indicators li {
     -webkit-transition: none;
+    -o-transition: none;
     transition: none;
   }
 }
@@ -10268,7 +10309,8 @@ button.bg-dark:focus {
 
 .text-truncate {
   overflow: hidden;
-  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
   white-space: nowrap;
 }
 
