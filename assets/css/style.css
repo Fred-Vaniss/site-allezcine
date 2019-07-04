@@ -584,6 +584,10 @@ header #trailer-btn {
   width: 90px;
 }
 
+#csubmit {
+  margin-top: 20px;
+}
+
 footer {
   background-color: black;
   color: gray;
