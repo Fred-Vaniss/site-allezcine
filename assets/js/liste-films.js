@@ -100,7 +100,7 @@ function listMovies (type,movies, target, index, amount, clean) {
         let entry = document.createElement("div");
         if (type == "movie" || type == "serie"){
             entry.setAttribute("data-toggle","modal")
-            entry.setAttribute("data-target", ".modal-info-movie")
+            entry.setAttribute("data-target", "#modal-info-movie")
         }
         entry.id = movies.results[i].id
         
@@ -630,14 +630,14 @@ function displaySerieDetails (details, trailers, credits){
 //
 ////////////////////////////////////////////////////
 
-$('.modal-info-movie').on("hidden.bs.modal", function() {
+$('#modal-info-movie').on("hidden.bs.modal", function() {
     let video = document.getElementById("info-movie-target").getElementsByClassName("detail-video-container")[0]
     if (video){
         video.parentNode.removeChild(video)
     }
 })
 
-$('.modal-banner-trailer').on("hidden.bs.modal", function() {
+$('#modal-banner-trailer').on("hidden.bs.modal", function() {
     let video = document.getElementById("banner-trailer-target").getElementsByClassName("detail-video-container")[0]
     if (video){
         video.parentNode.removeChild(video)
