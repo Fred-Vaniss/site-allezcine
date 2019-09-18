@@ -14,7 +14,6 @@ let formatedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}
 //  Fonction de la requête de l'API
 //////////////////////////////////////////
 function ajaxRequest (url){
-    console.log(`Requested ${url}`)
     return new Promise((resolve,reject) => {
         let req = new XMLHttpRequest();
         req.open("GET", url, true)
@@ -71,7 +70,7 @@ requestGenresList()
 /////////////////////////////////////////////////
 
 function requestMoviesInTheater(){
-    let moviesRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=fr`);
+    let moviesRequest = ajaxRequest(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&region=FR`);
     
     //  Vérification si ces deux requêtes ont bien étés abouties avant de lister les films
     Promise.all([moviesRequest, movieGenresRequest]).then(values => {
@@ -292,7 +291,6 @@ document.getElementById("more-movie-btn").addEventListener("click", () => {
         }
         listMovies("movie",featMoviesFullList,featMoviesTarget,displayedMovies,12,false)
         displayedMovies += 12
-        console.log("displayed")
     }, reason => {
         console.error(`Une des promesses n'a pas été tenue (${reason}) lors de la récupération des films`)
         let errorMsg = document.createElement("p")
@@ -382,7 +380,6 @@ document.getElementById("more-serie-btn").addEventListener("click", () => {
     }
     let featSeriesRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/tv?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&sort_by=popularity.desc&page=${seriePage}&timezone=America%2FNew_York&include_null_first_air_dates=false${genreRequest}`)
     Promise.all([featSeriesRequest, serieGenresRequest]).then(values => {
-        console.log(values[0])
         for (const item of values[0].results) {
             featSeriesFullList.results.push(item)
         }
@@ -660,7 +657,6 @@ function requestShopList() {
     let shopRequest = ajaxRequest(`https://api.themoviedb.org/3/discover/movie?api_key=3b4cac2f6fd40d51e8ffc2881ade3885&language=en-US&include_adult=false&include_video=false&page=1&primary_release_date.lte=2018-12-31`)
     
     Promise.all([shopRequest, movieGenresRequest]).then(values => {
-        console.log("requête réussie");
         listMovies("shop",values[0],shopTarget,0,8,true);
         firstShopDetails();
         shopIndexing();
